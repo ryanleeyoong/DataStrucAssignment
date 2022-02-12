@@ -17,6 +17,7 @@ public class Loading extends javax.swing.JFrame {
      */
     public Loading() {
         initComponents();
+        
     }
 
     /**
