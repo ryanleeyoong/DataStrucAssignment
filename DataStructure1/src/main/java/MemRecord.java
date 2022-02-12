@@ -40,10 +40,10 @@ public class MemRecord extends javax.swing.JFrame {
         StatusCombo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         MemRecordTable = new javax.swing.JTable();
-        RefreshBtn1 = new javax.swing.JButton();
-        RefreshBtn2 = new javax.swing.JButton();
-        RefreshBtn3 = new javax.swing.JButton();
-        RefreshBtn4 = new javax.swing.JButton();
+        NewBtn = new javax.swing.JButton();
+        RenewBtn = new javax.swing.JButton();
+        EditBtn = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -99,25 +99,25 @@ public class MemRecord extends javax.swing.JFrame {
         MemRecordTable.setShowGrid(true);
         jScrollPane1.setViewportView(MemRecordTable);
 
-        RefreshBtn1.setBackground(new java.awt.Color(78, 173, 227));
-        RefreshBtn1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\add-user1.png")); // NOI18N
-        RefreshBtn1.setText("New");
+        NewBtn.setBackground(new java.awt.Color(78, 173, 227));
+        NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        NewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\add-user1.png")); // NOI18N
+        NewBtn.setText("New");
 
-        RefreshBtn2.setBackground(new java.awt.Color(78, 173, 227));
-        RefreshBtn2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\third-party1.png")); // NOI18N
-        RefreshBtn2.setText("Renew");
+        RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
+        RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        RenewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\third-party1.png")); // NOI18N
+        RenewBtn.setText("Renew");
 
-        RefreshBtn3.setBackground(new java.awt.Color(78, 173, 227));
-        RefreshBtn3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\edit1.png")); // NOI18N
-        RefreshBtn3.setText("Edit");
+        EditBtn.setBackground(new java.awt.Color(78, 173, 227));
+        EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        EditBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\edit1.png")); // NOI18N
+        EditBtn.setText("Edit");
 
-        RefreshBtn4.setBackground(new java.awt.Color(78, 173, 227));
-        RefreshBtn4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\delete1.png")); // NOI18N
-        RefreshBtn4.setText("Delete");
+        DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
+        DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        DeleteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\delete1.png")); // NOI18N
+        DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,13 +150,13 @@ public class MemRecord extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(StatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RefreshBtn1)
+                        .addComponent(NewBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(RefreshBtn2)
+                        .addComponent(RenewBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(RefreshBtn3)
+                        .addComponent(EditBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(RefreshBtn4)))
+                        .addComponent(DeleteBtn)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,10 +185,10 @@ public class MemRecord extends javax.swing.JFrame {
                     .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RefreshBtn1)
-                    .addComponent(RefreshBtn2)
-                    .addComponent(RefreshBtn3)
-                    .addComponent(RefreshBtn4))
+                    .addComponent(NewBtn)
+                    .addComponent(RenewBtn)
+                    .addComponent(EditBtn)
+                    .addComponent(DeleteBtn))
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -292,16 +292,16 @@ public class MemRecord extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JButton EditBtn;
     private javax.swing.JLabel Gender;
     private javax.swing.JComboBox<String> GenderCombo;
     private javax.swing.JLabel Level;
     private javax.swing.JComboBox<String> LevelCombo;
     private javax.swing.JTable MemRecordTable;
+    private javax.swing.JButton NewBtn;
     private javax.swing.JButton RefreshBtn;
-    private javax.swing.JButton RefreshBtn1;
-    private javax.swing.JButton RefreshBtn2;
-    private javax.swing.JButton RefreshBtn3;
-    private javax.swing.JButton RefreshBtn4;
+    private javax.swing.JButton RenewBtn;
     private javax.swing.JLabel Status;
     private javax.swing.JComboBox<String> StatusCombo;
     private javax.swing.JLabel jLabel1;

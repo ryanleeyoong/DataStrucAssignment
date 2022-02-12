@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -126,13 +126,13 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="StatusCombo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="RefreshBtn1" min="-2" max="-2" attributes="0"/>
+                              <Component id="NewBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="RefreshBtn2" min="-2" max="-2" attributes="0"/>
+                              <Component id="RenewBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="RefreshBtn3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EditBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="RefreshBtn4" min="-2" max="-2" attributes="0"/>
+                              <Component id="DeleteBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -171,10 +171,10 @@
                           <Component id="GenderCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LevelCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StatusCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RefreshBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RefreshBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RefreshBtn3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="RefreshBtn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="NewBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RenewBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DeleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="338" max="-2" attributes="0"/>
@@ -373,7 +373,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="RefreshBtn1">
+            <Component class="javax.swing.JButton" name="NewBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="ad" red="4e" type="rgb"/>
@@ -387,7 +387,7 @@
                 <Property name="text" type="java.lang.String" value="New"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="RefreshBtn2">
+            <Component class="javax.swing.JButton" name="RenewBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="ad" red="4e" type="rgb"/>
@@ -401,7 +401,7 @@
                 <Property name="text" type="java.lang.String" value="Renew"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="RefreshBtn3">
+            <Component class="javax.swing.JButton" name="EditBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="ad" red="4e" type="rgb"/>
@@ -415,7 +415,7 @@
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="RefreshBtn4">
+            <Component class="javax.swing.JButton" name="DeleteBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="ad" red="4e" type="rgb"/>

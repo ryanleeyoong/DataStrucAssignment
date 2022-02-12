@@ -48,21 +48,21 @@ public class Loading extends javax.swing.JFrame {
         getContentPane().add(LoadingValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 447, 40, 20));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\loading trident.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading trident.png")); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 30, 30));
 
         jLabel3.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         jLabel3.setText("Poseidon System");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\loading poseidon.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
         LoadingLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         LoadingLabel.setText("Loading.....");
         getContentPane().add(LoadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 180, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\Rectangle 8.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Rectangle 8.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
