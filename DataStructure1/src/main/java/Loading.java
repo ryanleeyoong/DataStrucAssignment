@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Ryan's PC
@@ -17,7 +16,7 @@ public class Loading extends javax.swing.JFrame {
      */
     public Loading() {
         initComponents();
-        
+
     }
 
     /**
@@ -95,40 +94,46 @@ public class Loading extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         Loading ld = new Loading();
         ld.setVisible(true);
-        
-        try{
-            for(int i=0;i<=100;i++){
+
+        try {
+            for (int i = 0; i <= 100; i++) {
                 Thread.sleep(20);
-                ld.LoadingValue.setText(i+"%");
-                
-                if(i==0){
+                ld.LoadingValue.setText(i + "%");
+
+                if (i == 0) {
                     ld.LoadingLabel.setText("Turning On Modules.....");
-                    
+
                 }
-                if(i==10){
+                if (i == 10) {
                     ld.LoadingLabel.setText("Loading Modules.....");
-                    
+
                 }
-                if(i==50){
+                if (i == 50) {
                     ld.LoadingLabel.setText("Connecting To Database.....");
-                    
+
                 }
-                if(i==70){
+                if (i == 70) {
                     ld.LoadingLabel.setText("Connection Successful!");
-                    
+
                 }
-                if(i==80){
+                if (i == 80) {
                     ld.LoadingLabel.setText("Launching Application.....");
-                    
+
                 }
                 ld.LoadingBar.setValue(i);
+
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
+        ld.setVisible(false);
+        Login lg = new Login();
+        lg.setVisible(true);
+
+        ld.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

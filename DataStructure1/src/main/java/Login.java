@@ -14,6 +14,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);//set the page location 
+        setResizable(false);//disable the resizable function
     }
 
     /**
@@ -26,20 +28,76 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Logo = new javax.swing.JLabel();
+        PoseidonIcon = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        eyeIcon = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Logo1 = new javax.swing.JLabel();
+        Title1 = new javax.swing.JLabel();
+        PasswordTextField = new javax.swing.JTextField();
+        showPassword = new java.awt.Checkbox();
+        ChangePasswordBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(777, 505));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
+        jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
+        Title.setText("Poseidon System");
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
+        jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 30, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 40, -1));
+
+        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+
+        Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        Title1.setText("Welcome, Admin!");
+        jPanel3.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 270, -1));
+
+        PasswordTextField.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        PasswordTextField.setText("PASSWORD");
+        jPanel3.add(PasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 250, 30));
+        jPanel3.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 20, -1));
+
+        ChangePasswordBtn.setBackground(new java.awt.Color(255, 255, 255));
+        ChangePasswordBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        ChangePasswordBtn.setForeground(new java.awt.Color(0, 102, 102));
+        ChangePasswordBtn.setText("Change Password ?");
+        ChangePasswordBtn.setBorderPainted(false);
+        ChangePasswordBtn.setContentAreaFilled(false);
+        ChangePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChangePasswordBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ChangePasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,15 +105,28 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 422, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ChangePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordBtnActionPerformed
+        ChangePass cp = new ChangePass();
+        cp.show();
+
+        dispose();
+    }//GEN-LAST:event_ChangePasswordBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +164,18 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ChangePasswordBtn;
+    private javax.swing.JLabel Logo;
+    private javax.swing.JLabel Logo1;
+    private javax.swing.JTextField PasswordTextField;
+    private javax.swing.JLabel PoseidonIcon;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel Title1;
+    private javax.swing.JLabel eyeIcon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private java.awt.Checkbox showPassword;
     // End of variables declaration//GEN-END:variables
 }
