@@ -54,7 +54,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Backbtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\BACK.png")); // NOI18N
+        Backbtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\BACK.png")); // NOI18N
         Backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackbtnMouseClicked(evt);
@@ -62,23 +62,23 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel1.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\ChangePass poseidon.png")); // NOI18N
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\ChangePass poseidon.png")); // NOI18N
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +88,10 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, -1));
 
-        eyeIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login eye.png")); // NOI18N
+        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
         jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
 
-        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
+        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
         jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
