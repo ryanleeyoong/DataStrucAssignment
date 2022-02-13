@@ -100,7 +100,7 @@ public class Loading extends javax.swing.JFrame {
 
         try {
             for (int i = 0; i <= 100; i++) {
-                Thread.sleep(20);
+                Thread.sleep(10);
                 ld.LoadingValue.setText(i + "%");
 
                 if (i == 0) {

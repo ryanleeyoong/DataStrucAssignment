@@ -1,8 +1,11 @@
+
+import java.awt.Color;
+import javax.swing.JPanel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Ryan's PC
@@ -40,17 +43,18 @@ public class ChangePass extends javax.swing.JFrame {
         Title1 = new javax.swing.JLabel();
         PasswordTextField = new javax.swing.JTextField();
         showPassword = new java.awt.Checkbox();
-        ForgotPasswordBtn = new javax.swing.JButton();
         PasswordTextField1 = new javax.swing.JTextField();
         PasswordTextField2 = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Backbtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\BACK.png")); // NOI18N
+        Backbtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\BACK.png")); // NOI18N
         Backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackbtnMouseClicked(evt);
@@ -58,23 +62,23 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel1.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\ChangePass poseidon.png")); // NOI18N
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\ChangePass poseidon.png")); // NOI18N
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\Login right-arrow (1).png")); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,10 +88,10 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, -1));
 
-        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
+        eyeIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login eye.png")); // NOI18N
         jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
 
-        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
         jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
@@ -102,20 +106,7 @@ public class ChangePass extends javax.swing.JFrame {
             }
         });
         jPanel3.add(PasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 260, 30));
-        jPanel3.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 20, -1));
-
-        ForgotPasswordBtn.setBackground(new java.awt.Color(255, 255, 255));
-        ForgotPasswordBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        ForgotPasswordBtn.setForeground(new java.awt.Color(255, 51, 0));
-        ForgotPasswordBtn.setText("Forgot Password ?");
-        ForgotPasswordBtn.setBorderPainted(false);
-        ForgotPasswordBtn.setContentAreaFilled(false);
-        ForgotPasswordBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ForgotPasswordBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ForgotPasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 160, -1));
+        jPanel3.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 20, 20));
 
         PasswordTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         PasswordTextField1.setText("CURRENT PASSWORD");
@@ -147,6 +138,41 @@ public class ChangePass extends javax.swing.JFrame {
         CancelBtn.setText("Cancel");
         jPanel3.add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setText("Forgot Password ?");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel2)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2))
+        );
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 200, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,14 +190,14 @@ public class ChangePass extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public void setColor(JPanel p) {
+        p.setBackground(new Color(255, 105, 0));
+    }
 
-    private void ForgotPasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordBtnActionPerformed
-        ForgotPass fp = new ForgotPass();
-        fp.show();
-
-        dispose();
-    }//GEN-LAST:event_ForgotPasswordBtnActionPerformed
-
+    public void resetColor(JPanel p1) {
+        p1.setBackground(new Color(255, 255, 255));
+    }
+    
     private void PasswordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordTextFieldActionPerformed
@@ -195,6 +221,21 @@ public class ChangePass extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_BackbtnMouseClicked
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        setColor(jPanel1);
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        resetColor(jPanel1);
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        ForgotPass fp = new ForgotPass();
+        fp.show();
+
+        dispose();
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,7 +275,6 @@ public class ChangePass extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbtn;
     private javax.swing.JButton CancelBtn;
-    private javax.swing.JButton ForgotPasswordBtn;
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel Logo1;
     private javax.swing.JTextField PasswordTextField;
@@ -247,7 +287,9 @@ public class ChangePass extends javax.swing.JFrame {
     private javax.swing.JLabel eyeIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private java.awt.Checkbox showPassword;
     // End of variables declaration//GEN-END:variables

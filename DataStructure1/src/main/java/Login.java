@@ -1,8 +1,31 @@
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author shapi
@@ -16,6 +39,91 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
+        addPlaceholderStyle(txtPassword);
+        create();
+
+    }
+
+    public void create() {
+
+        //create a text file if the file is not exists
+        try {
+            File Librarian = new File("Admin.txt");
+            if (Librarian.createNewFile()) {
+                System.out.println("File created: " + Librarian.getName());
+                RandomAccessFile raf = new RandomAccessFile("Admin.txt", "rw");//read the file
+
+                for (int i = 0; i < 100; i++) {
+                    raf.readLine();
+
+                }
+
+                raf.writeBytes("MSTANISDABEST");//write the user input into the text file
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+    }
+
+    public void readFile() {
+
+        try {
+            FileReader fr = new FileReader("Admin.txt");//read the file
+            System.err.println("File exists");//if the file is exists print the statement 
+        } catch (FileNotFoundException ex) {//try statement need to end with a catch statement
+            //if the file is not exists
+            try {
+                FileWriter fw = new FileWriter("Admin.txt");//create a new text file 
+                System.err.println("File created");//after the text file is created, print the statement
+
+            } catch (IOException ex1) {//try statement need to end with a catch statement
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+
+    }
+
+    boolean login() {
+
+        boolean authentic = false;//declare the isAuthenticated as false
+        String path = "Admin.txt";//initialize the String path and declare the String to the text file
+        File file = new File(path);//read the text file
+        String password = txtPassword.getText();//declare the password as txtPassword.getText(),getText statement will get the text from user input
+        try {
+            Scanner inputBuffer = new Scanner(file);//scanner will scan the text file that already declare before 
+            while (inputBuffer.hasNext()) {
+                String line = inputBuffer.nextLine();//declare the String line to allow the inputBuffer to read next line
+
+                if (line.equals(password)) {//if the line in text file consists of user input 
+                    authentic = true;//allow the code to run
+                }
+
+            }
+        } catch (FileNotFoundException ex) {//try statement need to end with a catch statement
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return authentic;//return to false
+
+    }
+
+    public void addPlaceholderStyle(JTextField textField) {
+        //addPlaceholder function
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+
+    public void removePlaceholderStyle(JTextField textField) {
+        //removePlaceholder function
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN | Font.BOLD);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
     }
 
     /**
@@ -32,72 +140,122 @@ public class Login extends javax.swing.JFrame {
         PoseidonIcon = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlPos = new javax.swing.JPanel();
         eyeIcon = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         Logo1 = new javax.swing.JLabel();
         Title1 = new javax.swing.JLabel();
-        PasswordTextField = new javax.swing.JTextField();
-        showPassword = new java.awt.Checkbox();
-        ChangePasswordBtn = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
+        showPassword = new javax.swing.JCheckBox();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\loading poseidon.png")); // NOI18N
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlPos.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
-        jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 30, -1));
+        eyeIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login eye.png")); // NOI18N
+        pnlPos.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 30, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        loginBtn.setBorderPainted(false);
+        loginBtn.setContentAreaFilled(false);
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 40, -1));
+        pnlPos.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, 10));
 
-        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
-        jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
+        pnlPos.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         Title1.setText("Welcome, Admin!");
-        jPanel3.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 270, -1));
+        pnlPos.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 270, -1));
 
-        PasswordTextField.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        PasswordTextField.setText("PASSWORD");
-        jPanel3.add(PasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 250, 30));
-        jPanel3.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 20, -1));
-
-        ChangePasswordBtn.setBackground(new java.awt.Color(255, 255, 255));
-        ChangePasswordBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        ChangePasswordBtn.setForeground(new java.awt.Color(0, 102, 102));
-        ChangePasswordBtn.setText("Change Password ?");
-        ChangePasswordBtn.setBorderPainted(false);
-        ChangePasswordBtn.setContentAreaFilled(false);
-        ChangePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangePasswordBtnActionPerformed(evt);
+        txtPassword.setText("PASSWORD");
+        txtPassword.setEchoChar('\u0000');
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
             }
         });
-        jPanel3.add(ChangePasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 210, -1));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
+        pnlPos.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 260, 30));
+
+        showPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPasswordActionPerformed(evt);
+            }
+        });
+        pnlPos.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 102));
+        jLabel2.setText("Change Password?");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pnlPos.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 150, 20));
+
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
+        pnlPos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 260, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,27 +264,113 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                .addComponent(pnlPos, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        //create file function 
+        create();
+        //read the file function 
+        readFile();
 
-    private void ChangePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordBtnActionPerformed
+        do {
+            boolean login1 = login();//declare the isLogin as the login function
+            if (login1) {//if the user input is correct, it will allow the user to go to the library page
+                MemRecord mr = new MemRecord();
+                mr.show();
+                dispose();
+                break;
+
+            } else {//if the user input is not correct an error message will pop up 
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null,
+                        "Your password is not correct",
+                        null,
+                        JOptionPane.ERROR_MESSAGE);
+                showPassword.setSelected(false);//deslected the show password function              
+                txtPassword.setText("PASSWORD");//it will set the txtPassword as Password afterwards
+                txtPassword.setForeground(Color.gray);//set the foreground color as gray
+                break;//use break statement to stop the code from the do while loop
+
+            }
+        } while (true);// the while loop will be allow the user run when the condition is true
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordActionPerformed
+        if (showPassword.isSelected()) {//if the showPassword button is selected
+            txtPassword.setEchoChar((char) 0);//set the text to digit
+        } else {
+            txtPassword.setEchoChar('*');//if the showPassword is deselected, set the text to character
+        }
+    }//GEN-LAST:event_showPasswordActionPerformed
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        if (txtPassword.getText().length() == 0) {
+            //if there are no input, the addplaceholder function will be set and the text will be set as Password.If the user press the text field the text field will be set into character 
+            addPlaceholderStyle(txtPassword);
+            txtPassword.setText("PASSWORD");
+            txtPassword.setEchoChar('*');
+        }
+
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
+        if (txtPassword.getText().equals("PASSWORD")) {
+            //if there are input, the removeplaceholder function will be set and the text will be set as null.And it will force the user input set as character    
+            txtPassword.setText(null);
+            txtPassword.requestFocus();
+            //set Password Charcter
+            txtPassword.setEchoChar('*');
+            //remove placeholder style
+
+            removePlaceholderStyle(txtPassword);
+        }
+    }//GEN-LAST:event_txtPasswordFocusGained
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        //it force the user input into uppercase
+        int position = txtPassword.getCaretPosition();
+        txtPassword.setText(txtPassword.getText().toUpperCase());
+        txtPassword.setCaretPosition(position);
+    }//GEN-LAST:event_txtPasswordKeyReleased
+    public void setColor(JPanel p) {
+        p.setBackground(new Color(255, 105, 0));
+    }
+
+    public void resetColor(JPanel p1) {
+        p1.setBackground(new Color(255, 255, 255));
+    }
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        setColor(jPanel1);
+
+
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        resetColor(jPanel1);
+
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         ChangePass cp = new ChangePass();
         cp.show();
-
         dispose();
-    }//GEN-LAST:event_ChangePasswordBtnActionPerformed
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        
+        jLabel3.setText("Hint :'MST..ISDABEST'");
+       
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
@@ -164,18 +408,21 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ChangePasswordBtn;
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel Logo1;
-    private javax.swing.JTextField PasswordTextField;
     private javax.swing.JLabel PoseidonIcon;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel eyeIcon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private java.awt.Checkbox showPassword;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JPanel pnlPos;
+    private javax.swing.JCheckBox showPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
 }
