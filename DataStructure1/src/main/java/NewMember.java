@@ -93,26 +93,23 @@ public class NewMember extends javax.swing.JFrame {
         this.memLvl = memLvl;
         
         dayNow = now.getDayOfMonth();
-        monthNow = now.getMonth();
+        monthNow = now.getMonthValue();
         yearNow = now.getYear();
-        doj = dayNow + "-" + monthNow + "-" + yearNow;
+        doj = dateDMY(dayNow, monthNow, yearNow);
         
         status = "Active";
         
         oneYearFromNow = LocalDate.now().plusYears(1);
         dayOYFM = oneYearFromNow.getDayOfMonth();
-        monthOYFM = oneYearFromNow.getMonth();
+        monthOYFM = oneYearFromNow.getMonthValue();
         yearOYFM = oneYearFromNow.getYear();
-        expDate = dayOYFM + "-" + monthOYFM + "-" + yearOYFM;
-        
-        
+        expDate = dateDMY(dayOYFM, monthOYFM, yearOYFM);
     }
     
-    private String id, idLvl, fileLvl, nextID, name, day, month, year, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
-    private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, yearInt, yearNow, yearOYFM;
+    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
+    private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
-    private Month monthNow, monthOYFM;
     private boolean complete, correctDate;
     private LinkedList<NewMember> memRec;
     private NewMember newMem;
@@ -120,7 +117,7 @@ public class NewMember extends javax.swing.JFrame {
     private MemRecord mr;
     
     public String toString() {
-        return id + ", " + name + ", " + dob + ", " + age + ", " + gender + ", " + contactNum + ", " + address + ", " + memLvl + ", " + doj + ", " + status + ", " + expDate;
+        return id + "___" + name + "___" + dob + "___" + age + "___" + gender + "___" + contactNum + "___" + address + "___" + memLvl + "___" + doj + "___" + status + "___" + expDate;
     }
     
     /**
@@ -639,6 +636,41 @@ public class NewMember extends javax.swing.JFrame {
         
     }
     
+    private String dateDMY(int day, int month, int year) {
+        
+        if (day < 10 || month < 10) {
+            if (day < 10 && month < 10) {
+                dateDMY = "0" + day + "-0" + month + "-" + year;
+            } else if (day < 10) {
+                dateDMY = "0" + day + "-" + month + "-" + year;
+            } else if (month < 10) {
+                dateDMY = day + "-0" + month + "-" + year;
+            }
+        } else {
+            dateDMY = day + "-" + month + "-" + year;
+        }
+        
+        return dateDMY;
+    }
+    
+    private String dateYMD(int year, int month, int day) {
+        
+        if (day < 10 || month < 10) {
+            if (day < 10 && month < 10) {
+                dateYMD = year + "-0" + month + "-0" + day;
+            } else if (day < 10) {
+                dateYMD = year + "-" + month + "-0" + day;
+            } else if (month < 10) {
+                dateYMD = year + "-0" + month + "-" + day;
+            }
+        } else {
+            dateYMD = year + "-" + month + "-" + day;
+        }
+        
+        return dateYMD;
+    }
+    
+    
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
         name = tfName.getText();
@@ -666,26 +698,13 @@ public class NewMember extends javax.swing.JFrame {
         
         if (correctDate) {
             dayInt = Integer.parseInt(day);
-            yearInt = Integer.parseInt(year);
             monthInt = Integer.parseInt(month);
+            yearInt = Integer.parseInt(year);
             maxDay = maxDayOfMonth(month, yearInt);
             if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
-            dob = day + "-" + month + "-" + year;
-            if (dayInt < 10 || monthInt < 10) {
-                if (dayInt < 10 && monthInt < 10) {
-                    dobLDFormatString = year + "-0" + month + "-0" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else if (dayInt < 10) {
-                    dobLDFormatString = year + "-" + month + "-0" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else if (monthInt < 10) {
-                    dobLDFormatString = year + "-0" + month + "-" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else {
-                    dobLDFormatString = year + "-" + month + "-" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                }
-            }
+                dob = dateDMY(dayInt, monthInt, yearInt);
+                dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
+                dobLDFormat = LocalDate.parse(dobLDFormatString);
         }
             
             now = LocalDate.now();
@@ -745,11 +764,22 @@ public class NewMember extends javax.swing.JFrame {
                 FileWriter myWriter = new FileWriter("memberRecord.txt", true);
                 FileReader myReader = new FileReader("memberRecord.txt");
                 Scanner scanner = new Scanner(myReader);
+                
+                for (NewMember nm: memRec) {
                 if (!scanner.hasNextLine()) {
-                    myWriter.write(memRec.toString());
+                    myWriter.write(nm.toString());
+                    
+                    //myWriter.write(memRec.get(0).id);
                 } else {
-                myWriter.write("\n" + memRec.toString());
+                    myWriter.write("\n" + nm);
+                    
+                    //myWriter.write("\n");
+                    //myWriter.write(memRec.get(0).id);
+                    
                 }
+                    
+                }
+                
                 scanner.close();
                 myWriter.close();
             } catch (IOException e) {
