@@ -35,6 +35,8 @@ public class About extends javax.swing.JFrame {
         ForgotTitle1 = new javax.swing.JLabel();
         ForgotTitle2 = new javax.swing.JLabel();
         CloseBtn = new javax.swing.JButton();
+        ForgotTitle3 = new javax.swing.JLabel();
+        ForgotTitle4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -42,7 +44,7 @@ public class About extends javax.swing.JFrame {
         pnlPos.setBackground(new java.awt.Color(255, 255, 255));
         pnlPos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\loading poseidon.png")); // NOI18N
+        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
         pnlPos.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,8 +79,8 @@ public class About extends javax.swing.JFrame {
         pnlPos.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
         ForgotTitle.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        ForgotTitle.setText("@2022 Poseidon,All rights reserved.");
-        pnlPos.add(ForgotTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 290, -1));
+        ForgotTitle.setText("manage member's data.");
+        pnlPos.add(ForgotTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 300, -1));
 
         ForgotTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ForgotTitle1.setText("Description ----------------------------------");
@@ -96,6 +98,14 @@ public class About extends javax.swing.JFrame {
             }
         });
         pnlPos.add(CloseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, -1, -1));
+
+        ForgotTitle3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        ForgotTitle3.setText("@2022 Poseidon,All rights reserved.");
+        pnlPos.add(ForgotTitle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 290, -1));
+
+        ForgotTitle4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        ForgotTitle4.setText("Poseidon system is a member management build to ");
+        pnlPos.add(ForgotTitle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 300, -1));
 
         getContentPane().add(pnlPos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, -1));
 
@@ -162,6 +172,8 @@ public class About extends javax.swing.JFrame {
     private javax.swing.JLabel ForgotTitle;
     private javax.swing.JLabel ForgotTitle1;
     private javax.swing.JLabel ForgotTitle2;
+    private javax.swing.JLabel ForgotTitle3;
+    private javax.swing.JLabel ForgotTitle4;
     private javax.swing.JLabel Logo1;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel jPanel2;

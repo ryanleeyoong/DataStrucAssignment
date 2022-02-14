@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -31,10 +32,10 @@ public class NewMember extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
     }
-    
+
     public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
-        
-        switch(memLvl) {
+
+        switch (memLvl) {
             case "GOLD":
                 fileLvl = "Gold";
                 idLvl = "G-";
@@ -47,20 +48,20 @@ public class NewMember extends javax.swing.JFrame {
                 fileLvl = "Diamond";
                 idLvl = "D-";
         }
-        
+
         try {
             File myObj = new File("next" + fileLvl + "MemberID.txt");
             Scanner scanner = new Scanner(myObj);
-            while(scanner.hasNextLine()) {
-            id = scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                id = scanner.nextLine();
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         idInt = Integer.parseInt(id);
-        
+
         if (idInt < 10) {
             id = idLvl + "000" + id;
         } else if (idInt < 100) {
@@ -70,44 +71,43 @@ public class NewMember extends javax.swing.JFrame {
         } else {
             id = idLvl + id;
         }
-        
+
         idInt += 1;
         nextID = String.valueOf(idInt);
-        
+
         try {
             FileWriter myWriter = new FileWriter("next" + fileLvl + "MemberID.txt");
             myWriter.write(nextID);
             myWriter.close();
         } catch (IOException e) {
-        
+
         }
-        
+
         this.name = name;
         this.dob = dob;
-        
+
         age = String.valueOf(ageP.getYears());
-        
+
         this.gender = gender;
         this.contactNum = contactNum;
         this.address = address;
         this.memLvl = memLvl;
-        
+
         dayNow = now.getDayOfMonth();
         monthNow = now.getMonth();
         yearNow = now.getYear();
         doj = dayNow + "-" + monthNow + "-" + yearNow;
-        
+
         status = "Active";
-        
+
         oneYearFromNow = LocalDate.now().plusYears(1);
         dayOYFM = oneYearFromNow.getDayOfMonth();
         monthOYFM = oneYearFromNow.getMonth();
         yearOYFM = oneYearFromNow.getYear();
         expDate = dayOYFM + "-" + monthOYFM + "-" + yearOYFM;
-        
-        
+
     }
-    
+
     private String id, idLvl, fileLvl, nextID, name, day, month, year, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, yearInt, yearNow, yearOYFM;
     private LocalDate dobLDFormat, now, oneYearFromNow;
@@ -118,11 +118,11 @@ public class NewMember extends javax.swing.JFrame {
     private NewMember newMem;
     private Object[] memRecArr;
     private MemRecord mr;
-    
+
     public String toString() {
         return id + ", " + name + ", " + dob + ", " + age + ", " + gender + ", " + contactNum + ", " + address + ", " + memLvl + ", " + doj + ", " + status + ", " + expDate;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -433,7 +433,9 @@ public class NewMember extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        MemRecord mr = new MemRecord();
+        mr.show();
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void tfDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDayActionPerformed
@@ -451,7 +453,7 @@ public class NewMember extends javax.swing.JFrame {
         if (tfName.getText().equals("")) {
             tfName.setText("NAME");
             tfName.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfNameFocusLost
 
     private void tfContactNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfContactNumActionPerformed
@@ -469,7 +471,7 @@ public class NewMember extends javax.swing.JFrame {
         if (tfDay.getText().equals("")) {
             tfDay.setText("DAY");
             tfDay.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfDayFocusLost
 
     private void tfYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfYearFocusGained
@@ -483,7 +485,7 @@ public class NewMember extends javax.swing.JFrame {
         if (tfYear.getText().equals("")) {
             tfYear.setText("YEAR");
             tfYear.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfYearFocusLost
 
     private void comboxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxGenderActionPerformed
@@ -527,7 +529,7 @@ public class NewMember extends javax.swing.JFrame {
     }//GEN-LAST:event_comboxMonthActionPerformed
 
     private void tfDayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDayKeyPressed
-        if (evt.getKeyCode()== KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfDay.getText().length() < 2)) {
+        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfDay.getText().length() < 2)) {
             tfDay.setEditable(true);
         } else {
             tfDay.setEditable(false);
@@ -549,8 +551,8 @@ public class NewMember extends javax.swing.JFrame {
     private void comboxMemLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxMemLvlActionPerformed
         if (!comboxMemLvl.getSelectedItem().equals("MEMBERSHIP LEVEL")) {
             comboxMemLvl.removeItem("MEMBERSHIP LEVEL");
-            
-            switch(comboxMemLvl.getSelectedItem().toString()) {
+
+            switch (comboxMemLvl.getSelectedItem().toString()) {
                 case "GOLD":
                     lblRegisFeeAMT.setText("RM 120");
                     lblRenewFeeAMT.setText("RM 80");
@@ -567,8 +569,8 @@ public class NewMember extends javax.swing.JFrame {
     }//GEN-LAST:event_comboxMemLvlActionPerformed
 
     private String monthNameToNum(String monthName) {
-        
-        switch(monthName) {
+
+        switch (monthName) {
             case "JANUARY":
                 month = "1";
                 break;
@@ -605,16 +607,16 @@ public class NewMember extends javax.swing.JFrame {
             case "DECEMBER":
                 month = "12";
         }
-        
+
         return month;
-        
+
     }
-    
+
     private int maxDayOfMonth(String month, int year) {
-    
+
         int maxDay = 31;
-        
-        switch(month) {
+
+        switch (month) {
             case "FEBRUARY":
                 if (year % 4 == 0) {
                     maxDay = 29;
@@ -634,13 +636,13 @@ public class NewMember extends javax.swing.JFrame {
             case "NOVEMBER":
                 maxDay = 30;
         }
-        
+
         return maxDay;
-        
+
     }
-    
+
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
+
         name = tfName.getText();
         day = tfDay.getText();
         month = comboxMonth.getSelectedItem().toString();
@@ -650,44 +652,44 @@ public class NewMember extends javax.swing.JFrame {
         contactNum = tfContactNum.getText();
         address = tfAddress.getText();
         memLvl = comboxMemLvl.getSelectedItem().toString();
-        
+
         complete = true;
         correctDate = true;
-        
+
         if (name.equals("NAME")) {
             complete = false;
         }
-        
+
         if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
             complete = false;
             correctDate = false;
             lblInvalidDate.setText("Please fill in a complete date of birth");
         }
-        
+
         if (correctDate) {
             dayInt = Integer.parseInt(day);
             yearInt = Integer.parseInt(year);
             monthInt = Integer.parseInt(month);
             maxDay = maxDayOfMonth(month, yearInt);
             if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
-            dob = day + "-" + month + "-" + year;
-            if (dayInt < 10 || monthInt < 10) {
-                if (dayInt < 10 && monthInt < 10) {
-                    dobLDFormatString = year + "-0" + month + "-0" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else if (dayInt < 10) {
-                    dobLDFormatString = year + "-" + month + "-0" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else if (monthInt < 10) {
-                    dobLDFormatString = year + "-0" + month + "-" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
-                } else {
-                    dobLDFormatString = year + "-" + month + "-" + day;
-                    dobLDFormat = LocalDate.parse(dobLDFormatString);
+                dob = day + "-" + month + "-" + year;
+                if (dayInt < 10 || monthInt < 10) {
+                    if (dayInt < 10 && monthInt < 10) {
+                        dobLDFormatString = year + "-0" + month + "-0" + day;
+                        dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    } else if (dayInt < 10) {
+                        dobLDFormatString = year + "-" + month + "-0" + day;
+                        dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    } else if (monthInt < 10) {
+                        dobLDFormatString = year + "-0" + month + "-" + day;
+                        dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    } else {
+                        dobLDFormatString = year + "-" + month + "-" + day;
+                        dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    }
                 }
             }
-        }
-            
+
             now = LocalDate.now();
             ageP = Period.between(dobLDFormat, now);
             if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
@@ -703,14 +705,14 @@ public class NewMember extends javax.swing.JFrame {
                 lblInvalidDate.setText("   ");
             }
         }
-        
+
         if (gender.equals("GENDER")) {
             complete = false;
             lblInvalidGender.setText("Please select your gender");
         } else {
             lblInvalidGender.setText("   ");
         }
-        
+
         if (contactNum.equals("CONTACT NUMBER")) {
             complete = false;
             lblInvalidContactNum.setText("Please fill in your phone number");
@@ -720,42 +722,43 @@ public class NewMember extends javax.swing.JFrame {
         } else {
             lblInvalidContactNum.setText("   ");
         }
-        
+
         if (address.equals("ADDRESS")) {
             complete = false;
             lblInvalidAddress.setText("Please fill in your address");
         } else {
             lblInvalidAddress.setText("   ");
         }
-        
+
         if (memLvl.equals("MEMBERSHIP LEVEL")) {
             complete = false;
             lblInvalidMemLvl.setText("Please select you membership level");
         } else {
             lblInvalidMemLvl.setText("   ");
         }
-        
+
         if (complete) {
             memRec = new LinkedList<NewMember>();
             memRec.add(new NewMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
             try {
                 File myObj = new File("memberRecord.txt");
-                if (myObj.createNewFile()) {}
-                
+                if (myObj.createNewFile()) {
+                }
+
                 FileWriter myWriter = new FileWriter("memberRecord.txt", true);
                 FileReader myReader = new FileReader("memberRecord.txt");
                 Scanner scanner = new Scanner(myReader);
                 if (!scanner.hasNextLine()) {
                     myWriter.write(memRec.toString());
                 } else {
-                myWriter.write("\n" + memRec.toString());
+                    myWriter.write("\n" + memRec.toString());
                 }
                 scanner.close();
                 myWriter.close();
             } catch (IOException e) {
-                
+
             }
-            
+
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -766,8 +769,7 @@ public class NewMember extends javax.swing.JFrame {
             tfContactNum.setEditable(false);
         }
     }//GEN-LAST:event_tfContactNumKeyPressed
-    
-    
+
     /**
      * @param args the command line arguments
      */

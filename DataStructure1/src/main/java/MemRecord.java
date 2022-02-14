@@ -82,7 +82,7 @@ public class MemRecord extends javax.swing.JFrame {
 
         RefreshBtn.setBackground(new java.awt.Color(78, 173, 227));
         RefreshBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\reset1.png")); // NOI18N
+        RefreshBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\reset1.png")); // NOI18N
         RefreshBtn.setText("Refresh");
 
         Gender.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -116,22 +116,27 @@ public class MemRecord extends javax.swing.JFrame {
 
         NewBtn.setBackground(new java.awt.Color(78, 173, 227));
         NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        NewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\add-user1.png")); // NOI18N
+        NewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\add-user1.png")); // NOI18N
         NewBtn.setText("New");
+        NewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewBtnActionPerformed(evt);
+            }
+        });
 
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RenewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\third-party1.png")); // NOI18N
+        RenewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\third-party1.png")); // NOI18N
         RenewBtn.setText("Renew");
 
         EditBtn.setBackground(new java.awt.Color(78, 173, 227));
         EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        EditBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\edit1.png")); // NOI18N
+        EditBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\edit1.png")); // NOI18N
         EditBtn.setText("Edit");
 
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        DeleteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\delete1.png")); // NOI18N
+        DeleteBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\delete1.png")); // NOI18N
         DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -227,7 +232,7 @@ public class MemRecord extends javax.swing.JFrame {
             }
         });
 
-        LogOutBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\exit1.png")); // NOI18N
+        LogOutBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\exit1.png")); // NOI18N
         LogOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogOutBtnMouseClicked(evt);
@@ -254,7 +259,7 @@ public class MemRecord extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 60));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\software-engineer1.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("poseidon system picture\\software-engineer1.png")); // NOI18N
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 47, 83, -1));
 
@@ -349,7 +354,9 @@ public class MemRecord extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        NewMember mb = new NewMember();
+        mb.show();
+        dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -368,6 +375,12 @@ public class MemRecord extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_LogOutMenuActionPerformed
+
+    private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
+        NewMember mb = new NewMember();
+        mb.show();
+        dispose();
+    }//GEN-LAST:event_NewBtnActionPerformed
 
     /**
      * @param args the command line arguments
