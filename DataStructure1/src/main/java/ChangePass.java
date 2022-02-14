@@ -63,44 +63,40 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< HEAD
+
         Backbtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\BACK.png")); // NOI18N
-=======
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
         Backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackbtnMouseClicked(evt);
             }
         });
         jPanel1.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-<<<<<<< HEAD
+
 
         Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
         PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\ChangePass poseidon.png")); // NOI18N
-=======
+
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
-<<<<<<< HEAD
+
 
         jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
-=======
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< HEAD
-        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
-=======
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
+        jButton1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // 
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,15 +105,15 @@ public class ChangePass extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, -1));
-<<<<<<< HEAD
+
 
         eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
         jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
 
         Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
-=======
+
         jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
         jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
@@ -288,7 +284,7 @@ public void setColor(JPanel p) {
         dispose();
     }//GEN-LAST:event_jPanel2MouseClicked
 
-<<<<<<< HEAD
+
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
         Login lg = new Login();
         lg.show();
@@ -296,7 +292,7 @@ public void setColor(JPanel p) {
         dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
-=======
+
     private void jCurrentPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCurrentPassFieldActionPerformed
         if(jCheckBoxShowPass.isSelected()){
            jCurrentPassField.setEchoChar((char)0);
@@ -373,7 +369,7 @@ public void setColor(JPanel p) {
         currentpass = input.next();
     }
     
->>>>>>> 872824ae5d19ab93a4e797a5ad095f71b297f899
+
     /**
      * @param args the command line arguments
      */
