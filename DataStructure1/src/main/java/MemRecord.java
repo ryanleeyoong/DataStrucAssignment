@@ -1,7 +1,11 @@
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.LinkedList;
+import java.util.Scanner;
 import javax.swing.JPanel;
-
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -19,8 +23,40 @@ public class MemRecord extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
+        
+        try {
+            FileReader myObj = new FileReader("memberRecord.txt");
+            Scanner scanner = new Scanner(myObj);
+            while((line = scanner.nextLine()) != null) {
+                lineSplit = line.split(", ");
+                memRec = new LinkedList<MemRecord>();
+                memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+        
+        }
+    }
+    
+    public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+        this.age = age;
+        this.gender = gender;
+        this.contactNum = contactNum;
+        this.address = address;
+        this.memLvl = memLvl;
+        this.doj = status;
+        this.expDate = expDate;
     }
 
+    private String id, name, dob, age, gender, contactNum, address, memLvl, doj, status, expDate, line;
+    private NewMember nm;
+    private String[] lineSplit;
+    private LinkedList<MemRecord> memRec;
+    private MemRecord mr;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +108,6 @@ public class MemRecord extends javax.swing.JFrame {
 
         RefreshBtn.setBackground(new java.awt.Color(78, 173, 227));
         RefreshBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\reset1.png")); // NOI18N
         RefreshBtn.setText("Refresh");
 
         Gender.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -106,22 +141,23 @@ public class MemRecord extends javax.swing.JFrame {
 
         NewBtn.setBackground(new java.awt.Color(78, 173, 227));
         NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        NewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\add-user1.png")); // NOI18N
         NewBtn.setText("New");
+        NewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewBtnActionPerformed(evt);
+            }
+        });
 
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RenewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\third-party1.png")); // NOI18N
         RenewBtn.setText("Renew");
 
         EditBtn.setBackground(new java.awt.Color(78, 173, 227));
         EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        EditBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\edit1.png")); // NOI18N
         EditBtn.setText("Edit");
 
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        DeleteBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\delete1.png")); // NOI18N
         DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -217,7 +253,6 @@ public class MemRecord extends javax.swing.JFrame {
             }
         });
 
-        LogOutBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\exit1.png")); // NOI18N
         LogOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogOutBtnMouseClicked(evt);
@@ -238,13 +273,12 @@ public class MemRecord extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 60));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("poseidon system picture\\software-engineer1.png")); // NOI18N
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 47, 83, -1));
 
@@ -286,6 +320,12 @@ public class MemRecord extends javax.swing.JFrame {
         lg.show();
         dispose();
     }//GEN-LAST:event_LogOutBtnMouseClicked
+
+    private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
+        nm = new NewMember();
+        nm.show();
+        dispose();
+    }//GEN-LAST:event_NewBtnActionPerformed
 
     /**
      * @param args the command line arguments

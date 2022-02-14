@@ -7,8 +7,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,9 +33,6 @@ public class NewMember extends javax.swing.JFrame {
     }
     
     public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
-        this.dob = day + "-" + month + "-" + year;
-        String fileLvl;
-        String idLvl;
         
         switch(memLvl) {
             case "GOLD":
@@ -83,7 +83,7 @@ public class NewMember extends javax.swing.JFrame {
         }
         
         this.name = name;
-        
+        this.dob = dob;
         
         age = String.valueOf(ageP.getYears());
         
@@ -108,14 +108,16 @@ public class NewMember extends javax.swing.JFrame {
         
     }
     
-    private String id, nextID, name, day, month, year, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
+    private String id, idLvl, fileLvl, nextID, name, day, month, year, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, yearInt, yearNow, yearOYFM;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
     private Month monthNow, monthOYFM;
     private boolean complete, correctDate;
-    private LinkedList memRec;
+    private LinkedList<NewMember> memRec;
     private NewMember newMem;
+    private Object[] memRecArr;
+    private MemRecord mr;
     
     public String toString() {
         return id + ", " + name + ", " + dob + ", " + age + ", " + gender + ", " + contactNum + ", " + address + ", " + memLvl + ", " + doj + ", " + status + ", " + expDate;
@@ -637,8 +639,6 @@ public class NewMember extends javax.swing.JFrame {
         
     }
     
-    
-    
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
         name = tfName.getText();
@@ -688,10 +688,8 @@ public class NewMember extends javax.swing.JFrame {
             }
         }
             
-            
             now = LocalDate.now();
             ageP = Period.between(dobLDFormat, now);
-            
             if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
                 complete = false;
                 lblInvalidDate.setText("Please fill in a complete date of birth");
@@ -745,11 +743,19 @@ public class NewMember extends javax.swing.JFrame {
                 if (myObj.createNewFile()) {}
                 
                 FileWriter myWriter = new FileWriter("memberRecord.txt", true);
+                FileReader myReader = new FileReader("memberRecord.txt");
+                Scanner scanner = new Scanner(myReader);
+                if (!scanner.hasNextLine()) {
+                    myWriter.write(memRec.toString());
+                } else {
                 myWriter.write("\n" + memRec.toString());
+                }
+                scanner.close();
                 myWriter.close();
             } catch (IOException e) {
                 
             }
+            
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -760,8 +766,6 @@ public class NewMember extends javax.swing.JFrame {
             tfContactNum.setEditable(false);
         }
     }//GEN-LAST:event_tfContactNumKeyPressed
-    
-    
     
     
     /**

@@ -177,9 +177,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\reset1.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Refresh"/>
               </Properties>
             </Component>
@@ -347,11 +344,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\add-user1.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="New"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RenewBtn">
               <Properties>
@@ -360,9 +357,6 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="12" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\third-party1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Renew"/>
               </Properties>
@@ -375,9 +369,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\edit1.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
             </Component>
@@ -388,9 +379,6 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="12" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\delete1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
@@ -449,18 +437,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LogOutBtn" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="LogOutBtn">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\exit1.png"/>
-                </Property>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LogOutBtnMouseClicked"/>
               </Events>
@@ -471,9 +454,6 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Open Sans" size="14" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\poseidon system picture\software-engineer1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Admin"/>
           </Properties>
