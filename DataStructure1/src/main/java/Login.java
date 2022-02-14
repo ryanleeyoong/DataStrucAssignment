@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -92,6 +93,7 @@ public class Login extends javax.swing.JFrame {
         String path = "Admin.txt";//initialize the String path and declare the String to the text file
         File file = new File(path);//read the text file
         String password = txtPassword.getText();//declare the password as txtPassword.getText(),getText statement will get the text from user input
+
         try {
             Scanner inputBuffer = new Scanner(file);//scanner will scan the text file that already declare before 
             while (inputBuffer.hasNext()) {
@@ -155,26 +157,26 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\loading poseidon.png")); // NOI18N
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         pnlPos.setBackground(new java.awt.Color(255, 255, 255));
         pnlPos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
+        eyeIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login eye.png")); // NOI18N
         pnlPos.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 30, -1));
 
-        loginBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        loginBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\Login right-arrow (1).png")); // NOI18N
         loginBtn.setBorderPainted(false);
         loginBtn.setContentAreaFilled(false);
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +186,7 @@ public class Login extends javax.swing.JFrame {
         });
         pnlPos.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, 10));
 
-        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
+        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
         pnlPos.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
@@ -367,9 +369,36 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
-        
-        jLabel3.setText("Hint :'MST..ISDABEST'");
-       
+         jLabel3.setText("Hint :'MST..ISDABEST'");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           //create file function 
+        create();
+        //read the file function 
+        readFile();
+
+        do {
+            boolean login1 = login();//declare the isLogin as the login function
+            if (login1) {//if the user input is correct, it will allow the user to go to the library page
+                MemRecord mr = new MemRecord();
+                mr.show();
+                dispose();
+                break;
+
+            } else {//if the user input is not correct an error message will pop up 
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null,
+                        "Your password is not correct",
+                        null,
+                        JOptionPane.ERROR_MESSAGE);
+                showPassword.setSelected(false);//deslected the show password function              
+                txtPassword.setText("PASSWORD");//it will set the txtPassword as Password afterwards
+                txtPassword.setForeground(Color.gray);//set the foreground color as gray
+                break;//use break statement to stop the code from the do while loop
+
+            }
+        } while (true);// the while loop will be allow the user run when the condition is true
+        }
+
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**

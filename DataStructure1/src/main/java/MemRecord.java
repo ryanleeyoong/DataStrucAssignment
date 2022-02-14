@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -51,6 +52,15 @@ public class MemRecord extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         LogOutBtn = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        LogOutMenu = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +82,7 @@ public class MemRecord extends javax.swing.JFrame {
 
         RefreshBtn.setBackground(new java.awt.Color(78, 173, 227));
         RefreshBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\reset1.png")); // NOI18N
+        RefreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\reset1.png")); // NOI18N
         RefreshBtn.setText("Refresh");
 
         Gender.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -106,22 +116,22 @@ public class MemRecord extends javax.swing.JFrame {
 
         NewBtn.setBackground(new java.awt.Color(78, 173, 227));
         NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        NewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\add-user1.png")); // NOI18N
+        NewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\add-user1.png")); // NOI18N
         NewBtn.setText("New");
 
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RenewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\third-party1.png")); // NOI18N
+        RenewBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\third-party1.png")); // NOI18N
         RenewBtn.setText("Renew");
 
         EditBtn.setBackground(new java.awt.Color(78, 173, 227));
         EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        EditBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\edit1.png")); // NOI18N
+        EditBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\edit1.png")); // NOI18N
         EditBtn.setText("Edit");
 
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        DeleteBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\delete1.png")); // NOI18N
+        DeleteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\delete1.png")); // NOI18N
         DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -217,7 +227,7 @@ public class MemRecord extends javax.swing.JFrame {
             }
         });
 
-        LogOutBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\exit1.png")); // NOI18N
+        LogOutBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\exit1.png")); // NOI18N
         LogOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogOutBtnMouseClicked(evt);
@@ -244,9 +254,55 @@ public class MemRecord extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 60));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("poseidon system picture\\software-engineer1.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\poseidon system picture\\software-engineer1.png")); // NOI18N
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 47, 83, -1));
+
+        jMenu1.setText("File");
+        jMenu1.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+
+        jMenuItem1.setText("Add New Member");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Renew Member");
+        jMenu1.add(jMenuItem2);
+
+        LogOutMenu.setText("Log Out");
+        LogOutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(LogOutMenu);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+
+        jMenuItem4.setText("Edit Member");
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Help");
+
+        jMenuItem5.setText("About");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,25 +323,51 @@ public class MemRecord extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchActionPerformed
     public void setColor(JPanel p) {
-        p.setBackground(new Color(255,255,255));
+        p.setBackground(new Color(255, 255, 255));
     }
 
     public void resetColor(JPanel p1) {
         p1.setBackground(new Color(255, 255, 255));
     }
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-         setColor(jPanel3);
+        setColor(jPanel3);
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-         resetColor(jPanel3);
+        resetColor(jPanel3);
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void LogOutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutBtnMouseClicked
-        Login lg = new Login();
-        lg.show();
-        dispose();
+        String name = "LOG OUT ?";
+        int result = JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to log out ?", name, JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            Login lg = new Login();
+            lg.show();
+            dispose();
+        }
     }//GEN-LAST:event_LogOutBtnMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        About ab = new About();
+        ab.show();
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void LogOutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutMenuActionPerformed
+        String name = "LOG OUT ?";
+        int result = JOptionPane.showConfirmDialog(null,
+                "Are you sure you wish to log out ?", name, JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            Login lg = new Login();
+            lg.show();
+            dispose();
+        }
+    }//GEN-LAST:event_LogOutMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,6 +412,7 @@ public class MemRecord extends javax.swing.JFrame {
     private javax.swing.JLabel Level;
     private javax.swing.JComboBox<String> LevelCombo;
     private javax.swing.JLabel LogOutBtn;
+    private javax.swing.JMenuItem LogOutMenu;
     private javax.swing.JTable MemRecordTable;
     private javax.swing.JButton NewBtn;
     private javax.swing.JButton RefreshBtn;
@@ -340,6 +423,14 @@ public class MemRecord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
