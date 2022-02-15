@@ -527,6 +527,11 @@ public class MemRecord extends javax.swing.JFrame {
                     }
                 }
             }
+            
+            dispose();
+            
+            em = new EditMember();
+            em.show();
         }
     }//GEN-LAST:event_EditBtnActionPerformed
 
@@ -551,6 +556,7 @@ public class MemRecord extends javax.swing.JFrame {
     private Object[] lineArr, focus;
     private LinkedList<MemRecord> memRec;
     private MemRecord mr;
+    private EditMember em;
     private DefaultTableModel dtm;
     private BufferedReader br;
     private LocalDate now, expDateLD, expDateP1YLD;

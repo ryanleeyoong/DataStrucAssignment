@@ -75,7 +75,8 @@ public class EditMember extends javax.swing.JFrame {
         
         for (EditMember em: memRec) {
             if (em.id.equals(editRecordID)) {
-                tfName.setText(em.id);
+                id = em.id;
+                tfName.setText(em.name);
                 day = String.valueOf(em.dob.charAt(0)) + String.valueOf(em.dob.charAt(1));
                 dayInt = Integer.parseInt(day);
                 day = String.valueOf(dayInt);
@@ -121,56 +122,9 @@ public class EditMember extends javax.swing.JFrame {
         this.expDate = expDate;
     }
     
-    public EditMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
+    public EditMember(String id, String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
         
-        switch(memLvl) {
-            case "GOLD":
-                fileLvl = "Gold";
-                idLvl = "G-";
-                break;
-            case "PLATINUM":
-                fileLvl = "Platinum";
-                idLvl = "P-";
-                break;
-            default:
-                fileLvl = "Diamond";
-                idLvl = "D-";
-        }
-        
-        try {
-            File myObj = new File("next" + fileLvl + "MemberID.txt");
-            Scanner scanner = new Scanner(myObj);
-            while(scanner.hasNextLine()) {
-            id = scanner.nextLine();
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        idInt = Integer.parseInt(id);
-        
-        if (idInt < 10) {
-            id = idLvl + "000" + id;
-        } else if (idInt < 100) {
-            id = idLvl + "00" + id;
-        } else if (idInt < 1000) {
-            id = idLvl + "0" + id;
-        } else {
-            id = idLvl + id;
-        }
-        
-        idInt += 1;
-        nextID = String.valueOf(idInt);
-        
-        try {
-            FileWriter myWriter = new FileWriter("next" + fileLvl + "MemberID.txt");
-            myWriter.write(nextID);
-            myWriter.close();
-        } catch (IOException e) {
-        
-        }
-        
+        this.id = id;
         this.name = name;
         this.dob = dob;
         
@@ -196,7 +150,7 @@ public class EditMember extends javax.swing.JFrame {
         
     }
 
-    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line, editRecordID;
+    private String id, idLvl, oldID, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line, editRecordID;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
@@ -661,7 +615,17 @@ public class EditMember extends javax.swing.JFrame {
     }//GEN-LAST:event_comboxMemLvlActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-
+        File myObj = new File("editRecord.txt");
+        if (myObj.delete()) {
+            System.out.println("Deleted the file: " + myObj.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+        
+        dispose();
+        
+        mr = new MemRecord();
+        mr.show();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -748,7 +712,12 @@ public class EditMember extends javax.swing.JFrame {
         }
 
         if (complete) {
-            memRec.add(new EditMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
+            for (EditMember em: memRec) {
+                if (em.id.equals(id)) {
+                    memRec.remove(em);
+                }
+            }
+            memRec.add(new EditMember(id, name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
             File myObj = new File("memberRecord.txt");
             if (myObj.delete()) {
                 System.out.println("Deleted the file: " + myObj.getName());
