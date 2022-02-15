@@ -46,7 +46,7 @@ public class NewMember extends javax.swing.JFrame {
         }
         
         try {
-            FileReader myObj = new FileReader("memberRecord.txt");
+            File myObj = new File("memberRecord.txt");
             Scanner scanner = new Scanner(myObj);
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
@@ -76,7 +76,7 @@ public class NewMember extends javax.swing.JFrame {
         this.expDate = expDate;
     }
     
-    public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
+    public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl, String regisFee) {
         
         switch(memLvl) {
             case "GOLD":
@@ -93,7 +93,7 @@ public class NewMember extends javax.swing.JFrame {
         }
         
         try {
-            File myObj = new File("next" + fileLvl + "MemberID.txt");
+            File myObj = new File("next" + fileLvl + "ID.txt");
             Scanner scanner = new Scanner(myObj);
             while(scanner.hasNextLine()) {
             id = scanner.nextLine();
@@ -114,6 +114,29 @@ public class NewMember extends javax.swing.JFrame {
         } else {
             id = idLvl + id;
         }
+        
+        this.regisFee = regisFee;
+        
+        try {
+                File file = new File("newMember.txt");
+                if (file.createNewFile()) {
+                    System.out.println("File created: " + file.getName());
+                } else {
+                    System.out.println("File already exists.");
+                }
+            } catch (IOException e) {
+                System.out.println("An error occured.");
+                e.printStackTrace();
+            }
+            
+            try {
+                FileWriter myWriter = new FileWriter("newMember.txt");
+                myWriter.write(id + "___" + regisFee);
+                myWriter.close();
+            } catch (IOException e) {
+                System.out.println("An error occured.");
+                e.printStackTrace();
+            }
         
         idInt += 1;
         nextID = String.valueOf(idInt);
@@ -151,7 +174,7 @@ public class NewMember extends javax.swing.JFrame {
         
     }
     
-    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line;
+    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, regisFee, doj, status, expDate, line;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
@@ -161,6 +184,7 @@ public class NewMember extends javax.swing.JFrame {
     private NewMember newMem;
     private Object[] memRecArr;
     private MemRecord mr;
+    private MemberAdded ma;
     
     public String toString() {
         return id + "___" + name + "___" + dob + "___" + age + "___" + gender + "___" + contactNum + "___" + address + "___" + memLvl + "___" + doj + "___" + status + "___" + expDate;
@@ -175,7 +199,7 @@ public class NewMember extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlNewMem = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         lblHeader = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
@@ -201,9 +225,10 @@ public class NewMember extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNewMem.setBackground(new java.awt.Color(255, 255, 255));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
         btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,28 +392,28 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidMemLvl.setForeground(java.awt.Color.red);
         lblInvalidMemLvl.setText("   ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlNewMemLayout = new javax.swing.GroupLayout(pnlNewMem);
+        pnlNewMem.setLayout(pnlNewMemLayout);
+        pnlNewMemLayout.setHorizontalGroup(
+            pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNewMemLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHeader)
                 .addGap(143, 143, 143))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pnlNewMemLayout.createSequentialGroup()
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlNewMemLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlNewMemLayout.createSequentialGroup()
                                 .addComponent(btnCancel)
                                 .addGap(132, 132, 132)
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblInvalidContactNum)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(comboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pnlNewMemLayout.createSequentialGroup()
                                         .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,26 +424,26 @@ public class NewMember extends javax.swing.JFrame {
                                     .addComponent(comboxMemLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblInvalidDate)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                        .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblRegisFee)
                                             .addComponent(lblRenewFee)
                                             .addComponent(lblInvalidMemLvl))
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblRegisFeeAMT)
                                             .addComponent(lblRenewFeeAMT)))
                                     .addComponent(tfName))
                                 .addComponent(lblInvalidGender)
                                 .addComponent(lblInvalidAddress))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlNewMemLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlNewMemLayout.setVerticalGroup(
+            pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNewMemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
                 .addGap(5, 5, 5)
@@ -428,7 +453,7 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -451,15 +476,15 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidMemLvl)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRegisFee, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblRegisFeeAMT))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRenewFee)
                     .addComponent(lblRenewFeeAMT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSave))
                 .addGap(39, 39, 39))
@@ -469,18 +494,21 @@ public class NewMember extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        
+        mr = new MemRecord();
+        mr.show();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void tfDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDayActionPerformed
@@ -721,7 +749,6 @@ public class NewMember extends javax.swing.JFrame {
     }
     
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
         name = tfName.getText();
         day = tfDay.getText();
         month = comboxMonth.getSelectedItem().toString();
@@ -731,7 +758,8 @@ public class NewMember extends javax.swing.JFrame {
         contactNum = tfContactNum.getText();
         address = tfAddress.getText();
         memLvl = comboxMemLvl.getSelectedItem().toString();
-        
+        regisFee = lblRegisFeeAMT.getText();
+        System.out.println(regisFee);
         complete = true;
         correctDate = true;
         
@@ -804,7 +832,7 @@ public class NewMember extends javax.swing.JFrame {
         }
         
         if (complete) {
-            memRec.add(new NewMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
+            memRec.add(new NewMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl, regisFee));
             File myObj = new File("memberRecord.txt");
             if (myObj.delete()) {
                 System.out.println("Deleted the file: " + myObj.getName());
@@ -831,6 +859,11 @@ public class NewMember extends javax.swing.JFrame {
             } catch (IOException e) {
             
             }
+            
+            dispose();
+            
+            ma = new MemberAdded();
+            ma.show();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -843,7 +876,10 @@ public class NewMember extends javax.swing.JFrame {
     }//GEN-LAST:event_tfContactNumKeyPressed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        dispose();
         
+        mr = new MemRecord();
+        mr.show();
     }//GEN-LAST:event_btnCancelActionPerformed
     
     
@@ -889,7 +925,6 @@ public class NewMember extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboxGender;
     private javax.swing.JComboBox<String> comboxMemLvl;
     private javax.swing.JComboBox<String> comboxMonth;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblInvalidAddress;
     private javax.swing.JLabel lblInvalidContactNum;
@@ -901,6 +936,7 @@ public class NewMember extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegisFeeAMT;
     private javax.swing.JLabel lblRenewFee;
     private javax.swing.JLabel lblRenewFeeAMT;
+    private javax.swing.JPanel pnlNewMem;
     private javax.swing.JTextField tfAddress;
     private javax.swing.JTextField tfContactNum;
     private javax.swing.JTextField tfDay;

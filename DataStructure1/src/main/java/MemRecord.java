@@ -66,7 +66,7 @@ public class MemRecord extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlMemRecord = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         RefreshBtn = new javax.swing.JButton();
@@ -102,7 +102,7 @@ public class MemRecord extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(248, 248, 248));
+        pnlMemRecord.setBackground(new java.awt.Color(248, 248, 248));
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 30)); // NOI18N
         jLabel1.setText("Member Record");
@@ -148,6 +148,11 @@ public class MemRecord extends javax.swing.JFrame {
         NewBtn.setBackground(new java.awt.Color(78, 173, 227));
         NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         NewBtn.setText("New");
+        NewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewBtnActionPerformed(evt);
+            }
+        });
 
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -174,31 +179,31 @@ public class MemRecord extends javax.swing.JFrame {
         lblRenewDeny.setForeground(java.awt.Color.red);
         lblRenewDeny.setText("   ");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlMemRecordLayout = new javax.swing.GroupLayout(pnlMemRecord);
+        pnlMemRecord.setLayout(pnlMemRecordLayout);
+        pnlMemRecordLayout.setHorizontalGroup(
+            pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addComponent(Gender)
                                 .addGap(44, 44, 44)
                                 .addComponent(Level)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(Status))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(RefreshBtn)
                                 .addGap(221, 221, 221)
                                 .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,34 +218,34 @@ public class MemRecord extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(DeleteBtn)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMemRecordLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblRenewDeny)
                 .addGap(317, 317, 317))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlMemRecordLayout.setVerticalGroup(
+            pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Search)
                             .addComponent(RefreshBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Gender)
                     .addComponent(Level)
                     .addComponent(Status))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,7 +260,7 @@ public class MemRecord extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
+        jPanel1.add(pnlMemRecord, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
         jLabel4.setText("Log Out");
@@ -535,6 +540,13 @@ public class MemRecord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_EditBtnActionPerformed
 
+    private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
+        dispose();
+        
+        nm = new NewMember();
+        nm.show();
+    }//GEN-LAST:event_NewBtnActionPerformed
+
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
         this.name = name;
@@ -652,9 +664,9 @@ public class MemRecord extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRenewDeny;
+    private javax.swing.JPanel pnlMemRecord;
     // End of variables declaration//GEN-END:variables
 }

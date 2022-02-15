@@ -89,7 +89,8 @@ public class EditMember extends javax.swing.JFrame {
                 comboxGender.setSelectedItem(em.gender);
                 tfContactNum.setText(em.contactNum);
                 tfAddress.setText(em.address);
-                comboxMemLvl.setSelectedItem(em.memLvl);
+                oldLvl = em.memLvl;
+                comboxMemLvl.setSelectedItem(oldLvl);
                 switch(em.memLvl) {
                 case "GOLD":
                 lblRegisFeeAMT.setText("RM 120");
@@ -150,8 +151,8 @@ public class EditMember extends javax.swing.JFrame {
         
     }
 
-    private String id, idLvl, oldID, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line, editRecordID;
-    private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
+    private String id, idLvl, oldID, newID, fileLvl, nextID, newIDDigit, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, oldLvl, selectedLvl, doj, status, expDate, line, editRecordID;
+    private int idInt, newIDInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
@@ -160,6 +161,7 @@ public class EditMember extends javax.swing.JFrame {
     private NewMember newMem;
     private Object[] memRecArr;
     private MemRecord mr;
+    private MemberEdited me;
     
     public String toString() {
         return id + "___" + name + "___" + dob + "___" + age + "___" + gender + "___" + contactNum + "___" + address + "___" + memLvl + "___" + doj + "___" + status + "___" + expDate;
@@ -174,7 +176,7 @@ public class EditMember extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlEditMem = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         lblHeader = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
@@ -197,12 +199,15 @@ public class EditMember extends javax.swing.JFrame {
         lblInvalidGender = new javax.swing.JLabel();
         lblInvalidAddress = new javax.swing.JLabel();
         lblInvalidMemLvl = new javax.swing.JLabel();
+        lblIDHeader = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEditMem.setBackground(new java.awt.Color(255, 255, 255));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("back");
         btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +312,7 @@ public class EditMember extends javax.swing.JFrame {
         });
 
         comboxMemLvl.setForeground(java.awt.Color.gray);
-        comboxMemLvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MEMBERSHIP LEVEL", "GOLD", "PLATINUM", "DIAMOND" }));
+        comboxMemLvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GOLD", "PLATINUM", "DIAMOND" }));
         comboxMemLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboxMemLvlActionPerformed(evt);
@@ -316,7 +321,7 @@ public class EditMember extends javax.swing.JFrame {
 
         lblRegisFee.setText("REGISTRATION FEE :");
 
-        lblRenewFee.setText("RENEWAL FEE          :");
+        lblRenewFee.setText("RENEWAL FEE           :");
 
         btnCancel.setBackground(new java.awt.Color(182, 52, 52));
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
@@ -366,28 +371,34 @@ public class EditMember extends javax.swing.JFrame {
         lblInvalidMemLvl.setForeground(java.awt.Color.red);
         lblInvalidMemLvl.setText("   ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        lblIDHeader.setForeground(java.awt.Color.white);
+        lblIDHeader.setText("New ID                          :");
+
+        lblID.setForeground(java.awt.Color.red);
+        lblID.setText("   ");
+
+        javax.swing.GroupLayout pnlEditMemLayout = new javax.swing.GroupLayout(pnlEditMem);
+        pnlEditMem.setLayout(pnlEditMemLayout);
+        pnlEditMemLayout.setHorizontalGroup(
+            pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditMemLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHeader)
-                .addGap(143, 143, 143))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(145, 145, 145))
+            .addGroup(pnlEditMemLayout.createSequentialGroup()
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEditMemLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlEditMemLayout.createSequentialGroup()
                                 .addComponent(btnCancel)
                                 .addGap(132, 132, 132)
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblInvalidContactNum)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(comboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pnlEditMemLayout.createSequentialGroup()
                                         .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,26 +409,28 @@ public class EditMember extends javax.swing.JFrame {
                                     .addComponent(comboxMemLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblInvalidDate)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlEditMemLayout.createSequentialGroup()
+                                        .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblRegisFee)
                                             .addComponent(lblRenewFee)
-                                            .addComponent(lblInvalidMemLvl))
+                                            .addComponent(lblInvalidMemLvl)
+                                            .addComponent(lblIDHeader))
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblRegisFeeAMT)
-                                            .addComponent(lblRenewFeeAMT)))
+                                            .addComponent(lblRenewFeeAMT)
+                                            .addComponent(lblID)))
                                     .addComponent(tfName))
                                 .addComponent(lblInvalidGender)
                                 .addComponent(lblInvalidAddress))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlEditMemLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlEditMemLayout.setVerticalGroup(
+            pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEditMemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
                 .addGap(5, 5, 5)
@@ -427,7 +440,7 @@ public class EditMember extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -450,15 +463,19 @@ public class EditMember extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidMemLvl)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRegisFee, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblRegisFeeAMT))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRenewFee)
                     .addComponent(lblRenewFeeAMT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIDHeader)
+                    .addComponent(lblID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(pnlEditMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSave))
                 .addGap(39, 39, 39))
@@ -468,18 +485,21 @@ public class EditMember extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlEditMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlEditMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        
+        mr = new MemRecord();
+        mr.show();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void tfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNameFocusGained
@@ -595,10 +615,8 @@ public class EditMember extends javax.swing.JFrame {
     }//GEN-LAST:event_tfAddressActionPerformed
 
     private void comboxMemLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxMemLvlActionPerformed
-        if (!comboxMemLvl.getSelectedItem().equals("MEMBERSHIP LEVEL")) {
-            comboxMemLvl.removeItem("MEMBERSHIP LEVEL");
-
-            switch(comboxMemLvl.getSelectedItem().toString()) {
+        selectedLvl = comboxMemLvl.getSelectedItem().toString();
+            switch(selectedLvl) {
                 case "GOLD":
                 lblRegisFeeAMT.setText("RM 120");
                 lblRenewFeeAMT.setText("RM 80");
@@ -611,7 +629,52 @@ public class EditMember extends javax.swing.JFrame {
                 lblRegisFeeAMT.setText("RM 250");
                 lblRenewFeeAMT.setText("RM 200");
             }
-        }
+            
+        if (!comboxMemLvl.getSelectedItem().equals(oldLvl)) {
+            switch(selectedLvl) {
+                case "GOLD":
+                    idLvl = "G-";
+                    fileLvl = "Gold";
+                    break;
+                case "PLATINUM":
+                    idLvl = "P-";
+                    fileLvl = "Platinum";
+                    break;
+                case "DIAMOND":
+                    idLvl = "D-";
+                    fileLvl = "Diamond";
+            }
+            
+            try {
+                File myObj = new File("next" + fileLvl + "ID.txt");
+                Scanner scanner = new Scanner(myObj);
+                while (scanner.hasNextLine()) {
+                    newIDDigit = scanner.nextLine();
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occured.");
+                e.printStackTrace();
+            }
+            
+            newIDInt = Integer.parseInt(newIDDigit);
+            
+            if (newIDInt < 10) {
+                newID = idLvl + "000" + newIDDigit;
+            } else if (newIDInt < 100) {
+                newID = idLvl + "00" + newIDDigit;
+            } else if (newIDInt < 1000) {
+                newID = idLvl + "000" + newIDDigit;
+            } else {
+                newID = idLvl + newIDDigit;
+            }
+            
+            lblIDHeader.setForeground(Color.red);
+            lblID.setText(newID);
+        } else {
+            lblIDHeader.setForeground(Color.white);
+            lblID.setText("   ");
+        }  
+        
     }//GEN-LAST:event_comboxMemLvlActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -712,11 +775,16 @@ public class EditMember extends javax.swing.JFrame {
         }
 
         if (complete) {
-            for (EditMember em: memRec) {
-                if (em.id.equals(id)) {
-                    memRec.remove(em);
+            for (int i = 0; i < memRec.size(); i++) {
+                if (memRec.get(i).id.equals(id)) {
+                    memRec.remove(i);
                 }
             }
+            
+            if (!selectedLvl.equals(oldLvl)) {
+                id = newID;
+            }
+            
             memRec.add(new EditMember(id, name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
             File myObj = new File("memberRecord.txt");
             if (myObj.delete()) {
@@ -738,12 +806,42 @@ public class EditMember extends javax.swing.JFrame {
             try {
                 FileWriter myWriter = new FileWriter("memberRecord.txt");
                 for (EditMember em: memRec) {
-                    myWriter.write(em.toString() + "\n");
+                    if (em.id.equals(id)) {
+                        myWriter.write(em.toString() + "\n");
+                        
+                        try {
+                            File file = new File("editRecord.txt");
+                            if (file.createNewFile()) {
+                                System.out.println("File created: " + file.getName());
+                            } else {
+                                System.out.println("File already exists.");
+                            }
+                        } catch (IOException e) {
+                            System.out.println("An error occured.");
+                            e.printStackTrace();
+                        }
+                        
+                        try {
+                            FileWriter myWriter2 = new FileWriter("editRecord.txt");
+                            myWriter2.write(em.toString());
+                            myWriter2.close();
+                        } catch (IOException e) {
+                            System.out.println("An error occured.");
+                            e.printStackTrace();
+                        }
+                    } else {
+                        myWriter.write(em.toString() + "\n");}
+                    
                 }
                 myWriter.close();
             } catch (IOException e) {
 
             }
+            
+            dispose();
+            
+            me = new MemberEdited();
+            me.show();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -902,8 +1000,9 @@ public class EditMember extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboxGender;
     private javax.swing.JComboBox<String> comboxMemLvl;
     private javax.swing.JComboBox<String> comboxMonth;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHeader;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblIDHeader;
     private javax.swing.JLabel lblInvalidAddress;
     private javax.swing.JLabel lblInvalidContactNum;
     private javax.swing.JLabel lblInvalidDate;
@@ -914,6 +1013,7 @@ public class EditMember extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegisFeeAMT;
     private javax.swing.JLabel lblRenewFee;
     private javax.swing.JLabel lblRenewFeeAMT;
+    private javax.swing.JPanel pnlEditMem;
     private javax.swing.JTextField tfAddress;
     private javax.swing.JTextField tfContactNum;
     private javax.swing.JTextField tfDay;
