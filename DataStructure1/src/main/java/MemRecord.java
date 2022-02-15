@@ -2,6 +2,18 @@
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.util.LinkedList;
+import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,6 +32,28 @@ public class MemRecord extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
+        
+        dtm = (DefaultTableModel) MemRecordTable.getModel();
+        
+        try {
+            br = new BufferedReader(new FileReader("memberRecord.txt"));
+            // FileReader myObj = new FileReader("memberRecord.txt");
+            lineArr = br.lines().toArray();
+            memRec = new LinkedList<MemRecord>();
+            for(int i = 0; i < lineArr.length; i++) {
+                line = lineArr[i].toString();
+                lineSplit = line.split("___");
+                dtm.addRow(lineSplit);
+                
+                memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+            }
+            
+        } catch (FileNotFoundException e) {
+        
+        }
+        
+        
+        
     }
 
     /**
@@ -32,7 +66,7 @@ public class MemRecord extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlMemRecord = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         RefreshBtn = new javax.swing.JButton();
@@ -48,6 +82,7 @@ public class MemRecord extends javax.swing.JFrame {
         RenewBtn = new javax.swing.JButton();
         EditBtn = new javax.swing.JButton();
         DeleteBtn = new javax.swing.JButton();
+        lblRenewDeny = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         LogOutBtn = new javax.swing.JLabel();
@@ -67,7 +102,7 @@ public class MemRecord extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(248, 248, 248));
+        pnlMemRecord.setBackground(new java.awt.Color(248, 248, 248));
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 30)); // NOI18N
         jLabel1.setText("Member Record");
@@ -82,7 +117,6 @@ public class MemRecord extends javax.swing.JFrame {
 
         RefreshBtn.setBackground(new java.awt.Color(78, 173, 227));
         RefreshBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RefreshBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\reset1.png")); // NOI18N
         RefreshBtn.setText("Refresh");
 
         Gender.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -102,10 +136,7 @@ public class MemRecord extends javax.swing.JFrame {
 
         MemRecordTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Name", "Date Of Birth", "Age", "Gender", "Contact", "Address", "Membership Level", "Date Of Joining", "Status", "Expiry Date"
@@ -116,7 +147,6 @@ public class MemRecord extends javax.swing.JFrame {
 
         NewBtn.setBackground(new java.awt.Color(78, 173, 227));
         NewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        NewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\add-user1.png")); // NOI18N
         NewBtn.setText("New");
         NewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,44 +156,59 @@ public class MemRecord extends javax.swing.JFrame {
 
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        RenewBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\third-party1.png")); // NOI18N
         RenewBtn.setText("Renew");
+        RenewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RenewBtnActionPerformed(evt);
+            }
+        });
 
         EditBtn.setBackground(new java.awt.Color(78, 173, 227));
         EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        EditBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\edit1.png")); // NOI18N
         EditBtn.setText("Edit");
+        EditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditBtnActionPerformed(evt);
+            }
+        });
 
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        DeleteBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\delete1.png")); // NOI18N
         DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        lblRenewDeny.setForeground(java.awt.Color.red);
+        lblRenewDeny.setText("   ");
+
+        javax.swing.GroupLayout pnlMemRecordLayout = new javax.swing.GroupLayout(pnlMemRecord);
+        pnlMemRecord.setLayout(pnlMemRecordLayout);
+        pnlMemRecordLayout.setHorizontalGroup(
+            pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addComponent(Gender)
                                 .addGap(44, 44, 44)
                                 .addComponent(Level)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(Status))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(RefreshBtn)
                                 .addGap(221, 221, 221)
                                 .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,30 +223,34 @@ public class MemRecord extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(DeleteBtn)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMemRecordLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRenewDeny)
+                .addGap(317, 317, 317))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlMemRecordLayout.setVerticalGroup(
+            pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Search)
                             .addComponent(RefreshBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Gender)
                     .addComponent(Level)
                     .addComponent(Status))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,12 +258,14 @@ public class MemRecord extends javax.swing.JFrame {
                     .addComponent(RenewBtn)
                     .addComponent(EditBtn)
                     .addComponent(DeleteBtn))
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblRenewDeny)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
+        jPanel1.add(pnlMemRecord, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
         jLabel4.setText("Log Out");
@@ -232,7 +283,6 @@ public class MemRecord extends javax.swing.JFrame {
             }
         });
 
-        LogOutBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\exit1.png")); // NOI18N
         LogOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogOutBtnMouseClicked(evt);
@@ -253,13 +303,12 @@ public class MemRecord extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 60));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("poseidon system picture\\software-engineer1.png")); // NOI18N
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 47, 83, -1));
 
@@ -354,9 +403,7 @@ public class MemRecord extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        NewMember mb = new NewMember();
-        mb.show();
-        dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -376,12 +423,218 @@ public class MemRecord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LogOutMenuActionPerformed
 
+    private void RenewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RenewBtnActionPerformed
+        if (MemRecordTable.getSelectedRowCount() == 1) {
+        dtm = (DefaultTableModel) MemRecordTable.getModel();
+        
+        row = MemRecordTable.getSelectedRow();
+        selectedExpDate = dtm.getValueAt(row, 10).toString();
+        selectedID = dtm.getValueAt(row, 0).toString();
+        int i = 0;
+        for (MemRecord mr: memRec) {
+            System.out.println(mr.expDate);
+            i += 1;
+            if (mr.id.equals((selectedID))) {
+                now = LocalDate.now();
+                dayNow = now.getDayOfMonth();
+                monthNow = now.getMonthValue();
+                yearNow = now.getYear();
+                System.out.println(selectedExpDate);
+                expDateYMD = DMYtoYMD(selectedExpDate);
+                System.out.println(expDateYMD);
+                
+                expDateLD = LocalDate.parse(expDateYMD);
+                expDateDay = expDateLD.getDayOfMonth();
+                expDateMonth = expDateLD.getMonthValue();
+                expDateYear = expDateLD.getYear();
+                dayDiff = expDateDay - dayNow;
+                monthDiff = expDateMonth - monthNow;
+                yearDiff = expDateYear - yearNow;
+                System.out.println(expDateLD);
+                System.out.println(now);
+                dueIn = Period.between(now, expDateLD);
+                dueInYear = dueIn.getYears();
+                if (((yearDiff == 0) && (monthDiff < 7 && monthDiff > -7)) || ((yearDiff == 1 && (((12 - monthNow) + expDateMonth) < 7))) || (yearDiff ==  -1 && ((12 - expDateMonth) + monthNow) < 7)) {
+                    expDateP1YLD = expDateLD.plusYears(1);
+                    expDateP1YDay = expDateP1YLD.getDayOfMonth();
+                    expDateP1YMonth = expDateP1YLD.getMonthValue();
+                    expDateP1YYear = expDateP1YLD.getYear();
+                    expDateP1Y = dateDMY(expDateP1YDay, expDateP1YMonth, expDateP1YYear);
+                    dtm.setValueAt(expDateP1Y, row, 10);
+                    
+                    //mr.expDate = expDateP1Y;
+                    //memRec.add(new MemRecord(mr.id, mr.name, mr.dob, mr.age, mr.gender, mr.contactNum, mr.address, mr.memLvl, mr.doj, mr.status, expDateP1Y));
+                    mr.expDate = expDateP1Y;
+                    
+                    lblRenewDeny.setText("   ");
+                } else if ((yearDiff == 0 && ((expDateMonth - monthNow) > 6)) || ((yearDiff == 1) && (((12 - monthNow) + expDateMonth) > 6))) {  
+                    lblRenewDeny.setText("Renewal is allowed only when the expiry date is due in less than 6 months.");
+                } else {
+                    
+                }
+                
+                
+                //System.out.println(expDateP1Y);
+            }
+        
+        }
+        
+        File deleteFile = new File("memberRecord.txt");
+            if (deleteFile.delete()) {
+                System.out.print("Deleted");
+            } else {}
+        
+        
+        try {
+            
+            File create = new File("memberRecord.txt");
+            if (create.createNewFile()) {}
+                    FileWriter myWriter = new FileWriter("memberRecord.txt");
+                    myWriter.write("");
+                    myWriter.close();
+                    FileWriter myWriter2 = new FileWriter("memberRecord.txt", true);
+                    FileReader myObj = new FileReader("memberRecord.txt");
+                    Scanner scanner = new Scanner(myObj);
+                    for (MemRecord mr: memRec) {
+                        System.out.println(mr);
+                        if (!scanner.hasNextLine()) {
+                            myWriter2.write(mr.toString() + "\n");
+                        }
+                        } 
+                    scanner.close();
+                    myWriter2.close();
+                } catch (Exception e) {
+                        
+                        }
+        }
+    }//GEN-LAST:event_RenewBtnActionPerformed
+
+    private void EditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBtnActionPerformed
+        if (MemRecordTable.getSelectedRowCount() == 1) {
+            row = MemRecordTable.getSelectedRow();
+            selectedID = dtm.getValueAt(row, 0).toString();
+            
+            for (MemRecord mr: memRec) {
+                if (mr.id.equals(selectedID)) {
+                    try {
+                        File file = new File("editRecord.txt");
+                        if (file.createNewFile()) {
+                            System.out.println("File created: " + file.getName());
+                        } else {
+                            System.out.println("File already exists.");
+                        }
+                    } catch (IOException e) {
+                        System.out.println("An error occured.");
+                        e.printStackTrace();
+                    }
+                    
+                    try {
+                        FileWriter myWriter = new FileWriter("editRecord.txt");
+                        myWriter.write(mr.id);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            
+            dispose();
+            
+            em = new EditMember();
+            em.show();
+        }
+    }//GEN-LAST:event_EditBtnActionPerformed
+
     private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
-        NewMember mb = new NewMember();
-        mb.show();
         dispose();
+        
+        nm = new NewMember();
+        nm.show();
     }//GEN-LAST:event_NewBtnActionPerformed
 
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        if (MemRecordTable.getSelectedRowCount() == 1) {
+            row = MemRecordTable.getSelectedRow();
+            selectedID = dtm.getValueAt(row, 0).toString();
+            int yn = JOptionPane.showConfirmDialog(rootPane, "Delete member " + selectedID + "?");
+            if (yn == JOptionPane.YES_OPTION) {
+                dtm.removeRow(row);
+                for (int i = 0; i < memRec.size(); i++) {
+                    if (memRec.get(i).id.equals(selectedID)) {
+                        memRec.remove(i);
+                    }
+                }
+                
+                try {
+                    FileWriter myWriter = new FileWriter("memberRecord.txt");
+                    for (MemRecord mr: memRec) {
+                        myWriter.write(mr.toString() + "\n");
+                    }
+                    myWriter.close();
+                } catch (IOException e) {
+                    System.out.print("An error occured.");
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+        
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+        this.age = age;
+        this.gender = gender;
+        this.contactNum = contactNum;
+        this.address = address;
+        this.memLvl = memLvl;
+        this.doj = doj;
+        this.status = status;
+        this.expDate = expDate;
+    }
+
+    private String id, selectedID, name, dob, dateDMY, dateYMD, age, gender, contactNum, address, memLvl, doj, status, expDate, expDateString, expDateYMD, expDateP1Y, selectedExpDate, line;
+    private int dueInMonth, dayNow, dayP1Y, expDateDay, dayDiff, monthNow, monthP1Y, expDateMonth, monthDiff, yearNow, yearP1Y, expDateYear, dueInYear, yearDiff, expDateP1YDay, expDateP1YMonth, expDateP1YYear, row, column;
+    private NewMember nm;
+    private String[] lineSplit;
+    private Object[] lineArr, focus;
+    private LinkedList<MemRecord> memRec;
+    private MemRecord mr;
+    private EditMember em;
+    private DefaultTableModel dtm;
+    private BufferedReader br;
+    private LocalDate now, expDateLD, expDateP1YLD;
+    private Period dueIn;
+    private Object expDateObj;
+    
+    public String toString() {
+        return id + "___" + name + "___" + dob + "___" + age + "___" + gender + "___" + contactNum + "___" + address + "___" + memLvl + "___" + doj + "___" + status + "___" + expDate;
+    }
+    
+    private String DMYtoYMD(String dateDMY) {
+        dateYMD = String.valueOf(dateDMY.charAt(6)) + String.valueOf(dateDMY.charAt(7)) + String.valueOf(dateDMY.charAt(8)) + String.valueOf(dateDMY.charAt(9)) + String.valueOf(dateDMY.charAt(2)) + String.valueOf(dateDMY.charAt(3)) + String.valueOf(dateDMY.charAt(4)) + String.valueOf(dateDMY.charAt(2)) + String.valueOf(dateDMY.charAt(0)) + String.valueOf(dateDMY.charAt(1));
+        return dateYMD;
+    }
+    
+    private String dateDMY(int day, int month, int year) {
+        
+        if (day < 10 || month < 10) {
+            if (day < 10 && month < 10) {
+                dateDMY = "0" + day + "-0" + month + "-" + year;
+            } else if (day < 10) {
+                dateDMY = "0" + day + "-" + month + "-" + year;
+            } else if (month < 10) {
+                dateDMY = day + "-0" + month + "-" + year;
+            }
+        } else {
+            dateDMY = day + "-" + month + "-" + year;
+        }
+        
+        return dateDMY;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -445,8 +698,9 @@ public class MemRecord extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRenewDeny;
+    private javax.swing.JPanel pnlMemRecord;
     // End of variables declaration//GEN-END:variables
 }
