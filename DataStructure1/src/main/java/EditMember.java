@@ -783,6 +783,15 @@ public class EditMember extends javax.swing.JFrame {
             
             if (!selectedLvl.equals(oldLvl)) {
                 id = newID;
+                try {
+                    FileWriter myWriter = new FileWriter("next" + fileLvl + "ID.txt");
+                    newIDInt += 1;
+                    myWriter.write(String.valueOf(newIDInt));
+                    myWriter.close();
+                } catch (IOException e) {
+                    System.out.println("An error occured.");
+                    e.printStackTrace();
+                }
             }
             
             memRec.add(new EditMember(id, name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));

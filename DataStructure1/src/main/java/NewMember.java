@@ -142,7 +142,7 @@ public class NewMember extends javax.swing.JFrame {
         nextID = String.valueOf(idInt);
         
         try {
-            FileWriter myWriter = new FileWriter("next" + fileLvl + "MemberID.txt");
+            FileWriter myWriter = new FileWriter("next" + fileLvl + "ID.txt");
             myWriter.write(nextID);
             myWriter.close();
         } catch (IOException e) {
