@@ -823,7 +823,7 @@ public class EditMember extends javax.swing.JFrame {
                         
                         try {
                             FileWriter myWriter2 = new FileWriter("editRecord.txt");
-                            myWriter2.write(em.toString());
+                            myWriter2.write(id);
                             myWriter2.close();
                         } catch (IOException e) {
                             System.out.println("An error occured.");
@@ -832,11 +832,11 @@ public class EditMember extends javax.swing.JFrame {
                     } else {
                         myWriter.write(em.toString() + "\n");}
                     
-                }
-                myWriter.close();
-            } catch (IOException e) {
+                    }
+                    myWriter.close();
+                } catch (IOException e) {
 
-            }
+                }
             
             dispose();
             
