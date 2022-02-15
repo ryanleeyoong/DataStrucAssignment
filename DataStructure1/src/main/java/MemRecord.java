@@ -175,6 +175,11 @@ public class MemRecord extends javax.swing.JFrame {
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
         lblRenewDeny.setForeground(java.awt.Color.red);
         lblRenewDeny.setText("   ");
@@ -546,6 +551,35 @@ public class MemRecord extends javax.swing.JFrame {
         nm = new NewMember();
         nm.show();
     }//GEN-LAST:event_NewBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        if (MemRecordTable.getSelectedRowCount() == 1) {
+            row = MemRecordTable.getSelectedRow();
+            selectedID = dtm.getValueAt(row, 0).toString();
+            int yn = JOptionPane.showConfirmDialog(rootPane, "Delete member " + selectedID + "?");
+            if (yn == JOptionPane.YES_OPTION) {
+                dtm.removeRow(row);
+                for (int i = 0; i < memRec.size(); i++) {
+                    if (memRec.get(i).id.equals(selectedID)) {
+                        memRec.remove(i);
+                    }
+                }
+                
+                try {
+                    FileWriter myWriter = new FileWriter("memberRecord.txt");
+                    for (MemRecord mr: memRec) {
+                        myWriter.write(mr.toString() + "\n");
+                    }
+                    myWriter.close();
+                } catch (IOException e) {
+                    System.out.print("An error occured.");
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+        
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
