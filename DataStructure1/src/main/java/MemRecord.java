@@ -13,7 +13,10 @@ import java.time.Month;
 import java.time.Period;
 import java.util.LinkedList;
 import java.util.Scanner;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -51,7 +54,6 @@ public class MemRecord extends javax.swing.JFrame {
         } catch (FileNotFoundException e) {
         
         }
-        
         
         
     }
@@ -108,10 +110,24 @@ public class MemRecord extends javax.swing.JFrame {
         jLabel1.setText("Member Record");
 
         Search.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Search.setForeground(java.awt.Color.gray);
         Search.setText("Search");
+        Search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SearchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SearchFocusLost(evt);
+            }
+        });
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
+            }
+        });
+        Search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SearchKeyPressed(evt);
             }
         });
 
@@ -374,7 +390,7 @@ public class MemRecord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_SearchActionPerformed
     public void setColor(JPanel p) {
         p.setBackground(new Color(255, 255, 255));
@@ -581,6 +597,27 @@ public class MemRecord extends javax.swing.JFrame {
         
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
+    private void SearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchKeyPressed
+        search = Search.getText();
+        sorter = new TableRowSorter<DefaultTableModel>(dtm);
+        MemRecordTable.setRowSorter(sorter);
+        sorter.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_SearchKeyPressed
+
+    private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
+        if (Search.getText().equals("Search")) {
+            Search.setText("");
+            Search.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_SearchFocusGained
+
+    private void SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusLost
+        if (Search.getText().equals("")) {
+            Search.setText("Search");
+            Search.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_SearchFocusLost
+
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
         this.name = name;
@@ -595,7 +632,7 @@ public class MemRecord extends javax.swing.JFrame {
         this.expDate = expDate;
     }
 
-    private String id, selectedID, name, dob, dateDMY, dateYMD, age, gender, contactNum, address, memLvl, doj, status, expDate, expDateString, expDateYMD, expDateP1Y, selectedExpDate, line;
+    private String id, selectedID, name, dob, dateDMY, dateYMD, age, gender, contactNum, address, memLvl, doj, status, expDate, expDateString, expDateYMD, expDateP1Y, selectedExpDate, line, search;
     private int dueInMonth, dayNow, dayP1Y, expDateDay, dayDiff, monthNow, monthP1Y, expDateMonth, monthDiff, yearNow, yearP1Y, expDateYear, dueInYear, yearDiff, expDateP1YDay, expDateP1YMonth, expDateP1YYear, row, column;
     private NewMember nm;
     private String[] lineSplit;
@@ -608,6 +645,7 @@ public class MemRecord extends javax.swing.JFrame {
     private LocalDate now, expDateLD, expDateP1YLD;
     private Period dueIn;
     private Object expDateObj;
+    private TableRowSorter<DefaultTableModel> sorter;
     
     public String toString() {
         return id + "___" + name + "___" + dob + "___" + age + "___" + gender + "___" + contactNum + "___" + address + "___" + memLvl + "___" + doj + "___" + status + "___" + expDate;
