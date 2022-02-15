@@ -53,6 +53,7 @@ public class MemRecord extends javax.swing.JFrame {
         }
         
         
+        
     }
 
     /**

@@ -162,6 +162,9 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="PASSWORD"/>
             <Property name="echoChar" type="char" value="\u0000" containsInvalidXMLChars="true"/>
           </Properties>

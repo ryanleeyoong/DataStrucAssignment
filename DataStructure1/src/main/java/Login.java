@@ -59,7 +59,7 @@ public class Login extends javax.swing.JFrame {
 
                 }
 
-                raf.writeBytes("MSTANISDABEST");//write the user input into the text file
+              
             } else {
                 System.out.println("File already exists.");
             }
@@ -157,26 +157,26 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\loading poseidon.png")); // NOI18N
+        PoseidonIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\loading poseidon.png")); // NOI18N
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title.setText("Poseidon System");
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\gradient half.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         pnlPos.setBackground(new java.awt.Color(255, 255, 255));
         pnlPos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        eyeIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login eye.png")); // NOI18N
+        eyeIcon.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login eye.png")); // NOI18N
         pnlPos.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 30, -1));
 
-        loginBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\Login right-arrow (1).png")); // NOI18N
+        loginBtn.setIcon(new javax.swing.ImageIcon("poseidon system picture\\Login right-arrow (1).png")); // NOI18N
         loginBtn.setBorderPainted(false);
         loginBtn.setContentAreaFilled(false);
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -186,13 +186,14 @@ public class Login extends javax.swing.JFrame {
         });
         pnlPos.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 40, 10));
 
-        Logo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\login trident.png")); // NOI18N
+        Logo1.setIcon(new javax.swing.ImageIcon("poseidon system picture\\login trident.png")); // NOI18N
         pnlPos.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         Title1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         Title1.setText("Welcome, Admin!");
         pnlPos.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 270, -1));
 
+        txtPassword.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         txtPassword.setText("PASSWORD");
         txtPassword.setEchoChar('\u0000');
         txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
