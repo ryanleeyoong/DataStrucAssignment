@@ -161,6 +161,11 @@ public class MemRecord extends javax.swing.JFrame {
         EditBtn.setBackground(new java.awt.Color(78, 173, 227));
         EditBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         EditBtn.setText("Edit");
+        EditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditBtnActionPerformed(evt);
+            }
+        });
 
         DeleteBtn.setBackground(new java.awt.Color(78, 173, 227));
         DeleteBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -288,7 +293,7 @@ public class MemRecord extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 60));
@@ -493,6 +498,37 @@ public class MemRecord extends javax.swing.JFrame {
                         }
         }
     }//GEN-LAST:event_RenewBtnActionPerformed
+
+    private void EditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBtnActionPerformed
+        if (MemRecordTable.getSelectedRowCount() == 1) {
+            row = MemRecordTable.getSelectedRow();
+            selectedID = dtm.getValueAt(row, 0).toString();
+            
+            for (MemRecord mr: memRec) {
+                if (mr.id.equals(selectedID)) {
+                    try {
+                        File file = new File("editRecord.txt");
+                        if (file.createNewFile()) {
+                            System.out.println("File created: " + file.getName());
+                        } else {
+                            System.out.println("File already exists.");
+                        }
+                    } catch (IOException e) {
+                        System.out.println("An error occured.");
+                        e.printStackTrace();
+                    }
+                    
+                    try {
+                        FileWriter myWriter = new FileWriter("editRecord.txt");
+                        myWriter.write(mr.id);
+                        myWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_EditBtnActionPerformed
 
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;

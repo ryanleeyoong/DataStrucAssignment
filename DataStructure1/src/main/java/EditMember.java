@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.time.*;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,18 +21,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author zenta
  */
-public class NewMember extends javax.swing.JFrame {
+public class EditMember extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewMember
+     * Creates new form EditMember
      */
-    public NewMember() {
+    public EditMember() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
         
-        memRec = new LinkedList<NewMember>();
         
+        memRec = new LinkedList<EditMember>();
+            
         try {
             File myObj = new File("memberRecord.txt");
             if (myObj.createNewFile()) {
@@ -51,7 +52,7 @@ public class NewMember extends javax.swing.JFrame {
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 lineSplit = line.split("___");
-                memRec.add(new NewMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+                memRec.add(new EditMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
                 // for (NewMember nm: memRec) {
                 //     System.out.println(nm);
                 // }
@@ -60,9 +61,53 @@ public class NewMember extends javax.swing.JFrame {
         
         }
         
+        try {
+            File myObj = new File("editRecord.txt");
+            Scanner scanner = new Scanner(myObj);
+            while (scanner.hasNextLine()) {
+                editRecordID = scanner.nextLine();
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+        
+        for (EditMember em: memRec) {
+            if (em.id.equals(editRecordID)) {
+                tfName.setText(em.id);
+                day = String.valueOf(em.dob.charAt(0)) + String.valueOf(em.dob.charAt(1));
+                dayInt = Integer.parseInt(day);
+                day = String.valueOf(dayInt);
+                tfDay.setText(day);
+                month = String.valueOf(em.dob.charAt(3)) + String.valueOf(em.dob.charAt(4));
+                monthInt = Integer.parseInt(month);
+                comboxMonth.setSelectedIndex(monthInt - 1);
+                year = String.valueOf(em.dob.charAt(6)) + String.valueOf(em.dob.charAt(7)) + String.valueOf(em.dob.charAt(8)) + String.valueOf(em.dob.charAt(9));
+                tfYear.setText(year);
+                comboxGender.setSelectedItem(em.gender);
+                tfContactNum.setText(em.contactNum);
+                tfAddress.setText(em.address);
+                comboxMemLvl.setSelectedItem(em.memLvl);
+                switch(em.memLvl) {
+                case "GOLD":
+                lblRegisFeeAMT.setText("RM 120");
+                lblRenewFeeAMT.setText("RM 80");
+                break;
+                case "PLATINUM":
+                lblRegisFeeAMT.setText("RM 180");
+                lblRenewFeeAMT.setText("RM 150");
+                break;
+                case "DIAMOND":
+                lblRegisFeeAMT.setText("RM 250");
+                lblRenewFeeAMT.setText("RM 200");
+            }
+            }
+        }
+        
     }
     
-    public NewMember(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
+    public EditMember(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
         this.name = name;
         this.dob = dob;
@@ -76,7 +121,7 @@ public class NewMember extends javax.swing.JFrame {
         this.expDate = expDate;
     }
     
-    public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
+    public EditMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
         
         switch(memLvl) {
             case "GOLD":
@@ -150,14 +195,14 @@ public class NewMember extends javax.swing.JFrame {
         expDate = dateDMY(dayOYFM, monthOYFM, yearOYFM);
         
     }
-    
-    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line;
+
+    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line, editRecordID;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
     private boolean complete, correctDate;
-    private LinkedList<NewMember> memRec;
+    private LinkedList<EditMember> memRec;
     private NewMember newMem;
     private Object[] memRecArr;
     private MemRecord mr;
@@ -212,7 +257,7 @@ public class NewMember extends javax.swing.JFrame {
         });
 
         lblHeader.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblHeader.setText("New Member");
+        lblHeader.setText("Edit Member");
 
         tfName.setForeground(java.awt.Color.gray);
         tfName.setText("NAME");
@@ -347,7 +392,7 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidDate.setForeground(new java.awt.Color(255, 0, 0));
         lblInvalidDate.setText("   ");
 
-        comboxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MONTH", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" }));
+        comboxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" }));
         comboxMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboxMonthActionPerformed(evt);
@@ -483,10 +528,6 @@ public class NewMember extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void tfDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfDayActionPerformed
-
     private void tfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNameFocusGained
         if (tfName.getText().equals("NAME")) {
             tfName.setText("");
@@ -498,12 +539,8 @@ public class NewMember extends javax.swing.JFrame {
         if (tfName.getText().equals("")) {
             tfName.setText("NAME");
             tfName.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfNameFocusLost
-
-    private void tfContactNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfContactNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfContactNumActionPerformed
 
     private void tfDayFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDayFocusGained
         if (tfDay.getText().equals("DAY")) {
@@ -516,8 +553,20 @@ public class NewMember extends javax.swing.JFrame {
         if (tfDay.getText().equals("")) {
             tfDay.setText("DAY");
             tfDay.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfDayFocusLost
+
+    private void tfDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfDayActionPerformed
+
+    private void tfDayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDayKeyPressed
+        if (evt.getKeyCode()== KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfDay.getText().length() < 2)) {
+            tfDay.setEditable(true);
+        } else {
+            tfDay.setEditable(false);
+        }
+    }//GEN-LAST:event_tfDayKeyPressed
 
     private void tfYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfYearFocusGained
         if (tfYear.getText().equals("YEAR")) {
@@ -530,8 +579,16 @@ public class NewMember extends javax.swing.JFrame {
         if (tfYear.getText().equals("")) {
             tfYear.setText("YEAR");
             tfYear.setForeground(Color.gray);
-        } 
+        }
     }//GEN-LAST:event_tfYearFocusLost
+
+    private void tfYearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfYearKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfYear.getText().length() < 4)) {
+            tfYear.setEditable(true);
+        } else {
+            tfYear.setEditable(false);
+        }
+    }//GEN-LAST:event_tfYearKeyPressed
 
     private void comboxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxGenderActionPerformed
         if (!comboxGender.getSelectedItem().equals("GENDER")) {
@@ -553,6 +610,18 @@ public class NewMember extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfContactNumFocusLost
 
+    private void tfContactNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfContactNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfContactNumActionPerformed
+
+    private void tfContactNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfContactNumKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE || (tfContactNum.getText().length() < 11 && Character.isDigit(evt.getKeyCode()))) {
+            tfContactNum.setEditable(true);
+        } else {
+            tfContactNum.setEditable(false);
+        }
+    }//GEN-LAST:event_tfContactNumKeyPressed
+
     private void tfAddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAddressFocusGained
         if (tfAddress.getText().equals("ADDRESS")) {
             tfAddress.setText("");
@@ -567,28 +636,6 @@ public class NewMember extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfAddressFocusLost
 
-    private void comboxMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxMonthActionPerformed
-        if (!comboxMonth.getSelectedItem().equals("MONTH")) {
-            comboxMonth.removeItem("MONTH");
-        }
-    }//GEN-LAST:event_comboxMonthActionPerformed
-
-    private void tfDayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDayKeyPressed
-        if (evt.getKeyCode()== KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfDay.getText().length() < 2)) {
-            tfDay.setEditable(true);
-        } else {
-            tfDay.setEditable(false);
-        }
-    }//GEN-LAST:event_tfDayKeyPressed
-
-    private void tfYearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfYearKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE || (Character.isDigit(evt.getKeyCode()) && tfYear.getText().length() < 4)) {
-            tfYear.setEditable(true);
-        } else {
-            tfYear.setEditable(false);
-        }
-    }//GEN-LAST:event_tfYearKeyPressed
-
     private void tfAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfAddressActionPerformed
@@ -596,23 +643,147 @@ public class NewMember extends javax.swing.JFrame {
     private void comboxMemLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxMemLvlActionPerformed
         if (!comboxMemLvl.getSelectedItem().equals("MEMBERSHIP LEVEL")) {
             comboxMemLvl.removeItem("MEMBERSHIP LEVEL");
-            
+
             switch(comboxMemLvl.getSelectedItem().toString()) {
                 case "GOLD":
-                    lblRegisFeeAMT.setText("RM 120");
-                    lblRenewFeeAMT.setText("RM 80");
-                    break;
+                lblRegisFeeAMT.setText("RM 120");
+                lblRenewFeeAMT.setText("RM 80");
+                break;
                 case "PLATINUM":
-                    lblRegisFeeAMT.setText("RM 180");
-                    lblRenewFeeAMT.setText("RM 150");
-                    break;
+                lblRegisFeeAMT.setText("RM 180");
+                lblRenewFeeAMT.setText("RM 150");
+                break;
                 case "DIAMOND":
-                    lblRegisFeeAMT.setText("RM 250");
-                    lblRenewFeeAMT.setText("RM 200");
+                lblRegisFeeAMT.setText("RM 250");
+                lblRenewFeeAMT.setText("RM 200");
             }
         }
     }//GEN-LAST:event_comboxMemLvlActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+
+        name = tfName.getText();
+        day = tfDay.getText();
+        month = comboxMonth.getSelectedItem().toString();
+        month = monthNameToNum(month);
+        year = tfYear.getText();
+        gender = comboxGender.getSelectedItem().toString();
+        contactNum = tfContactNum.getText();
+        address = tfAddress.getText();
+        memLvl = comboxMemLvl.getSelectedItem().toString();
+
+        complete = true;
+        correctDate = true;
+
+        if (name.equals("NAME")) {
+            complete = false;
+        }
+
+        if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
+            complete = false;
+            correctDate = false;
+            lblInvalidDate.setText("Please fill in a complete date of birth");
+        }
+
+        if (correctDate) {
+            dayInt = Integer.parseInt(day);
+            monthInt = Integer.parseInt(month);
+            yearInt = Integer.parseInt(year);
+            maxDay = maxDayOfMonth(month, yearInt);
+            if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
+                dob = dateDMY(dayInt, monthInt, yearInt);
+                dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
+                dobLDFormat = LocalDate.parse(dobLDFormatString);
+            }
+
+            now = LocalDate.now();
+            ageP = Period.between(dobLDFormat, now);
+            if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
+                complete = false;
+                lblInvalidDate.setText("Please fill in a complete date of birth");
+            } else if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
+                complete = false;
+                lblInvalidDate.setText("Please enter a valid date");
+            } else if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
+                complete = false;
+                lblInvalidDate.setText("Are you sure that you entered the right birthday?");
+            } else {
+                lblInvalidDate.setText("   ");
+            }
+        }
+
+        if (gender.equals("GENDER")) {
+            complete = false;
+            lblInvalidGender.setText("Please select your gender");
+        } else {
+            lblInvalidGender.setText("   ");
+        }
+
+        if (contactNum.equals("CONTACT NUMBER")) {
+            complete = false;
+            lblInvalidContactNum.setText("Please fill in your phone number");
+        } else if (contactNum.length() < 9 || contactNum.length() > 11) {
+            complete = false;
+            lblInvalidContactNum.setText("This phone number format is not recognised");
+        } else {
+            lblInvalidContactNum.setText("   ");
+        }
+
+        if (address.equals("ADDRESS")) {
+            complete = false;
+            lblInvalidAddress.setText("Please fill in your address");
+        } else {
+            lblInvalidAddress.setText("   ");
+        }
+
+        if (memLvl.equals("MEMBERSHIP LEVEL")) {
+            complete = false;
+            lblInvalidMemLvl.setText("Please select you membership level");
+        } else {
+            lblInvalidMemLvl.setText("   ");
+        }
+
+        if (complete) {
+            memRec.add(new EditMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
+            File myObj = new File("memberRecord.txt");
+            if (myObj.delete()) {
+                System.out.println("Deleted the file: " + myObj.getName());
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+            try {
+                File file = new File("memberRecord.txt");
+                if (file.createNewFile()) {
+                    System.out.println("File created: " + file.getName());
+                } else {
+                    System.out.println("File already exists.");
+                }
+            } catch (IOException e) {
+                System.out.println("An error occured.");
+                e.printStackTrace();
+            }
+            try {
+                FileWriter myWriter = new FileWriter("memberRecord.txt");
+                for (EditMember em: memRec) {
+                    myWriter.write(em.toString() + "\n");
+                }
+                myWriter.close();
+            } catch (IOException e) {
+
+            }
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void comboxMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxMonthActionPerformed
+        if (!comboxMonth.getSelectedItem().equals("MONTH")) {
+            comboxMonth.removeItem("MONTH");
+        }
+    }//GEN-LAST:event_comboxMonthActionPerformed
+    
     private String monthNameToNum(String monthName) {
         
         switch(monthName) {
@@ -720,133 +891,6 @@ public class NewMember extends javax.swing.JFrame {
         return dateYMD;
     }
     
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
-        name = tfName.getText();
-        day = tfDay.getText();
-        month = comboxMonth.getSelectedItem().toString();
-        month = monthNameToNum(month);
-        year = tfYear.getText();
-        gender = comboxGender.getSelectedItem().toString();
-        contactNum = tfContactNum.getText();
-        address = tfAddress.getText();
-        memLvl = comboxMemLvl.getSelectedItem().toString();
-        
-        complete = true;
-        correctDate = true;
-        
-        if (name.equals("NAME")) {
-            complete = false;
-        }
-        
-        if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
-            complete = false;
-            correctDate = false;
-            lblInvalidDate.setText("Please fill in a complete date of birth");
-        }
-        
-        if (correctDate) {
-            dayInt = Integer.parseInt(day);
-            monthInt = Integer.parseInt(month);
-            yearInt = Integer.parseInt(year);
-            maxDay = maxDayOfMonth(month, yearInt);
-            if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
-                dob = dateDMY(dayInt, monthInt, yearInt);
-                dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
-                dobLDFormat = LocalDate.parse(dobLDFormatString);
-        }
-            
-            now = LocalDate.now();
-            ageP = Period.between(dobLDFormat, now);
-            if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
-                complete = false;
-                lblInvalidDate.setText("Please fill in a complete date of birth");
-            } else if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
-                complete = false;
-                lblInvalidDate.setText("Please enter a valid date");
-            } else if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
-                complete = false;
-                lblInvalidDate.setText("Are you sure that you entered the right birthday?");
-            } else {
-                lblInvalidDate.setText("   ");
-            }
-        }
-        
-        if (gender.equals("GENDER")) {
-            complete = false;
-            lblInvalidGender.setText("Please select your gender");
-        } else {
-            lblInvalidGender.setText("   ");
-        }
-        
-        if (contactNum.equals("CONTACT NUMBER")) {
-            complete = false;
-            lblInvalidContactNum.setText("Please fill in your phone number");
-        } else if (contactNum.length() < 9 || contactNum.length() > 11) {
-            complete = false;
-            lblInvalidContactNum.setText("This phone number format is not recognised");
-        } else {
-            lblInvalidContactNum.setText("   ");
-        }
-        
-        if (address.equals("ADDRESS")) {
-            complete = false;
-            lblInvalidAddress.setText("Please fill in your address");
-        } else {
-            lblInvalidAddress.setText("   ");
-        }
-        
-        if (memLvl.equals("MEMBERSHIP LEVEL")) {
-            complete = false;
-            lblInvalidMemLvl.setText("Please select you membership level");
-        } else {
-            lblInvalidMemLvl.setText("   ");
-        }
-        
-        if (complete) {
-            memRec.add(new NewMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
-            File myObj = new File("memberRecord.txt");
-            if (myObj.delete()) {
-                System.out.println("Deleted the file: " + myObj.getName());
-            } else {
-                System.out.println("Failed to delete the file.");
-            }
-            try {
-                File file = new File("memberRecord.txt");
-                if (file.createNewFile()) {
-                    System.out.println("File created: " + file.getName());
-                } else {
-                    System.out.println("File already exists.");
-                }
-            } catch (IOException e) {
-                System.out.println("An error occured.");
-                e.printStackTrace();
-            }
-            try {
-                FileWriter myWriter = new FileWriter("memberRecord.txt");
-                for (NewMember nm: memRec) {
-                    myWriter.write(nm.toString() + "\n");
-                }
-                myWriter.close();
-            } catch (IOException e) {
-            
-            }
-        }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void tfContactNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfContactNumKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE || (tfContactNum.getText().length() < 11 && Character.isDigit(evt.getKeyCode()))) {
-            tfContactNum.setEditable(true);
-        } else {
-            tfContactNum.setEditable(false);
-        }
-    }//GEN-LAST:event_tfContactNumKeyPressed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        
-    }//GEN-LAST:event_btnCancelActionPerformed
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -864,20 +908,20 @@ public class NewMember extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewMember().setVisible(true);
+                new EditMember().setVisible(true);
             }
         });
     }
