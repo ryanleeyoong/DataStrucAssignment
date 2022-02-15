@@ -30,6 +30,49 @@ public class NewMember extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        
+        try {
+            File myObj = new File("memberRecord.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+        
+        try {
+            FileReader myObj = new FileReader("memberRecord.txt");
+            Scanner scanner = new Scanner(myObj);
+            memRec = new LinkedList<NewMember>();
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                lineSplit = line.split("___");
+                memRec.add(new NewMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+                // for (NewMember nm: memRec) {
+                //     System.out.println(nm);
+                // }
+            }
+        } catch (FileNotFoundException e) {
+        
+        }
+        
+    }
+    
+    public NewMember(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+        this.age = age;
+        this.gender = gender;
+        this.contactNum = contactNum;
+        this.address = address;
+        this.memLvl = memLvl;
+        this.doj = doj;
+        this.status = status;
+        this.expDate = expDate;
     }
     
     public NewMember(String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
@@ -104,10 +147,12 @@ public class NewMember extends javax.swing.JFrame {
         monthOYFM = oneYearFromNow.getMonthValue();
         yearOYFM = oneYearFromNow.getYear();
         expDate = dateDMY(dayOYFM, monthOYFM, yearOYFM);
+        
     }
     
-    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate;
+    private String id, idLvl, fileLvl, nextID, name, day, month, year, dateDMY, dateYMD, dob, dobLDFormatString, age, gender, contactNum, address, memLvl, doj, status, expDate, line;
     private int idInt, dayInt, maxDay, dayNow, dayOYFM, monthInt, monthNow, monthOYFM, yearInt, yearNow, yearOYFM;
+    private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
     private boolean complete, correctDate;
@@ -158,7 +203,6 @@ public class NewMember extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BACK.png"))); // NOI18N
         btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +321,11 @@ public class NewMember extends javax.swing.JFrame {
         btnCancel.setBackground(new java.awt.Color(182, 52, 52));
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("CANCEL");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnSave.setBackground(new java.awt.Color(13, 109, 63));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
@@ -408,7 +457,7 @@ public class NewMember extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRenewFee)
                     .addComponent(lblRenewFeeAMT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSave))
@@ -670,7 +719,6 @@ public class NewMember extends javax.swing.JFrame {
         return dateYMD;
     }
     
-    
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
         name = tfName.getText();
@@ -755,37 +803,33 @@ public class NewMember extends javax.swing.JFrame {
         }
         
         if (complete) {
-            memRec = new LinkedList<NewMember>();
             memRec.add(new NewMember(name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
+            File myObj = new File("memberRecord.txt");
+            if (myObj.delete()) {
+                System.out.println("Deleted the file: " + myObj.getName());
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
             try {
-                File myObj = new File("memberRecord.txt");
-                if (myObj.createNewFile()) {}
-                
-                FileWriter myWriter = new FileWriter("memberRecord.txt", true);
-                FileReader myReader = new FileReader("memberRecord.txt");
-                Scanner scanner = new Scanner(myReader);
-                
-                for (NewMember nm: memRec) {
-                if (!scanner.hasNextLine()) {
-                    myWriter.write(nm.toString());
-                    
-                    //myWriter.write(memRec.get(0).id);
+                File file = new File("memberRecord.txt");
+                if (file.createNewFile()) {
+                    System.out.println("File created: " + file.getName());
                 } else {
-                    myWriter.write("\n" + nm);
-                    
-                    //myWriter.write("\n");
-                    //myWriter.write(memRec.get(0).id);
-                    
+                    System.out.println("File already exists.");
                 }
-                    
+            } catch (IOException e) {
+                System.out.println("An error occured.");
+                e.printStackTrace();
+            }
+            try {
+                FileWriter myWriter = new FileWriter("memberRecord.txt");
+                for (NewMember nm: memRec) {
+                    myWriter.write(nm.toString() + "\n");
                 }
-                
-                scanner.close();
                 myWriter.close();
             } catch (IOException e) {
-                
-            }
             
+            }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -796,6 +840,10 @@ public class NewMember extends javax.swing.JFrame {
             tfContactNum.setEditable(false);
         }
     }//GEN-LAST:event_tfContactNumKeyPressed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
     
     
     /**
