@@ -38,25 +38,32 @@ public class MemRecord extends javax.swing.JFrame {
         
         dtm = (DefaultTableModel) MemRecordTable.getModel();
         
+        memRec = new LinkedList<MemRecord>();
+        
         try {
-            br = new BufferedReader(new FileReader("memberRecord.txt"));
-            // FileReader myObj = new FileReader("memberRecord.txt");
-            lineArr = br.lines().toArray();
-            memRec = new LinkedList<MemRecord>();
-            for(int i = 0; i < lineArr.length; i++) {
-                line = lineArr[i].toString();
+            File myObj = new File("memberRecord.txt");
+            Scanner scanner = new Scanner(myObj);
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
                 lineSplit = line.split("___");
-                dtm.addRow(lineSplit);
-                
                 memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
             }
-            
+            scanner.close();
         } catch (FileNotFoundException e) {
-        
+            System.out.println("An error occured.");
+            e.printStackTrace();
         }
         
+        for(MemRecord mr: memRec) {
+            lineSplit = mr.toString().split("___");
+            dtm.addRow(lineSplit);
+        }
         
+        sorter = new TableRowSorter<DefaultTableModel>(dtm);
+        MemRecordTable.setRowSorter(sorter);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,11 +136,19 @@ public class MemRecord extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SearchKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SearchKeyTyped(evt);
+            }
         });
 
         RefreshBtn.setBackground(new java.awt.Color(78, 173, 227));
         RefreshBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         RefreshBtn.setText("Refresh");
+        RefreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshBtnActionPerformed(evt);
+            }
+        });
 
         Gender.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         Gender.setText("Gender :");
@@ -144,11 +159,26 @@ public class MemRecord extends javax.swing.JFrame {
         Status.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         Status.setText("Status :");
 
-        GenderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
+        GenderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male & Female", "Male", "Female" }));
+        GenderCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenderComboActionPerformed(evt);
+            }
+        });
 
-        LevelCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Platinum", "Diamond" }));
+        LevelCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All levels", "Gold", "Platinum", "Diamond" }));
+        LevelCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LevelComboActionPerformed(evt);
+            }
+        });
 
-        StatusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        StatusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active & Inactive", "Active", "Inactive" }));
+        StatusCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusComboActionPerformed(evt);
+            }
+        });
 
         MemRecordTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,23 +238,6 @@ public class MemRecord extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMemRecordLayout.createSequentialGroup()
-                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
-                                .addComponent(Gender)
-                                .addGap(44, 44, 44)
-                                .addComponent(Level)))
-                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(Status))
-                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(RefreshBtn)
-                                .addGap(221, 221, 221)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addComponent(GenderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LevelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,7 +250,22 @@ public class MemRecord extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(EditBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(DeleteBtn)))
+                        .addComponent(DeleteBtn))
+                    .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                        .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(RefreshBtn)
+                                .addGap(221, 221, 221)
+                                .addComponent(jLabel1))
+                            .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                                .addComponent(Gender)
+                                .addGap(87, 87, 87)
+                                .addComponent(Level)
+                                .addGap(66, 66, 66)
+                                .addComponent(Status)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,7 +283,7 @@ public class MemRecord extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Search)
-                            .addComponent(RefreshBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(RefreshBtn))
                         .addGap(18, 18, 18))
                     .addGroup(pnlMemRecordLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -598,10 +626,7 @@ public class MemRecord extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
     private void SearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchKeyPressed
-        search = Search.getText();
-        sorter = new TableRowSorter<DefaultTableModel>(dtm);
-        MemRecordTable.setRowSorter(sorter);
-        sorter.setRowFilter(RowFilter.regexFilter(search));
+        
     }//GEN-LAST:event_SearchKeyPressed
 
     private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
@@ -617,6 +642,39 @@ public class MemRecord extends javax.swing.JFrame {
             Search.setForeground(Color.gray);
         }
     }//GEN-LAST:event_SearchFocusLost
+
+    private void RefreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshBtnActionPerformed
+        Search.setText("Search");
+        Search.setForeground(Color.gray);
+        dtm.setRowCount(0);
+        sorter.setRowFilter(null);
+        for (MemRecord mr: memRec) {
+            System.out.println(mr);
+            lineSplit = mr.toString().split("___");
+            dtm.addRow(lineSplit);
+        }
+    }//GEN-LAST:event_RefreshBtnActionPerformed
+
+    private void SearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchKeyTyped
+        search = Search.getText();
+        if ((search.length() == 0)) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter(search));
+        }
+    }//GEN-LAST:event_SearchKeyTyped
+
+    private void GenderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderComboActionPerformed
+        sort();
+    }//GEN-LAST:event_GenderComboActionPerformed
+
+    private void LevelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelComboActionPerformed
+        sort();
+    }//GEN-LAST:event_LevelComboActionPerformed
+
+    private void StatusComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusComboActionPerformed
+        sort();
+    }//GEN-LAST:event_StatusComboActionPerformed
 
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
@@ -671,6 +729,79 @@ public class MemRecord extends javax.swing.JFrame {
         }
         
         return dateDMY;
+    }
+    
+    private void sort() {
+        dtm.setRowCount(0);
+        
+        for (MemRecord mr: memRec) {
+            
+        }
+        
+        gender = GenderCombo.getSelectedItem().toString();
+        memLvl = LevelCombo.getSelectedItem().toString();
+        status = StatusCombo.getSelectedItem().toString();
+        
+        if (!gender.equals("Male & Female")) {
+            for (int i = 0; i < memRec.size();) {
+                if (!memRec.get(i).gender.equalsIgnoreCase(gender)) {
+                    memRec.remove(i);
+                } else {
+                    i++;
+                }
+            }
+        }
+        
+        if (!memLvl.equals("All levels")) {
+            for (int i = 0; i < memRec.size();) {
+                System.out.println(memRec.get(i));
+                
+                if (!memRec.get(i).memLvl.equalsIgnoreCase(memLvl)) {
+                    memRec.remove(i);
+                } else {
+                    i++;
+                }
+                
+            }
+            
+        }
+        
+        if (!status.equals("Active & Inactive")) {
+            for (int i = 0; i < memRec.size();) {
+                if (!memRec.get(i).status.equalsIgnoreCase(status)) {
+                    memRec.remove(i);
+                } else {
+                    i++;
+                }
+            }
+        }
+        
+        for (MemRecord mr: memRec) {
+            //System.out.println(mr);
+            line = mr.toString();
+            lineSplit = line.split("___");
+            dtm.addRow(lineSplit);
+        }
+        
+        memRec.removeAll(memRec);
+        
+        try {
+            File myObj = new File("memberRecord.txt");
+            Scanner scanner = new Scanner(myObj);
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                lineSplit = line.split("___");
+                memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+        
+        for (MemRecord mr: memRec) {
+            //System.out.println(mr);
+        }
     }
     
     /**

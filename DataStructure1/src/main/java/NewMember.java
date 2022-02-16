@@ -52,9 +52,9 @@ public class NewMember extends javax.swing.JFrame {
                 line = scanner.nextLine();
                 lineSplit = line.split("___");
                 memRec.add(new NewMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
-                // for (NewMember nm: memRec) {
-                //     System.out.println(nm);
-                // }
+                 for (NewMember nm: memRec) {
+                     System.out.println(nm);
+                 }
             }
         } catch (FileNotFoundException e) {
         
