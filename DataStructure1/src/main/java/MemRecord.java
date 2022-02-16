@@ -41,12 +41,53 @@ public class MemRecord extends javax.swing.JFrame {
         memRec = new LinkedList<MemRecord>();
         
         try {
+            File file = new File("memberRecord.txt");
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+        
+        now = LocalDate.now();
+        dayNow = now.getDayOfMonth();
+        monthNow = now.getMonthValue();
+        yearNow = now.getYear();
+        
+        try {
             File myObj = new File("memberRecord.txt");
             Scanner scanner = new Scanner(myObj);
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 lineSplit = line.split("___");
-                memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
+                dob = lineSplit[2];
+                dobLDFormatString = DMYtoYMD(dob);
+                dobLDFormat = LocalDate.parse(dobLDFormatString);
+                ageP = Period.between(dobLDFormat, now);
+                ageInt = ageP.getYears();
+                age = String.valueOf(ageInt);
+                
+                status = lineSplit[9];
+                expDate = lineSplit[10];
+                expDateYMD = DMYtoYMD(expDate);
+                expDateLD = LocalDate.parse(expDateYMD);
+                expDateDay = expDateLD.getDayOfMonth();
+                expDateMonth = expDateLD.getMonthValue();
+                expDateYear = expDateLD.getYear();
+                if (expDateYear > yearNow) {
+                
+                } else if (expDateYear == yearNow && expDateMonth > monthNow) {
+                    
+                } else if (expDateYear == yearNow && expDateMonth == monthNow && expDateDay >= dayNow) {
+                
+                } else {
+                    status = "INACTIVE";
+                }
+                
+                memRec.add(new MemRecord(lineSplit[0], lineSplit[1], lineSplit[2], age, lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], status, lineSplit[10]));
             }
             scanner.close();
         } catch (FileNotFoundException e) {
@@ -57,6 +98,17 @@ public class MemRecord extends javax.swing.JFrame {
         for(MemRecord mr: memRec) {
             lineSplit = mr.toString().split("___");
             dtm.addRow(lineSplit);
+        }
+        
+        try {
+            FileWriter myWriter = new FileWriter("memberRecord.txt");
+            for (MemRecord mr: memRec) {
+                myWriter.write(mr.toString() + "\n");
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
         }
         
         sorter = new TableRowSorter<DefaultTableModel>(dtm);
@@ -203,6 +255,11 @@ public class MemRecord extends javax.swing.JFrame {
         RenewBtn.setBackground(new java.awt.Color(78, 173, 227));
         RenewBtn.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         RenewBtn.setText("Renew");
+        RenewBtn.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RenewBtnFocusLost(evt);
+            }
+        });
         RenewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RenewBtnActionPerformed(evt);
@@ -270,10 +327,10 @@ public class MemRecord extends javax.swing.JFrame {
             .addGroup(pnlMemRecordLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMemRecordLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlMemRecordLayout.createSequentialGroup()
+                .addGap(416, 416, 416)
                 .addComponent(lblRenewDeny)
-                .addGap(317, 317, 317))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMemRecordLayout.setVerticalGroup(
             pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +346,7 @@ public class MemRecord extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)))
-                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlMemRecordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Gender)
                     .addComponent(Level)
                     .addComponent(Status))
@@ -302,9 +359,9 @@ public class MemRecord extends javax.swing.JFrame {
                     .addComponent(RenewBtn)
                     .addComponent(EditBtn)
                     .addComponent(DeleteBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblRenewDeny)
                 .addGap(10, 10, 10)
+                .addComponent(lblRenewDeny)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -474,10 +531,9 @@ public class MemRecord extends javax.swing.JFrame {
         row = MemRecordTable.getSelectedRow();
         selectedExpDate = dtm.getValueAt(row, 10).toString();
         selectedID = dtm.getValueAt(row, 0).toString();
-        int i = 0;
+        
         for (MemRecord mr: memRec) {
             System.out.println(mr.expDate);
-            i += 1;
             if (mr.id.equals((selectedID))) {
                 now = LocalDate.now();
                 dayNow = now.getDayOfMonth();
@@ -504,21 +560,28 @@ public class MemRecord extends javax.swing.JFrame {
                     expDateP1YMonth = expDateP1YLD.getMonthValue();
                     expDateP1YYear = expDateP1YLD.getYear();
                     expDateP1Y = dateDMY(expDateP1YDay, expDateP1YMonth, expDateP1YYear);
-                    dtm.setValueAt(expDateP1Y, row, 10);
-                    
-                    //mr.expDate = expDateP1Y;
-                    //memRec.add(new MemRecord(mr.id, mr.name, mr.dob, mr.age, mr.gender, mr.contactNum, mr.address, mr.memLvl, mr.doj, mr.status, expDateP1Y));
+                    mr.status = "ACTIVE";
                     mr.expDate = expDateP1Y;
+                    dtm.setValueAt(mr.status, row, 9);
+                    dtm.setValueAt(mr.expDate, row, 10);
                     
                     lblRenewDeny.setText("   ");
                 } else if ((yearDiff == 0 && ((expDateMonth - monthNow) > 6)) || ((yearDiff == 1) && (((12 - monthNow) + expDateMonth) > 6))) {  
                     lblRenewDeny.setText("Renewal is allowed only when the expiry date is due in less than 6 months.");
                 } else {
-                    
+                    yn = JOptionPane.showConfirmDialog(rootPane, "This membership has been inactive for too long, to active it, member has to pay the amount of registration fee of his/her membership level instead of renewal fee.\nDo you want to activate " + mr.id + "?");
+                    if (yn == JOptionPane.YES_OPTION) {
+                        expDateP1YLD = now.plusYears(1);
+                        expDateP1YDay = expDateP1YLD.getDayOfMonth();
+                        expDateP1YMonth = expDateP1YLD.getMonthValue();
+                        expDateP1YYear = expDateP1YLD.getYear();
+                        expDateP1Y = dateDMY(expDateP1YDay, expDateP1YMonth, expDateP1YYear);
+                        mr.status = "ACTIVE";
+                        mr.expDate = expDateP1Y;
+                        dtm.setValueAt(mr.status, row, 9);
+                        dtm.setValueAt(mr.expDate, row, 10);
+                    }
                 }
-                
-                
-                //System.out.println(expDateP1Y);
             }
         
         }
@@ -540,7 +603,6 @@ public class MemRecord extends javax.swing.JFrame {
                     FileReader myObj = new FileReader("memberRecord.txt");
                     Scanner scanner = new Scanner(myObj);
                     for (MemRecord mr: memRec) {
-                        System.out.println(mr);
                         if (!scanner.hasNextLine()) {
                             myWriter2.write(mr.toString() + "\n");
                         }
@@ -600,7 +662,7 @@ public class MemRecord extends javax.swing.JFrame {
         if (MemRecordTable.getSelectedRowCount() == 1) {
             row = MemRecordTable.getSelectedRow();
             selectedID = dtm.getValueAt(row, 0).toString();
-            int yn = JOptionPane.showConfirmDialog(rootPane, "Delete member " + selectedID + "?");
+            yn = JOptionPane.showConfirmDialog(rootPane, "Delete member " + selectedID + "?");
             if (yn == JOptionPane.YES_OPTION) {
                 dtm.removeRow(row);
                 for (int i = 0; i < memRec.size(); i++) {
@@ -649,7 +711,6 @@ public class MemRecord extends javax.swing.JFrame {
         dtm.setRowCount(0);
         sorter.setRowFilter(null);
         for (MemRecord mr: memRec) {
-            System.out.println(mr);
             lineSplit = mr.toString().split("___");
             dtm.addRow(lineSplit);
         }
@@ -676,6 +737,10 @@ public class MemRecord extends javax.swing.JFrame {
         sort();
     }//GEN-LAST:event_StatusComboActionPerformed
 
+    private void RenewBtnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RenewBtnFocusLost
+        lblRenewDeny.setText("   ");
+    }//GEN-LAST:event_RenewBtnFocusLost
+
     public MemRecord(String id, String name, String dob, String age, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         this.id = id;
         this.name = name;
@@ -690,8 +755,8 @@ public class MemRecord extends javax.swing.JFrame {
         this.expDate = expDate;
     }
 
-    private String id, selectedID, name, dob, dateDMY, dateYMD, age, gender, contactNum, address, memLvl, doj, status, expDate, expDateString, expDateYMD, expDateP1Y, selectedExpDate, line, search;
-    private int dueInMonth, dayNow, dayP1Y, expDateDay, dayDiff, monthNow, monthP1Y, expDateMonth, monthDiff, yearNow, yearP1Y, expDateYear, dueInYear, yearDiff, expDateP1YDay, expDateP1YMonth, expDateP1YYear, row, column;
+    private String id, selectedID, name, dob, dobLDFormatString, dateDMY, dateYMD, age, gender, contactNum, address, memLvl, doj, status, expDate, expDateString, expDateYMD, expDateP1Y, selectedExpDate, line, search;
+    private int dueInMonth, dayNow, dayP1Y, expDateDay, dayDiff, monthNow, monthP1Y, expDateMonth, monthDiff, yearNow, yearP1Y, ageInt, expDateYear, dueInYear, yearDiff, expDateP1YDay, expDateP1YMonth, expDateP1YYear, row, column, yn;
     private NewMember nm;
     private String[] lineSplit;
     private Object[] lineArr, focus;
@@ -700,8 +765,8 @@ public class MemRecord extends javax.swing.JFrame {
     private EditMember em;
     private DefaultTableModel dtm;
     private BufferedReader br;
-    private LocalDate now, expDateLD, expDateP1YLD;
-    private Period dueIn;
+    private LocalDate now, dobLDFormat, expDateLD, expDateP1YLD;
+    private Period dueIn, ageP;
     private Object expDateObj;
     private TableRowSorter<DefaultTableModel> sorter;
     
@@ -777,7 +842,6 @@ public class MemRecord extends javax.swing.JFrame {
         }
         
         for (MemRecord mr: memRec) {
-            //System.out.println(mr);
             line = mr.toString();
             lineSplit = line.split("___");
             dtm.addRow(lineSplit);
@@ -800,7 +864,6 @@ public class MemRecord extends javax.swing.JFrame {
         }
         
         for (MemRecord mr: memRec) {
-            //System.out.println(mr);
         }
     }
     

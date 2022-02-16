@@ -29,7 +29,7 @@ public class NewMember extends javax.swing.JFrame {
     public NewMember() {
         initComponents();
         setLocationRelativeTo(null);
-        setResizable(false);
+        //setResizable(false);
         
         memRec = new LinkedList<NewMember>();
         
@@ -52,9 +52,6 @@ public class NewMember extends javax.swing.JFrame {
                 line = scanner.nextLine();
                 lineSplit = line.split("___");
                 memRec.add(new NewMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
-                 for (NewMember nm: memRec) {
-                     System.out.println(nm);
-                 }
             }
         } catch (FileNotFoundException e) {
         
@@ -164,7 +161,7 @@ public class NewMember extends javax.swing.JFrame {
         yearNow = now.getYear();
         doj = dateDMY(dayNow, monthNow, yearNow);
         
-        status = "Active";
+        status = "ACTIVE";
         
         oneYearFromNow = LocalDate.now().plusYears(1);
         dayOYFM = oneYearFromNow.getDayOfMonth();
@@ -179,7 +176,7 @@ public class NewMember extends javax.swing.JFrame {
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
-    private boolean complete, correctDate;
+    private boolean complete, completeDate;
     private LinkedList<NewMember> memRec;
     private NewMember newMem;
     private Object[] memRecArr;
@@ -222,6 +219,7 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidGender = new javax.swing.JLabel();
         lblInvalidAddress = new javax.swing.JLabel();
         lblInvalidMemLvl = new javax.swing.JLabel();
+        lblInvalidName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -392,6 +390,9 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidMemLvl.setForeground(java.awt.Color.red);
         lblInvalidMemLvl.setText("   ");
 
+        lblInvalidName.setForeground(java.awt.Color.red);
+        lblInvalidName.setText("   ");
+
         javax.swing.GroupLayout pnlNewMemLayout = new javax.swing.GroupLayout(pnlNewMem);
         pnlNewMem.setLayout(pnlNewMemLayout);
         pnlNewMemLayout.setHorizontalGroup(
@@ -420,7 +421,10 @@ public class NewMember extends javax.swing.JFrame {
                             .addComponent(tfContactNum)
                             .addComponent(tfAddress)
                             .addComponent(comboxMemLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                .addComponent(lblInvalidName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblInvalidDate)
                             .addGroup(pnlNewMemLayout.createSequentialGroup()
                                 .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,7 +448,9 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInvalidName))
                 .addGap(1, 1, 1)
                 .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,7 +467,7 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidContactNum)
                 .addGap(1, 1, 1)
-                .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(lblInvalidAddress)
                 .addGap(1, 1, 1)
@@ -725,7 +731,6 @@ public class NewMember extends javax.swing.JFrame {
     }
     
     private String dateYMD(int year, int month, int day) {
-        
         if (day < 10 || month < 10) {
             if (day < 10 && month < 10) {
                 dateYMD = year + "-0" + month + "-0" + day;
@@ -752,9 +757,8 @@ public class NewMember extends javax.swing.JFrame {
         address = tfAddress.getText();
         memLvl = comboxMemLvl.getSelectedItem().toString();
         regisFee = lblRegisFeeAMT.getText();
-        System.out.println(regisFee);
         complete = true;
-        correctDate = true;
+        completeDate = true;
         
         if (name.equals("NAME")) {
             complete = false;
@@ -762,34 +766,35 @@ public class NewMember extends javax.swing.JFrame {
         
         if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
             complete = false;
-            correctDate = false;
+            completeDate = false;
             lblInvalidDate.setText("Please fill in a complete date of birth");
         }
         
-        if (correctDate) {
+        if (name.equals("NAME")) {
+            complete = false;
+            lblInvalidName.setText("Please fill in your name");
+        }
+        
+        if (completeDate) {
             dayInt = Integer.parseInt(day);
             monthInt = Integer.parseInt(month);
             yearInt = Integer.parseInt(year);
             maxDay = maxDayOfMonth(month, yearInt);
-            if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
+            if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
+                complete = false;
+                lblInvalidDate.setText("Please enter a valid date");
+            } else {
                 dob = dateDMY(dayInt, monthInt, yearInt);
                 dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
                 dobLDFormat = LocalDate.parse(dobLDFormatString);
-        }
-            
-            now = LocalDate.now();
-            ageP = Period.between(dobLDFormat, now);
-            if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
-                complete = false;
-                lblInvalidDate.setText("Please fill in a complete date of birth");
-            } else if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
-                complete = false;
-                lblInvalidDate.setText("Please enter a valid date");
-            } else if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
-                complete = false;
-                lblInvalidDate.setText("Are you sure that you entered the right birthday?");
-            } else {
-                lblInvalidDate.setText("   ");
+                now = LocalDate.now();
+                ageP = Period.between(dobLDFormat, now);
+                if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
+                    complete = false;
+                    lblInvalidDate.setText("Are you sure that you entered the right birthday?");
+                } else {
+                    lblInvalidDate.setText("   ");
+            }
             }
         }
         
@@ -925,6 +930,7 @@ public class NewMember extends javax.swing.JFrame {
     private javax.swing.JLabel lblInvalidGender;
     private javax.swing.JLabel lblInvalidID;
     private javax.swing.JLabel lblInvalidMemLvl;
+    private javax.swing.JLabel lblInvalidName;
     private javax.swing.JLabel lblRegisFee;
     private javax.swing.JLabel lblRegisFeeAMT;
     private javax.swing.JLabel lblRenewFee;

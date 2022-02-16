@@ -53,9 +53,6 @@ public class EditMember extends javax.swing.JFrame {
                 line = scanner.nextLine();
                 lineSplit = line.split("___");
                 memRec.add(new EditMember(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6], lineSplit[7], lineSplit[8], lineSplit[9], lineSplit[10]));
-                // for (NewMember nm: memRec) {
-                //     System.out.println(nm);
-                // }
             }
         } catch (FileNotFoundException e) {
         
@@ -103,7 +100,10 @@ public class EditMember extends javax.swing.JFrame {
                 case "DIAMOND":
                 lblRegisFeeAMT.setText("RM 250");
                 lblRenewFeeAMT.setText("RM 200");
-            }
+                }
+                status = em.status;
+                doj = em.doj;
+                expDate = em.expDate;
             }
         }
         
@@ -123,7 +123,7 @@ public class EditMember extends javax.swing.JFrame {
         this.expDate = expDate;
     }
     
-    public EditMember(String id, String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl) {
+    public EditMember(String id, String name, String day, String month, String year, String dob, Period ageP, LocalDate now, String gender, String contactNum, String address, String memLvl, String doj, String status, String expDate) {
         
         this.id = id;
         this.name = name;
@@ -136,12 +136,11 @@ public class EditMember extends javax.swing.JFrame {
         this.address = address;
         this.memLvl = memLvl;
         
-        dayNow = now.getDayOfMonth();
-        monthNow = now.getMonthValue();
-        yearNow = now.getYear();
-        doj = dateDMY(dayNow, monthNow, yearNow);
+        this.doj = doj;
+        this.status = status;
+        this.expDate = expDate;
         
-        status = "Active";
+        status = "ACTIVE";
         
         oneYearFromNow = LocalDate.now().plusYears(1);
         dayOYFM = oneYearFromNow.getDayOfMonth();
@@ -794,7 +793,7 @@ public class EditMember extends javax.swing.JFrame {
                 }
             }
             
-            memRec.add(new EditMember(id, name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl));
+            memRec.add(new EditMember(id, name, day, month, year, dob, ageP, now, gender, contactNum, address, memLvl, doj, status, expDate));
             File myObj = new File("memberRecord.txt");
             if (myObj.delete()) {
                 System.out.println("Deleted the file: " + myObj.getName());

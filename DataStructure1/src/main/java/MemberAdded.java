@@ -30,8 +30,6 @@ public class MemberAdded extends javax.swing.JFrame {
                 lineSplit = line.split("___");
                 lblID.setText(lineSplit[0]);
                 lblRegisFee.setText(lineSplit[1]);
-                System.out.println(lineSplit[0]);
-                System.out.println(lineSplit[1]);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
