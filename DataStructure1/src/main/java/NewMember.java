@@ -689,23 +689,23 @@ public class NewMember extends javax.swing.JFrame {
         int maxDay = 31;
         
         switch(month) {
-            case "FEBRUARY":
+            case "2":
                 if (year % 4 == 0) {
                     maxDay = 29;
                 } else {
                     maxDay = 28;
                 }
                 break;
-            case "APRIL":
+            case "4":
                 maxDay = 30;
                 break;
-            case "JUNE":
+            case "6":
                 maxDay = 30;
                 break;
-            case "SEPTEMBER":
+            case "9":
                 maxDay = 30;
                 break;
-            case "NOVEMBER":
+            case "11":
                 maxDay = 30;
         }
         
@@ -762,17 +762,13 @@ public class NewMember extends javax.swing.JFrame {
         
         if (name.equals("NAME")) {
             complete = false;
+            lblInvalidName.setText("Please fill in your name");
         }
         
         if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
             complete = false;
             completeDate = false;
             lblInvalidDate.setText("Please fill in a complete date of birth");
-        }
-        
-        if (name.equals("NAME")) {
-            complete = false;
-            lblInvalidName.setText("Please fill in your name");
         }
         
         if (completeDate) {
@@ -784,17 +780,24 @@ public class NewMember extends javax.swing.JFrame {
                 complete = false;
                 lblInvalidDate.setText("Please enter a valid date");
             } else {
-                dob = dateDMY(dayInt, monthInt, yearInt);
-                dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
-                dobLDFormat = LocalDate.parse(dobLDFormatString);
-                now = LocalDate.now();
-                ageP = Period.between(dobLDFormat, now);
-                if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
+                
+                if (dayInt > maxDay) {
                     complete = false;
                     lblInvalidDate.setText("Are you sure that you entered the right birthday?");
                 } else {
-                    lblInvalidDate.setText("   ");
-            }
+                    dob = dateDMY(dayInt, monthInt, yearInt);
+                    dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
+                    dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    now = LocalDate.now();
+                    ageP = Period.between(dobLDFormat, now);
+                    
+                    if (ageP.getDays() < 0 || ageP.getYears() > 130) {
+                        complete = false;
+                        lblInvalidDate.setText("Are you sure that you entered the right birthday?");
+                    } else {
+                        lblInvalidDate.setText("   ");
+                    }
+                }
             }
         }
         

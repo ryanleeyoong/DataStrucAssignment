@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -9,12 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
 import java.util.LinkedList;
 import java.util.Scanner;
 import javax.swing.RowFilter;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -38,7 +35,7 @@ public class MemRecord extends javax.swing.JFrame {
         
         dtm = (DefaultTableModel) MemRecordTable.getModel();
         
-        memRec = new LinkedList<MemRecord>();
+        memRec = new LinkedList();
         
         try {
             File file = new File("memberRecord.txt");
@@ -111,7 +108,7 @@ public class MemRecord extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
-        sorter = new TableRowSorter<DefaultTableModel>(dtm);
+        sorter = new TableRowSorter(dtm);
         MemRecordTable.setRowSorter(sorter);
     }
     
@@ -609,7 +606,7 @@ public class MemRecord extends javax.swing.JFrame {
                         } 
                     scanner.close();
                     myWriter2.close();
-                } catch (Exception e) {
+                } catch (IOException e) {
                         
                         }
         }

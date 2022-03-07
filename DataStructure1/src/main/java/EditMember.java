@@ -155,7 +155,7 @@ public class EditMember extends javax.swing.JFrame {
     private String[] lineSplit;
     private LocalDate dobLDFormat, now, oneYearFromNow;
     private Period ageP;
-    private boolean complete, correctDate;
+    private boolean complete, completeDate;
     private LinkedList<EditMember> memRec;
     private NewMember newMem;
     private Object[] memRecArr;
@@ -703,7 +703,7 @@ public class EditMember extends javax.swing.JFrame {
         memLvl = comboxMemLvl.getSelectedItem().toString();
 
         complete = true;
-        correctDate = true;
+        completeDate = true;
 
         if (name.equals("NAME")) {
             complete = false;
@@ -711,34 +711,37 @@ public class EditMember extends javax.swing.JFrame {
 
         if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
             complete = false;
-            correctDate = false;
+            completeDate = false;
             lblInvalidDate.setText("Please fill in a complete date of birth");
         }
 
-        if (correctDate) {
+        if (completeDate) {
             dayInt = Integer.parseInt(day);
             monthInt = Integer.parseInt(month);
             yearInt = Integer.parseInt(year);
             maxDay = maxDayOfMonth(month, yearInt);
-            if (dayInt > 0 && dayInt < maxDay && monthInt > 0 && yearInt > 999) {
-                dob = dateDMY(dayInt, monthInt, yearInt);
-                dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
-                dobLDFormat = LocalDate.parse(dobLDFormatString);
-            }
-
-            now = LocalDate.now();
-            ageP = Period.between(dobLDFormat, now);
-            if (day.equals("DAY") || month.equals("MONTH") || year.equals("YEAR")) {
-                complete = false;
-                lblInvalidDate.setText("Please fill in a complete date of birth");
-            } else if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
+            if (dayInt == 0 || dayInt > 31 || yearInt < 1000) {
                 complete = false;
                 lblInvalidDate.setText("Please enter a valid date");
-            } else if (dayInt > maxDay || ageP.getDays() < 0 || ageP.getYears() > 130) {
-                complete = false;
-                lblInvalidDate.setText("Are you sure that you entered the right birthday?");
             } else {
-                lblInvalidDate.setText("   ");
+                
+                if (dayInt > maxDay) {
+                    complete = false;
+                    lblInvalidDate.setText("Are you sure that you entered the right birthday?");
+                } else {
+                    dob = dateDMY(dayInt, monthInt, yearInt);
+                    dobLDFormatString = dateYMD(yearInt, monthInt, dayInt);
+                    dobLDFormat = LocalDate.parse(dobLDFormatString);
+                    now = LocalDate.now();
+                    ageP = Period.between(dobLDFormat, now);
+                    
+                    if (ageP.getDays() < 0 || ageP.getYears() > 130) {
+                        complete = false;
+                        lblInvalidDate.setText("Are you sure that you entered the right birthday?");
+                    } else {
+                        lblInvalidDate.setText("   ");
+                    }
+                }
             }
         }
 
@@ -908,23 +911,23 @@ public class EditMember extends javax.swing.JFrame {
         int maxDay = 31;
         
         switch(month) {
-            case "FEBRUARY":
+            case "2":
                 if (year % 4 == 0) {
                     maxDay = 29;
                 } else {
                     maxDay = 28;
                 }
                 break;
-            case "APRIL":
+            case "4":
                 maxDay = 30;
                 break;
-            case "JUNE":
+            case "6":
                 maxDay = 30;
                 break;
-            case "SEPTEMBER":
+            case "9":
                 maxDay = 30;
                 break;
-            case "NOVEMBER":
+            case "11":
                 maxDay = 30;
         }
         
