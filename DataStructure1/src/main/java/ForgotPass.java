@@ -22,6 +22,7 @@ import javax.swing.JTextField;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 /**
  *
  * @author Ryan's PC
@@ -32,13 +33,12 @@ public class ForgotPass extends javax.swing.JFrame {
      * Creates new form ForgotPass
      */
     public ForgotPass() {
-        initComponents();
+         initComponents();
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
         addPlaceholderStyle(ANSWER);
         addPlaceholderStyle(NEWPASS);
         addPlaceholderStyle(CONPASS);
-
     }
 
     public void create() {
@@ -79,7 +79,6 @@ public class ForgotPass extends javax.swing.JFrame {
 
                 }
 
-              
             } else {
                 System.out.println("File already exists.");
             }
@@ -123,6 +122,7 @@ public class ForgotPass extends javax.swing.JFrame {
         textField.setForeground(Color.black);
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,76 +132,56 @@ public class ForgotPass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Backbtn = new javax.swing.JLabel();
-        Logo = new javax.swing.JLabel();
-        PoseidonIcon = new javax.swing.JLabel();
-        Title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Title2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        SearchBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         eyeIcon = new javax.swing.JLabel();
         Logo1 = new javax.swing.JLabel();
-        ForogotTitle2 = new javax.swing.JLabel();
         SaveBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
-        ForgotTitle = new javax.swing.JLabel();
-        showPassword = new javax.swing.JCheckBox();
-        CONPASS = new javax.swing.JPasswordField();
+        jCheckBoxShowPass = new javax.swing.JCheckBox();
         NEWPASS = new javax.swing.JPasswordField();
+        CONPASS = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        ForogotTitle2 = new javax.swing.JLabel();
+        ForgotTitle = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         ANSWER = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
-        Backbtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\BACK.png")); // NOI18N
-        Backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackbtnMouseClicked(evt);
-            }
-        });
-        jPanel1.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        Title2.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
+        Title2.setText("Poseidon System");
+        getContentPane().add(Title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login trident.png"))); // NOI18N
-        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
-
-        PoseidonIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/ChangePass poseidon.png"))); // NOI18N
-        jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-
-        Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
-        Title.setText("Poseidon System");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\DataStrucAss\\DataStrucAssignment\\DataStructure1\\poseidon system picture\\gradient half.png")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 510));
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\loading poseidon.png")); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Login right-arrow (1).png"))); // NOI18N
-        SearchBtn.setBorderPainted(false);
-        SearchBtn.setContentAreaFilled(false);
-        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\Login right-arrow (1).png")); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 219, 40, 20));
-
-        eyeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login eye.png"))); // NOI18N
-        jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 30, -1));
-
-        Logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login trident.png"))); // NOI18N
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 40, -1));
+        jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
         jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
-        ForogotTitle2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        ForogotTitle2.setForeground(new java.awt.Color(19, 92, 202));
-        ForogotTitle2.setText("WHO IS THE BEST CS LECTURER");
-        jPanel3.add(ForogotTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 390, -1));
-
         SaveBtn.setBackground(new java.awt.Color(13, 109, 63));
-        SaveBtn.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        SaveBtn.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         SaveBtn.setForeground(new java.awt.Color(255, 255, 255));
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -209,10 +189,10 @@ public class ForgotPass extends javax.swing.JFrame {
                 SaveBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(SaveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 70, -1));
+        jPanel3.add(SaveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 60, -1));
 
         CancelBtn.setBackground(new java.awt.Color(182, 52, 52));
-        CancelBtn.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        CancelBtn.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         CancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         CancelBtn.setText("Cancel");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -220,43 +200,17 @@ public class ForgotPass extends javax.swing.JFrame {
                 CancelBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 80, -1));
+        jPanel3.add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
-        ForgotTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        ForgotTitle.setText("Answer question to set new password");
-        jPanel3.add(ForgotTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 290, -1));
-
-        showPassword.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxShowPass.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBoxShowPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showPasswordActionPerformed(evt);
+                jCheckBoxShowPassActionPerformed(evt);
             }
         });
-        jPanel3.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
+        jPanel3.add(jCheckBoxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
-        CONPASS.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        CONPASS.setText("CONFIRM NEW PASSWORD");
-        CONPASS.setEchoChar('\u0000');
-        CONPASS.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                CONPASSFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                CONPASSFocusLost(evt);
-            }
-        });
-        CONPASS.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CONPASSKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                CONPASSKeyReleased(evt);
-            }
-        });
-        jPanel3.add(CONPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 260, 30));
-
-        NEWPASS.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         NEWPASS.setText("NEW PASSWORD");
-        NEWPASS.setEchoChar('\u0000');
         NEWPASS.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 NEWPASSFocusGained(evt);
@@ -265,17 +219,55 @@ public class ForgotPass extends javax.swing.JFrame {
                 NEWPASSFocusLost(evt);
             }
         });
-        NEWPASS.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NEWPASSKeyPressed(evt);
+        NEWPASS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NEWPASSActionPerformed(evt);
             }
+        });
+        NEWPASS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 NEWPASSKeyReleased(evt);
             }
         });
-        jPanel3.add(NEWPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 260, 30));
+        jPanel3.add(NEWPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 260, 30));
 
-        ANSWER.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        CONPASS.setText("CONFIRM NEW PASSWORD");
+        CONPASS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CONPASSFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CONPASSFocusLost(evt);
+            }
+        });
+        CONPASS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CONPASSActionPerformed(evt);
+            }
+        });
+        CONPASS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CONPASSKeyReleased(evt);
+            }
+        });
+        jPanel3.add(CONPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 260, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login eye.png")); // NOI18N
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+
+        ForogotTitle2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        ForogotTitle2.setForeground(new java.awt.Color(19, 92, 202));
+        ForogotTitle2.setText("WHO IS THE BEST CS LECTURER");
+        jPanel3.add(ForogotTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 390, -1));
+
+        ForgotTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        ForgotTitle.setText("Answer question to set new password");
+        jPanel3.add(ForgotTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 290, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+
+        ANSWER.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         ANSWER.setText("ANSWER");
         ANSWER.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -293,185 +285,34 @@ public class ForgotPass extends javax.swing.JFrame {
                 ANSWERKeyReleased(evt);
             }
         });
-        jPanel3.add(ANSWER, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 213, 260, 30));
+        jPanel3.add(ANSWER, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 420, 510));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\BACK.png")); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\gradient half.png")); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void search() throws IOException {
-        create();
 
-        String ans = ANSWER.getText();
-        int val = 0;
-
-        Scanner input = new Scanner(ANSWER.getText());
-        String ans1 = input.next();
-        String line;
-        Scanner file = new Scanner(new File("ans.txt"));//scanner will scan the text file 
-        if (ans.equals("ANSWER")) {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Please fill up the answer", null, JOptionPane.ERROR_MESSAGE);
-            ANSWER.setText("ANSWER");
-            ANSWER.setForeground(Color.gray);
-
-        } else {
-            while (file.hasNextLine()) {
-                line = file.nextLine();
-                if (line.indexOf(ans) != -1) {//if the text file consists of user input
-                    JOptionPane.showMessageDialog(null, "The answer is matched", null, JOptionPane.INFORMATION_MESSAGE);
-                    val = 1;
-                    break;
-                } else {
-                    val = 0;
-                    continue;
-                }
-            }
-            if (val == 0) {
-                JOptionPane.showMessageDialog(null, "The answer is unmatched", null, JOptionPane.ERROR_MESSAGE);//if the text file did not consist the user input set the text field as "NO RECORD"
-
-            }
-        }
-        ans1 = input.next();
-
-    }
-
-
-    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             search();
         } catch (IOException ex) {
             Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_SearchBtnActionPerformed
-
-    private void BackbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackbtnMouseClicked
-        ChangePass cp = new ChangePass();
-        cp.show();
-
-        dispose();
-    }//GEN-LAST:event_BackbtnMouseClicked
-
-    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        Login lg = new Login();
-        lg.show();
-
-        dispose();
-    }//GEN-LAST:event_CancelBtnActionPerformed
-
-    private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordActionPerformed
-        if (showPassword.isSelected()) {//if the showPassword button is selected
-
-            NEWPASS.setEchoChar((char) 0);//set the text to digit
-            CONPASS.setEchoChar((char) 0);//set the text to digit
-
-        } else {
-
-            NEWPASS.setEchoChar('*');//set the text to digit
-            CONPASS.setEchoChar('*');//if the showPassword is deselected, set the text to character
-        }
-    }//GEN-LAST:event_showPasswordActionPerformed
-
-    private void CONPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusGained
-        if (CONPASS.getText().equals("CONFIRM NEW PASSWORD")) {
-            //if there are input, the removeplaceholder function will be set and the text will be set as null.And it will force the user input set as character
-            CONPASS.setText(null);
-            CONPASS.requestFocus();
-            //set Password Charcter
-            CONPASS.setEchoChar('*');
-            //remove placeholder style
-
-            removePlaceholderStyle(CONPASS);
-        }
-    }//GEN-LAST:event_CONPASSFocusGained
-
-    private void CONPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusLost
-        if (CONPASS.getText().length() == 0) {
-            //if there are no input, the addplaceholder function will be set and the text will be set as Password.If the user press the text field the text field will be set into character
-            addPlaceholderStyle(CONPASS);
-            CONPASS.setText("CONFIRM NEW PASSWORD");
-            CONPASS.setEchoChar('*');
-        }
-    }//GEN-LAST:event_CONPASSFocusLost
-
-    private void CONPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CONPASSKeyReleased
-        //it force the user input into uppercase
-        int position = CONPASS.getCaretPosition();
-        CONPASS.setText(CONPASS.getText().toUpperCase());
-        CONPASS.setCaretPosition(position);
-    }//GEN-LAST:event_CONPASSKeyReleased
-
-    private void NEWPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusGained
-        if (NEWPASS.getText().equals("NEW PASSWORD")) {
-            //if there are input, the removeplaceholder function will be set and the text will be set as null.And it will force the user input set as character
-            NEWPASS.setText(null);
-            NEWPASS.requestFocus();
-            //set Password Charcter
-            NEWPASS.setEchoChar('*');
-            //remove placeholder style
-
-            removePlaceholderStyle(NEWPASS);
-        }
-    }//GEN-LAST:event_NEWPASSFocusGained
-
-    private void NEWPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusLost
-        if (NEWPASS.getText().length() == 0) {
-            //if there are no input, the addplaceholder function will be set and the text will be set as Password.If the user press the text field the text field will be set into character
-            addPlaceholderStyle(NEWPASS);
-            NEWPASS.setText("NEW PASSWORD");
-            NEWPASS.setEchoChar('*');
-        }
-    }//GEN-LAST:event_NEWPASSFocusLost
-
-    private void NEWPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NEWPASSKeyReleased
-        int position = NEWPASS.getCaretPosition();
-        NEWPASS.setText(NEWPASS.getText().toUpperCase());
-        NEWPASS.setCaretPosition(position);
-    }//GEN-LAST:event_NEWPASSKeyReleased
-
-    private void NEWPASSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NEWPASSKeyPressed
-        if (NEWPASS.getText().length() <= 5) {
-            NEWPASS.setEditable(true);
-        } else {
-            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
-                NEWPASS.setEditable(true);
-            } else {
-                NEWPASS.setEditable(false);
-            }
-
-        }
-    }//GEN-LAST:event_NEWPASSKeyPressed
-
-    private void CONPASSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CONPASSKeyPressed
-        if (CONPASS.getText().length() <= 5) {
-            CONPASS.setEditable(true);
-        } else {
-            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
-                CONPASS.setEditable(true);
-            } else {
-                CONPASS.setEditable(false);
-            }
-
-        }
-    }//GEN-LAST:event_CONPASSKeyPressed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
-        //function that declare before
+ //function that declare before
         create1();
         readFile();
 
@@ -489,7 +330,7 @@ public class ForgotPass extends javax.swing.JFrame {
         } else if (!(Arrays.equals(NEWPASS.getPassword(), CONPASS.getPassword()))) {
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Your password does not match", null, JOptionPane.ERROR_MESSAGE);
-            showPassword.setSelected(false);//deslected the show password function
+            jCheckBoxShowPass.setSelected(false);//deslected the show password function
             NEWPASS.setText("NEW PASSWORD");
             CONPASS.setText("CONFIRM NEW PASSWORD");
             NEWPASS.setForeground(Color.gray);
@@ -501,10 +342,93 @@ public class ForgotPass extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
-
     }//GEN-LAST:event_SaveBtnActionPerformed
+
+    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
+        Login lg = new Login();
+        lg.show();
+
+        dispose();
+    }//GEN-LAST:event_CancelBtnActionPerformed
+
+    private void jCheckBoxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShowPassActionPerformed
+        if(jCheckBoxShowPass.isSelected()){
+          
+            NEWPASS.setEchoChar((char)0);
+            CONPASS.setEchoChar((char)0);
+        } else{
+           
+            NEWPASS.setEchoChar('*');
+            CONPASS.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBoxShowPassActionPerformed
+
+    private void NEWPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusGained
+        if (NEWPASS.getText().equals("NEW PASSWORD")) {
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            NEWPASS.setText("");
+            NEWPASS.setEchoChar('*');
+            NEWPASS.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_NEWPASSFocusGained
+
+    private void NEWPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusLost
+        if (NEWPASS.getText().equals("")) {
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            NEWPASS.setEchoChar((char)0);
+            NEWPASS.setText("NEW PASSWORD");
+            NEWPASS.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_NEWPASSFocusLost
+
+    private void NEWPASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NEWPASSActionPerformed
+        if(jCheckBoxShowPass.isSelected()){
+            NEWPASS.setEchoChar((char)0);
+        } else{
+            NEWPASS.setEchoChar('*');
+        }
+    }//GEN-LAST:event_NEWPASSActionPerformed
+
+    private void NEWPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NEWPASSKeyReleased
+        //force user input to uppercase
+        int position = NEWPASS.getCaretPosition();
+        NEWPASS.setText(NEWPASS.getText().toUpperCase());
+        NEWPASS.setCaretPosition(position);
+    }//GEN-LAST:event_NEWPASSKeyReleased
+
+    private void CONPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusGained
+        if (CONPASS.getText().equals("CONFIRM NEW PASSWORD")) {
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            CONPASS.setText("");
+            CONPASS.setEchoChar('*');
+            CONPASS.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_CONPASSFocusGained
+
+    private void CONPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusLost
+        if (CONPASS.getText().equals("")) {
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            CONPASS.setEchoChar((char)0);
+            CONPASS.setText("CONFIRM NEW PASSWORD");
+            CONPASS.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_CONPASSFocusLost
+
+    private void CONPASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONPASSActionPerformed
+        if(jCheckBoxShowPass.isSelected()){
+            CONPASS.setEchoChar((char)0);
+        } else{
+            CONPASS.setEchoChar('*');
+        }
+    }//GEN-LAST:event_CONPASSActionPerformed
+
+    private void CONPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CONPASSKeyReleased
+        //force user input to uppercase
+        int position = CONPASS.getCaretPosition();
+        CONPASS.setText(CONPASS.getText().toUpperCase());
+        CONPASS.setCaretPosition(position);
+    }//GEN-LAST:event_CONPASSKeyReleased
 
     private void ANSWERFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ANSWERFocusGained
         if (ANSWER.getText().equals("ANSWER")) {
@@ -527,23 +451,17 @@ public class ForgotPass extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ANSWERFocusLost
 
-    private void ANSWERKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANSWERKeyReleased
-        int position = ANSWER.getCaretPosition();
-        ANSWER.setText(ANSWER.getText().toUpperCase());
-        ANSWER.setCaretPosition(position);
-    }//GEN-LAST:event_ANSWERKeyReleased
-
     private void ANSWERKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANSWERKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 search();
             } catch (IOException ex) {
-                Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
+                ANSWER.setText("ANSWER");
+                ANSWER.setForeground(Color.gray);
             }
         }
     }//GEN-LAST:event_ANSWERKeyPressed
-
-    public void change() throws IOException {
+public void change() throws IOException {
         ArrayList<String> tempArray = new ArrayList<String>();
         boolean passAvailable = true;
         String i = CONPASS.getText();
@@ -623,6 +541,54 @@ public class ForgotPass extends javax.swing.JFrame {
             }
         }
     }
+ public void search() throws IOException {
+       create();
+
+        String ans = ANSWER.getText();
+        int val = 0;
+
+        Scanner input = new Scanner(ANSWER.getText());
+        String ans1 = input.next();
+        String line;
+        Scanner file = new Scanner(new File("ans.txt"));//scanner will scan the text file 
+        if (ans.equals("ANSWER")) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Please fill up the answer", null, JOptionPane.ERROR_MESSAGE);
+            ANSWER.setText("ANSWER");
+            ANSWER.setForeground(Color.gray);
+
+        } else {
+            while (file.hasNextLine()) {
+                line = file.nextLine();
+                if (line.indexOf(ans) != -1) {//if the text file consists of user input
+                    JOptionPane.showMessageDialog(null, "The answer is matched", null, JOptionPane.INFORMATION_MESSAGE);
+                    val = 1;
+                    break;
+                } else {
+                    val = 0;
+                    continue;
+                }
+            }
+            if (val == 0) {
+                JOptionPane.showMessageDialog(null, "The answer is unmatched", null, JOptionPane.ERROR_MESSAGE);//if the text file did not consist the user input set the text field as "NO RECORD"
+
+            }
+        }
+        ans1 = input.next();
+
+    }
+    private void ANSWERKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANSWERKeyReleased
+        int position = ANSWER.getCaretPosition();
+        ANSWER.setText(ANSWER.getText().toUpperCase());
+        ANSWER.setCaretPosition(position);
+    }//GEN-LAST:event_ANSWERKeyReleased
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+         ChangePass cp = new ChangePass();
+        cp.show();
+
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -641,17 +607,13 @@ public class ForgotPass extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ForgotPass.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForgotPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ForgotPass.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForgotPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ForgotPass.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForgotPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ForgotPass.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForgotPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -665,22 +627,23 @@ public class ForgotPass extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ANSWER;
-    private javax.swing.JLabel Backbtn;
     private javax.swing.JPasswordField CONPASS;
     private javax.swing.JButton CancelBtn;
     private javax.swing.JLabel ForgotTitle;
     private javax.swing.JLabel ForogotTitle2;
-    private javax.swing.JLabel Logo;
     private javax.swing.JLabel Logo1;
     private javax.swing.JPasswordField NEWPASS;
-    private javax.swing.JLabel PoseidonIcon;
     private javax.swing.JButton SaveBtn;
-    private javax.swing.JButton SearchBtn;
-    private javax.swing.JLabel Title;
+    private javax.swing.JLabel Title2;
     private javax.swing.JLabel eyeIcon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBoxShowPass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JCheckBox showPassword;
     // End of variables declaration//GEN-END:variables
 }

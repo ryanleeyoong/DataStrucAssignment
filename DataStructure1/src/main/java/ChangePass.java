@@ -27,8 +27,9 @@ import javax.swing.JPasswordField;
  * @author Ryan's PC
  */
 public class ChangePass extends javax.swing.JFrame {
-    
+
     int val;
+
     /**
      * Creates new form ChangePass
      */
@@ -37,7 +38,7 @@ public class ChangePass extends javax.swing.JFrame {
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
     }
-    
+
     public void create1() {
 
         //create a text file if the file is not exists
@@ -92,8 +93,11 @@ public class ChangePass extends javax.swing.JFrame {
         Backbtn = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
         PoseidonIcon = new javax.swing.JLabel();
-        Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Title2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         eyeIcon = new javax.swing.JLabel();
@@ -107,6 +111,8 @@ public class ChangePass extends javax.swing.JFrame {
         jCheckBoxShowPass = new javax.swing.JCheckBox();
         jNewPasswordField = new javax.swing.JPasswordField();
         jCfmNewPasswordField = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,15 +126,25 @@ public class ChangePass extends javax.swing.JFrame {
         jPanel1.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
         jPanel1.add(PoseidonIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-
-        Title.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
-        Title.setText("Poseidon System");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+
+        Title2.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
+        Title2.setText("Poseidon System");
+        jPanel1.add(Title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\ChangePass poseidon.png")); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\gradient half.png")); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\Login right-arrow (1).png")); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +288,12 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel3.add(jCfmNewPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 260, 30));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login eye.png")); // NOI18N
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -279,7 +301,7 @@ public class ChangePass extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,16 +318,17 @@ public void setColor(JPanel p) {
     public void resetColor(JPanel p1) {
         p1.setBackground(new Color(255, 255, 255));
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             search();
+
         } catch (IOException ex) {
-            Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-     public void search() throws IOException {
+
+    public void search() throws IOException {
 
         String currentpass = jCurrentPassField.getText();//declare the username as txtUser.getText(),getText statement will get the text from user input
         val = 0;
@@ -325,6 +348,7 @@ public void setColor(JPanel p) {
                 line = file.nextLine();
                 if (line.indexOf(currentpass) != -1) {//if the text file consists of user input
                     JOptionPane.showMessageDialog(null, "Password Match, please fill in the new password!");
+
                     val = 1;
                     break;
                 } else {
@@ -339,7 +363,6 @@ public void setColor(JPanel p) {
 
         currentpass = input.next();
     }
-    
 
     /**
      * @param args the command line arguments
@@ -375,7 +398,7 @@ public void setColor(JPanel p) {
             }
         });
     }
-    
+
     private void BackbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackbtnMouseClicked
         Login lg = new Login();
         lg.show();
@@ -393,7 +416,7 @@ public void setColor(JPanel p) {
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        ForgotPassword fp = new ForgotPassword();
+        ForgotPass fp = new ForgotPass();
         fp.show();
 
         dispose();
@@ -409,45 +432,45 @@ public void setColor(JPanel p) {
 
 
     private void jCurrentPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCurrentPassFieldActionPerformed
-        if(jCheckBoxShowPass.isSelected()){
-           jCurrentPassField.setEchoChar((char)0);
-       } else{
-           jCurrentPassField.setEchoChar('*');
-       }
+        if (jCheckBoxShowPass.isSelected()) {
+            jCurrentPassField.setEchoChar((char) 0);
+        } else {
+            jCurrentPassField.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCurrentPassFieldActionPerformed
 
     private void jCurrentPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCurrentPassFieldFocusGained
-         if (jCurrentPassField.getText().equals("CURRENT PASSWORD")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+        if (jCurrentPassField.getText().equals("CURRENT PASSWORD")) {
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
             jCurrentPassField.setText("");
             jCurrentPassField.setEchoChar('*');
-            jNewPasswordField.setEchoChar((char)0);
-            jNewPasswordField.setForeground(new Color(153,153,153));
-            jCfmNewPasswordField.setEchoChar((char)0);
-            jCfmNewPasswordField.setForeground(new Color(153,153,153));
-            jCurrentPassField.setForeground(new Color(0,0,0));
-        }      
+            jNewPasswordField.setEchoChar((char) 0);
+            jNewPasswordField.setForeground(new Color(153, 153, 153));
+            jCfmNewPasswordField.setEchoChar((char) 0);
+            jCfmNewPasswordField.setForeground(new Color(153, 153, 153));
+            jCurrentPassField.setForeground(new Color(0, 0, 0));
+        }
     }//GEN-LAST:event_jCurrentPassFieldFocusGained
 
     private void jCurrentPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCurrentPassFieldFocusLost
         if (jCurrentPassField.getText().equals("")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            jCurrentPassField.setEchoChar((char)0);
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            jCurrentPassField.setEchoChar((char) 0);
             jCurrentPassField.setText("CURRENT PASSWORD");
-            jCurrentPassField.setForeground(new Color(153,153,153));
-        }          
+            jCurrentPassField.setForeground(new Color(153, 153, 153));
+        }
     }//GEN-LAST:event_jCurrentPassFieldFocusLost
 
     private void jCheckBoxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShowPassActionPerformed
-        if(jCheckBoxShowPass.isSelected()){
-           jCurrentPassField.setEchoChar((char)0);
-           jNewPasswordField.setEchoChar((char)0);
-           jCfmNewPasswordField.setEchoChar((char)0);
-       } else{
-           jCurrentPassField.setEchoChar('*');
-           jNewPasswordField.setEchoChar('*');
-           jCfmNewPasswordField.setEchoChar('*');
-       }
+        if (jCheckBoxShowPass.isSelected()) {
+            jCurrentPassField.setEchoChar((char) 0);
+            jNewPasswordField.setEchoChar((char) 0);
+            jCfmNewPasswordField.setEchoChar((char) 0);
+        } else {
+            jCurrentPassField.setEchoChar('*');
+            jNewPasswordField.setEchoChar('*');
+            jCfmNewPasswordField.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBoxShowPassActionPerformed
 
     private void jCurrentPassFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCurrentPassFieldKeyReleased
@@ -458,54 +481,54 @@ public void setColor(JPanel p) {
     }//GEN-LAST:event_jCurrentPassFieldKeyReleased
 
     private void jCfmNewPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCfmNewPasswordFieldActionPerformed
-        if(jCheckBoxShowPass.isSelected()){
-           jCfmNewPasswordField.setEchoChar((char)0);
-       } else{
-           jCfmNewPasswordField.setEchoChar('*');
-       }
+        if (jCheckBoxShowPass.isSelected()) {
+            jCfmNewPasswordField.setEchoChar((char) 0);
+        } else {
+            jCfmNewPasswordField.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCfmNewPasswordFieldActionPerformed
 
     private void jNewPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewPasswordFieldActionPerformed
-        if(jCheckBoxShowPass.isSelected()){
-           jNewPasswordField.setEchoChar((char)0);
-       } else{
-           jNewPasswordField.setEchoChar('*');
-       }
+        if (jCheckBoxShowPass.isSelected()) {
+            jNewPasswordField.setEchoChar((char) 0);
+        } else {
+            jNewPasswordField.setEchoChar('*');
+        }
     }//GEN-LAST:event_jNewPasswordFieldActionPerformed
 
     private void jNewPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNewPasswordFieldFocusGained
         if (jNewPasswordField.getText().equals("NEW PASSWORD")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
             jNewPasswordField.setText("");
             jNewPasswordField.setEchoChar('*');
-            jNewPasswordField.setForeground(new Color(0,0,0));
-        }    
+            jNewPasswordField.setForeground(new Color(0, 0, 0));
+        }
     }//GEN-LAST:event_jNewPasswordFieldFocusGained
 
     private void jNewPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNewPasswordFieldFocusLost
         if (jNewPasswordField.getText().equals("")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            jNewPasswordField.setEchoChar((char)0);
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            jNewPasswordField.setEchoChar((char) 0);
             jNewPasswordField.setText("NEW PASSWORD");
-            jNewPasswordField.setForeground(new Color(153,153,153));
-        } 
+            jNewPasswordField.setForeground(new Color(153, 153, 153));
+        }
     }//GEN-LAST:event_jNewPasswordFieldFocusLost
 
     private void jCfmNewPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCfmNewPasswordFieldFocusGained
         if (jCfmNewPasswordField.getText().equals("CONFIRM NEW PASSWORD")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
             jCfmNewPasswordField.setText("");
             jCfmNewPasswordField.setEchoChar('*');
-            jCfmNewPasswordField.setForeground(new Color(0,0,0));
+            jCfmNewPasswordField.setForeground(new Color(0, 0, 0));
         }
     }//GEN-LAST:event_jCfmNewPasswordFieldFocusGained
 
     private void jCfmNewPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCfmNewPasswordFieldFocusLost
         if (jCfmNewPasswordField.getText().equals("")) {
-             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            jCfmNewPasswordField.setEchoChar((char)0);
+            //if there are no input, the removeplaceholder function will be set and the text will be set as null.
+            jCfmNewPasswordField.setEchoChar((char) 0);
             jCfmNewPasswordField.setText("CONFIRM NEW PASSWORD");
-            jCfmNewPasswordField.setForeground(new Color(153,153,153));
+            jCfmNewPasswordField.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jCfmNewPasswordFieldFocusLost
 
@@ -528,52 +551,61 @@ public void setColor(JPanel p) {
         //function that declare before
         create1();
         readFile();
-        
+
         //when password matches new password can be replaced
-        if(val == 1){
-                
-                //force the user to fill all fields, or else pop message
-                if (jNewPasswordField.getText().equals("NEW PASSWORD") || jCfmNewPasswordField.getText().equals("CONFIRM NEW PASSWORD")) {
-                    Toolkit.getDefaultToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "Fill all fields", null, JOptionPane.ERROR_MESSAGE);
+        if (val == 1) {
 
+            //force the user to fill all fields, or else pop message
+            if (jNewPasswordField.getText().equals("NEW PASSWORD") || jCfmNewPasswordField.getText().equals("CONFIRM NEW PASSWORD")) {
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "Fill all fields", null, JOptionPane.ERROR_MESSAGE);
+
+                jNewPasswordField.setText("NEW PASSWORD");
+                jNewPasswordField.setEchoChar((char) 0);
+                jCfmNewPasswordField.setText("CONFIRM NEW PASSWORD");
+                jCfmNewPasswordField.setEchoChar((char) 0);
+                jNewPasswordField.setForeground(Color.gray);
+                jCfmNewPasswordField.setForeground(Color.gray);
+
+                //check if the password and confirm password is match, or else pop message
+            } else if (!(Arrays.equals(jNewPasswordField.getPassword(), jCfmNewPasswordField.getPassword()))) {
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "Your password does not match", null, JOptionPane.ERROR_MESSAGE);
+                jCheckBoxShowPass.setSelected(false);//deslected the show password function
+                jNewPasswordField.setText("NEW PASSWORD");
+                jNewPasswordField.setEchoChar((char) 0);
+                jCfmNewPasswordField.setText("CONFIRM NEW PASSWORD");
+                jCfmNewPasswordField.setEchoChar((char) 0);
+                jNewPasswordField.setForeground(Color.gray);
+                jCfmNewPasswordField.setForeground(Color.gray);
+
+            } else {
+                try {
+                    //if the user input meet all conditions it allow user to write data
+                    change();
                     jNewPasswordField.setText("NEW PASSWORD");
-                    jNewPasswordField.setEchoChar((char)0);
+                    jNewPasswordField.setEchoChar((char) 0);
                     jCfmNewPasswordField.setText("CONFIRM NEW PASSWORD");
-                    jCfmNewPasswordField.setEchoChar((char)0);
+                    jCfmNewPasswordField.setEchoChar((char) 0);
                     jNewPasswordField.setForeground(Color.gray);
                     jCfmNewPasswordField.setForeground(Color.gray);
-
-                    //check if the password and confirm password is match, or else pop message
-                } else if (!(Arrays.equals(jNewPasswordField.getPassword(), jCfmNewPasswordField.getPassword()))) {
-                    Toolkit.getDefaultToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "Your password does not match", null, JOptionPane.ERROR_MESSAGE);
-                    jCheckBoxShowPass.setSelected(false);//deslected the show password function
-                    jNewPasswordField.setText("NEW PASSWORD");
-                    jNewPasswordField.setEchoChar((char)0);
-                    jCfmNewPasswordField.setText("CONFIRM NEW PASSWORD");
-                    jCfmNewPasswordField.setEchoChar((char)0);
-                    jNewPasswordField.setForeground(Color.gray);
-                    jCfmNewPasswordField.setForeground(Color.gray);
-                } else {
-                    try {
-                        //if the user input meet all conditions it allow user to write data
-                        change();
-                    } catch (IOException ex) {
-                        Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    jCurrentPassField.setText("CURRENT PASSWORD");
+                    jCurrentPassField.setEchoChar((char) 0);
+                    jCurrentPassField.setForeground(Color.gray);
+                } catch (IOException ex) {
 
                 }
-        }else {
+
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Current Password does not match, please reenter the password", null, JOptionPane.ERROR_MESSAGE);
-        
+
         }
-        
-        
+
 
     }//GEN-LAST:event_SaveBtnActionPerformed
-    
-   public void change() throws IOException {
+
+    public void change() throws IOException {
         ArrayList<String> tempArray = new ArrayList<String>();
         boolean passAvailable = true;
         String i = jCfmNewPasswordField.getText();
@@ -624,7 +656,7 @@ public void setColor(JPanel p) {
 
                 JOptionPane.showMessageDialog(null, "New Password has been created.", null, JOptionPane.INFORMATION_MESSAGE);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
+
             }
 
             // store all the info from the temparary text file to a temparary array
@@ -661,8 +693,8 @@ public void setColor(JPanel p) {
     private javax.swing.JLabel Logo1;
     private javax.swing.JLabel PoseidonIcon;
     private javax.swing.JButton SaveBtn;
-    private javax.swing.JLabel Title;
     private javax.swing.JLabel Title1;
+    private javax.swing.JLabel Title2;
     private javax.swing.JLabel eyeIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField jCfmNewPasswordField;
@@ -670,6 +702,11 @@ public void setColor(JPanel p) {
     private javax.swing.JPasswordField jCurrentPassField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField jNewPasswordField;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

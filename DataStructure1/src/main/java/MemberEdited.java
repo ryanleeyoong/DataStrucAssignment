@@ -46,7 +46,7 @@ public class MemberEdited extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblHeader.setText("Member record edited");
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\BACK.png")); // NOI18N
         btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,33 +75,34 @@ public class MemberEdited extends javax.swing.JFrame {
         pnlMemEdited.setLayout(pnlMemEditedLayout);
         pnlMemEditedLayout.setHorizontalGroup(
             pnlMemEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMemEditedLayout.createSequentialGroup()
-                .addComponent(btnBack)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMemEditedLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblFinish)
+                .addGroup(pnlMemEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblEditAgain, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFinish))
                 .addGap(169, 169, 169))
             .addGroup(pnlMemEditedLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(lblHeader)
+                .addGroup(pnlMemEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemEditedLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(lblHeader))
+                    .addGroup(pnlMemEditedLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMemEditedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblEditAgain)
-                .addGap(174, 174, 174))
         );
         pnlMemEditedLayout.setVerticalGroup(
             pnlMemEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMemEditedLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnBack)
-                .addGap(36, 36, 36)
+                .addGap(25, 25, 25)
                 .addComponent(lblHeader)
                 .addGap(36, 36, 36)
                 .addComponent(lblFinish)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEditAgain)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(lblEditAgain, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

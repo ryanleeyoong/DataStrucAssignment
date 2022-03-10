@@ -69,7 +69,7 @@ public class MemberAdded extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblHeader.setText("New member added");
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\BACK.png")); // NOI18N
         btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,17 +107,12 @@ public class MemberAdded extends javax.swing.JFrame {
         pnlMemAddedLayout.setHorizontalGroup(
             pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMemAddedLayout.createSequentialGroup()
-                .addComponent(btnBack)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlMemAddedLayout.createSequentialGroup()
                 .addGroup(pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMemAddedLayout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMemAddedLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lblAddMore))
-                            .addComponent(lblHeader)))
+                        .addContainerGap()
+                        .addComponent(btnBack)
+                        .addGap(81, 81, 81)
+                        .addComponent(lblHeader))
                     .addGroup(pnlMemAddedLayout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(lblFinish))
@@ -129,15 +124,22 @@ public class MemberAdded extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRegisFee)
-                            .addComponent(lblID))))
+                            .addComponent(lblID)))
+                    .addGroup(pnlMemAddedLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(lblAddMore, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         pnlMemAddedLayout.setVerticalGroup(
             pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMemAddedLayout.createSequentialGroup()
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHeader)
+                .addGroup(pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemAddedLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblHeader))
+                    .addGroup(pnlMemAddedLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addGap(36, 36, 36)
                 .addGroup(pnlMemAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIDHeader)
@@ -149,8 +151,8 @@ public class MemberAdded extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(lblFinish)
                 .addGap(18, 18, 18)
-                .addComponent(lblAddMore)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(lblAddMore, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
