@@ -33,79 +33,29 @@ public class ForgotPass extends javax.swing.JFrame {
      * Creates new form ForgotPass
      */
     public ForgotPass() {
-         initComponents();
+        initComponents();
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
-        addPlaceholderStyle(ANSWER);
-        addPlaceholderStyle(NEWPASS);
-        addPlaceholderStyle(CONPASS);
+        addPlaceholderStyle(tfAnswer);
+        addPlaceholderStyle(tfNewPass);
+        addPlaceholderStyle(tfConfirmPass);
+        loadAnswer();
     }
 
-    public void create() {
+    private String answer;
+    
+    public void loadAnswer() {
 
-        //create a text file if the file is not exists
+        // read password from text file and store into a variable
         try {
-            File Librarian = new File("ans.txt");
-            if (Librarian.createNewFile()) {
-                System.out.println("File created: " + Librarian.getName());
-                RandomAccessFile raf = new RandomAccessFile("ans.txt", "rw");//read the file
-
-                for (int i = 0; i < 100; i++) {
-                    raf.readLine();
-
-                }
-
-                raf.writeBytes("MISS TAN");//write the user input into the text file
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
+            File ansTxt = new File("answer.txt");
+            Scanner scanner = new Scanner(ansTxt);
+            answer = scanner.nextLine();
+        } catch (FileNotFoundException e) {
             System.out.println("An error occured.");
             e.printStackTrace();
         }
     }
-
-    public void create1() {
-
-        //create a text file if the file is not exists
-        try {
-            File Librarian = new File("Admin.txt");
-            if (Librarian.createNewFile()) {
-                System.out.println("File created: " + Librarian.getName());
-                RandomAccessFile raf = new RandomAccessFile("Admin.txt", "rw");//read the file
-
-                for (int i = 0; i < 100; i++) {
-                    raf.readLine();
-
-                }
-
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occured.");
-            e.printStackTrace();
-        }
-    }
-
-    public void readFile() {
-
-        try {
-            FileReader fr = new FileReader("Admin.txt");//read the file
-            System.err.println("File exists");//if the file is exists print the statement 
-        } catch (FileNotFoundException ex) {//try statement need to end with a catch statement
-            //if the file is not exists
-            try {
-                FileWriter fw = new FileWriter("Admin.txt");//create a new text file 
-                System.err.println("File created");//after the text file is created, print the statement
-
-            } catch (IOException ex1) {//try statement need to end with a catch statement
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        }
-
-    }
-
     public void addPlaceholderStyle(JTextField textField) {
         //addPlaceholder function
         Font font = textField.getFont();
@@ -136,47 +86,33 @@ public class ForgotPass extends javax.swing.JFrame {
         Title2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         eyeIcon = new javax.swing.JLabel();
         Logo1 = new javax.swing.JLabel();
         SaveBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
         jCheckBoxShowPass = new javax.swing.JCheckBox();
-        NEWPASS = new javax.swing.JPasswordField();
-        CONPASS = new javax.swing.JPasswordField();
+        tfNewPass = new javax.swing.JPasswordField();
+        tfConfirmPass = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
         ForogotTitle2 = new javax.swing.JLabel();
         ForgotTitle = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        ANSWER = new javax.swing.JTextField();
+        tfAnswer = new javax.swing.JTextField();
+        lblInvalidConPass = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
         Title2.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
         Title2.setText("Poseidon System");
         getContentPane().add(Title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\loading poseidon.png")); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\Login right-arrow (1).png")); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 40, -1));
         jPanel3.add(eyeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 30, -1));
         jPanel3.add(Logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
@@ -189,7 +125,7 @@ public class ForgotPass extends javax.swing.JFrame {
                 SaveBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(SaveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 60, -1));
+        jPanel3.add(SaveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 60, -1));
 
         CancelBtn.setBackground(new java.awt.Color(182, 52, 52));
         CancelBtn.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
@@ -200,7 +136,7 @@ public class ForgotPass extends javax.swing.JFrame {
                 CancelBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        jPanel3.add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
 
         jCheckBoxShowPass.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBoxShowPass.addActionListener(new java.awt.event.ActionListener() {
@@ -208,51 +144,49 @@ public class ForgotPass extends javax.swing.JFrame {
                 jCheckBoxShowPassActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBoxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        jPanel3.add(jCheckBoxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
-        NEWPASS.setText("NEW PASSWORD");
-        NEWPASS.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfNewPass.setText("NEW PASSWORD");
+        tfNewPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                NEWPASSFocusGained(evt);
+                tfNewPassFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                NEWPASSFocusLost(evt);
+                tfNewPassFocusLost(evt);
             }
         });
-        NEWPASS.addActionListener(new java.awt.event.ActionListener() {
+        tfNewPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NEWPASSActionPerformed(evt);
+                tfNewPassActionPerformed(evt);
             }
         });
-        NEWPASS.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfNewPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                NEWPASSKeyReleased(evt);
+                tfNewPassKeyReleased(evt);
             }
         });
-        jPanel3.add(NEWPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 260, 30));
+        jPanel3.add(tfNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 260, 30));
 
-        CONPASS.setText("CONFIRM NEW PASSWORD");
-        CONPASS.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfConfirmPass.setText("CONFIRM NEW PASSWORD");
+        tfConfirmPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                CONPASSFocusGained(evt);
+                tfConfirmPassFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                CONPASSFocusLost(evt);
+                tfConfirmPassFocusLost(evt);
             }
         });
-        CONPASS.addActionListener(new java.awt.event.ActionListener() {
+        tfConfirmPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CONPASSActionPerformed(evt);
+                tfConfirmPassActionPerformed(evt);
             }
         });
-        CONPASS.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfConfirmPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                CONPASSKeyReleased(evt);
+                tfConfirmPassKeyReleased(evt);
             }
         });
-        jPanel3.add(CONPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 260, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login eye.png")); // NOI18N
+        jPanel3.add(tfConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 260, 30));
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
 
         ForogotTitle2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -263,86 +197,47 @@ public class ForgotPass extends javax.swing.JFrame {
         ForgotTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ForgotTitle.setText("Answer question to set new password");
         jPanel3.add(ForgotTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 290, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\login trident.png")); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
-        ANSWER.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        ANSWER.setText("ANSWER");
-        ANSWER.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfAnswer.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        tfAnswer.setText("ANSWER");
+        tfAnswer.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                ANSWERFocusGained(evt);
+                tfAnswerFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                ANSWERFocusLost(evt);
+                tfAnswerFocusLost(evt);
             }
         });
-        ANSWER.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ANSWERKeyPressed(evt);
+                tfAnswerKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                ANSWERKeyReleased(evt);
+                tfAnswerKeyReleased(evt);
             }
         });
-        jPanel3.add(ANSWER, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 30));
+        jPanel3.add(tfAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 30));
+
+        lblInvalidConPass.setForeground(java.awt.Color.red);
+        lblInvalidConPass.setText("   ");
+        jPanel3.add(lblInvalidConPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 420, 510));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\BACK.png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ryan's PC\\Desktop\\dataAsssss\\DataStrucAssignment\\DataStructure1\\src\\main\\java\\Icon\\gradient half.png")); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            search();
-        } catch (IOException ex) {
-            Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
- //function that declare before
-        create1();
-        readFile();
-
-        //force the user to fill all fields, or else pop message
-        if (NEWPASS.getText().equals("NEW PASSWORD") || CONPASS.getText().equals("CONFIRM NEW PASSWORD")) {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Fill all fields", null, JOptionPane.ERROR_MESSAGE);
-
-            NEWPASS.setText("NEW PASSWORD");
-            CONPASS.setText("CONFIRM NEW PASSWORD");
-            NEWPASS.setForeground(Color.gray);
-            CONPASS.setForeground(Color.gray);
-
-            //check if the password and confirm password is match, or else pop message
-        } else if (!(Arrays.equals(NEWPASS.getPassword(), CONPASS.getPassword()))) {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Your password does not match", null, JOptionPane.ERROR_MESSAGE);
-            jCheckBoxShowPass.setSelected(false);//deslected the show password function
-            NEWPASS.setText("NEW PASSWORD");
-            CONPASS.setText("CONFIRM NEW PASSWORD");
-            NEWPASS.setForeground(Color.gray);
-            CONPASS.setForeground(Color.gray);
-        } else {
-            try {
-                //if the user input meet all conditions it allow user to write data
-                change();
-            } catch (IOException ex) {
-                Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        save();
     }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
@@ -355,233 +250,113 @@ public class ForgotPass extends javax.swing.JFrame {
     private void jCheckBoxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShowPassActionPerformed
         if(jCheckBoxShowPass.isSelected()){
           
-            NEWPASS.setEchoChar((char)0);
-            CONPASS.setEchoChar((char)0);
+            tfNewPass.setEchoChar((char)0);
+            tfConfirmPass.setEchoChar((char)0);
         } else{
            
-            NEWPASS.setEchoChar('*');
-            CONPASS.setEchoChar('*');
+            tfNewPass.setEchoChar('*');
+            tfConfirmPass.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBoxShowPassActionPerformed
 
-    private void NEWPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusGained
-        if (NEWPASS.getText().equals("NEW PASSWORD")) {
+    private void tfNewPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNewPassFocusGained
+        if (tfNewPass.getText().equals("NEW PASSWORD")) {
             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            NEWPASS.setText("");
-            NEWPASS.setEchoChar('*');
-            NEWPASS.setForeground(new Color(0,0,0));
+            tfNewPass.setText("");
+            tfNewPass.setEchoChar('*');
+            tfNewPass.setForeground(new Color(0,0,0));
         }
-    }//GEN-LAST:event_NEWPASSFocusGained
+    }//GEN-LAST:event_tfNewPassFocusGained
 
-    private void NEWPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NEWPASSFocusLost
-        if (NEWPASS.getText().equals("")) {
+    private void tfNewPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNewPassFocusLost
+        if (tfNewPass.getText().equals("")) {
             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            NEWPASS.setEchoChar((char)0);
-            NEWPASS.setText("NEW PASSWORD");
-            NEWPASS.setForeground(new Color(153,153,153));
+            tfNewPass.setEchoChar((char)0);
+            tfNewPass.setText("NEW PASSWORD");
+            tfNewPass.setForeground(new Color(153,153,153));
         }
-    }//GEN-LAST:event_NEWPASSFocusLost
+    }//GEN-LAST:event_tfNewPassFocusLost
 
-    private void NEWPASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NEWPASSActionPerformed
+    private void tfNewPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNewPassActionPerformed
         if(jCheckBoxShowPass.isSelected()){
-            NEWPASS.setEchoChar((char)0);
+            tfNewPass.setEchoChar((char)0);
         } else{
-            NEWPASS.setEchoChar('*');
+            tfNewPass.setEchoChar('*');
         }
-    }//GEN-LAST:event_NEWPASSActionPerformed
+    }//GEN-LAST:event_tfNewPassActionPerformed
 
-    private void NEWPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NEWPASSKeyReleased
+    private void tfNewPassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNewPassKeyReleased
         //force user input to uppercase
-        int position = NEWPASS.getCaretPosition();
-        NEWPASS.setText(NEWPASS.getText().toUpperCase());
-        NEWPASS.setCaretPosition(position);
-    }//GEN-LAST:event_NEWPASSKeyReleased
+        int position = tfNewPass.getCaretPosition();
+        tfNewPass.setText(tfNewPass.getText().toUpperCase());
+        tfNewPass.setCaretPosition(position);
+    }//GEN-LAST:event_tfNewPassKeyReleased
 
-    private void CONPASSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusGained
-        if (CONPASS.getText().equals("CONFIRM NEW PASSWORD")) {
+    private void tfConfirmPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfConfirmPassFocusGained
+        if (tfConfirmPass.getText().equals("CONFIRM NEW PASSWORD")) {
             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            CONPASS.setText("");
-            CONPASS.setEchoChar('*');
-            CONPASS.setForeground(new Color(0,0,0));
+            tfConfirmPass.setText("");
+            tfConfirmPass.setEchoChar('*');
+            tfConfirmPass.setForeground(new Color(0,0,0));
         }
-    }//GEN-LAST:event_CONPASSFocusGained
+    }//GEN-LAST:event_tfConfirmPassFocusGained
 
-    private void CONPASSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONPASSFocusLost
-        if (CONPASS.getText().equals("")) {
+    private void tfConfirmPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfConfirmPassFocusLost
+        if (tfConfirmPass.getText().equals("")) {
             //if there are no input, the removeplaceholder function will be set and the text will be set as null.
-            CONPASS.setEchoChar((char)0);
-            CONPASS.setText("CONFIRM NEW PASSWORD");
-            CONPASS.setForeground(new Color(153,153,153));
+            tfConfirmPass.setEchoChar((char)0);
+            tfConfirmPass.setText("CONFIRM NEW PASSWORD");
+            tfConfirmPass.setForeground(new Color(153,153,153));
         }
-    }//GEN-LAST:event_CONPASSFocusLost
+    }//GEN-LAST:event_tfConfirmPassFocusLost
 
-    private void CONPASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONPASSActionPerformed
+    private void tfConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfConfirmPassActionPerformed
         if(jCheckBoxShowPass.isSelected()){
-            CONPASS.setEchoChar((char)0);
+            tfConfirmPass.setEchoChar((char)0);
         } else{
-            CONPASS.setEchoChar('*');
+            tfConfirmPass.setEchoChar('*');
         }
-    }//GEN-LAST:event_CONPASSActionPerformed
+    }//GEN-LAST:event_tfConfirmPassActionPerformed
 
-    private void CONPASSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CONPASSKeyReleased
+    private void tfConfirmPassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfConfirmPassKeyReleased
         //force user input to uppercase
-        int position = CONPASS.getCaretPosition();
-        CONPASS.setText(CONPASS.getText().toUpperCase());
-        CONPASS.setCaretPosition(position);
-    }//GEN-LAST:event_CONPASSKeyReleased
+        int position = tfConfirmPass.getCaretPosition();
+        tfConfirmPass.setText(tfConfirmPass.getText().toUpperCase());
+        tfConfirmPass.setCaretPosition(position);
+    }//GEN-LAST:event_tfConfirmPassKeyReleased
 
-    private void ANSWERFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ANSWERFocusGained
-        if (ANSWER.getText().equals("ANSWER")) {
+    private void tfAnswerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAnswerFocusGained
+        if (tfAnswer.getText().equals("ANSWER")) {
             //if there are input, the removeplaceholder function will be set and the text will be set as null.And it will force the user input set as character
-            ANSWER.setText(null);
-            ANSWER.requestFocus();
+            tfAnswer.setText(null);
+            tfAnswer.requestFocus();
             //set Password Charcter
 
             //remove placeholder style
-            removePlaceholderStyle(ANSWER);
+            removePlaceholderStyle(tfAnswer);
         }
-    }//GEN-LAST:event_ANSWERFocusGained
+    }//GEN-LAST:event_tfAnswerFocusGained
 
-    private void ANSWERFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ANSWERFocusLost
-        if (ANSWER.getText().length() == 0) {
+    private void tfAnswerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAnswerFocusLost
+        if (tfAnswer.getText().length() == 0) {
             //if there are no input, the addplaceholder function will be set and the text will be set as Password.If the user press the text field the text field will be set into character
-            addPlaceholderStyle(ANSWER);
-            ANSWER.setText("ANSWER");
+            addPlaceholderStyle(tfAnswer);
+            tfAnswer.setText("ANSWER");
 
         }
-    }//GEN-LAST:event_ANSWERFocusLost
+    }//GEN-LAST:event_tfAnswerFocusLost
 
-    private void ANSWERKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANSWERKeyPressed
+    private void tfAnswerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfAnswerKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                search();
-            } catch (IOException ex) {
-                ANSWER.setText("ANSWER");
-                ANSWER.setForeground(Color.gray);
-            }
+            save();
         }
-    }//GEN-LAST:event_ANSWERKeyPressed
-public void change() throws IOException {
-        ArrayList<String> tempArray = new ArrayList<String>();
-        boolean passAvailable = true;
-        String i = CONPASS.getText();
-        int ln = 0;
-        String line;
-        String[] lineArr = null;
+    }//GEN-LAST:event_tfAnswerKeyPressed
 
-        if (passAvailable) {
-
-            try (FileReader fr = new FileReader("Admin.txt"))//read the text file
-            {
-                Scanner reader = new Scanner(fr);//scan the text file
-
-                while ((line = reader.nextLine()) != null) {
-
-                    if (!lineArr[0].equals(i)) //replace the text file with null value
-                    {
-                        tempArray.add(
-                                lineArr[0] + " "
-                        );
-                    }
-                }
-                fr.close();
-            } catch (Exception e) {
-
-            }
-
-            try {
-                try (PrintWriter pr = new PrintWriter("Admin.txt")) {
-                    for (String str : tempArray) {
-                        pr.println(str);
-                    }
-                    pr.close();
-                } catch (Exception e) {
-
-                }
-            } catch (Exception e) {
-
-            }
-            try {
-                RandomAccessFile raf = new RandomAccessFile("Admin.txt", "rw");//read the file
-
-                for (int p = 0; p < ln; p++) {
-                    raf.readLine();
-
-                }
-                raf.writeBytes(CONPASS.getText() + "");
-
-                JOptionPane.showMessageDialog(null, "New Password has been created.", null, JOptionPane.INFORMATION_MESSAGE);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            // store all the info from the temparary text file to a temparary array
-            try {
-                try (FileReader fr = new FileReader("tempAdmin.txt")) {
-                    Scanner reader = new Scanner(fr);
-                    while ((line = reader.nextLine()) != null) {
-
-                        tempArray.add(line);
-                    }
-                    fr.close();
-                } catch (Exception e) {
-
-                }
-            } catch (Exception e) {
-
-            }
-
-            // delete all the temparary text files
-            File Password = new File("Admin.txt");
-
-            if (Password.delete()) {
-                System.out.println("Deleted the file: " + Password.getName());
-            } else {
-                System.out.println("Failed to delete the file.");
-            }
-        }
-    }
- public void search() throws IOException {
-       create();
-
-        String ans = ANSWER.getText();
-        int val = 0;
-
-        Scanner input = new Scanner(ANSWER.getText());
-        String ans1 = input.next();
-        String line;
-        Scanner file = new Scanner(new File("ans.txt"));//scanner will scan the text file 
-        if (ans.equals("ANSWER")) {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Please fill up the answer", null, JOptionPane.ERROR_MESSAGE);
-            ANSWER.setText("ANSWER");
-            ANSWER.setForeground(Color.gray);
-
-        } else {
-            while (file.hasNextLine()) {
-                line = file.nextLine();
-                if (line.indexOf(ans) != -1) {//if the text file consists of user input
-                    JOptionPane.showMessageDialog(null, "The answer is matched", null, JOptionPane.INFORMATION_MESSAGE);
-                    val = 1;
-                    break;
-                } else {
-                    val = 0;
-                    continue;
-                }
-            }
-            if (val == 0) {
-                JOptionPane.showMessageDialog(null, "The answer is unmatched", null, JOptionPane.ERROR_MESSAGE);//if the text file did not consist the user input set the text field as "NO RECORD"
-
-            }
-        }
-        ans1 = input.next();
-
-    }
-    private void ANSWERKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANSWERKeyReleased
-        int position = ANSWER.getCaretPosition();
-        ANSWER.setText(ANSWER.getText().toUpperCase());
-        ANSWER.setCaretPosition(position);
-    }//GEN-LAST:event_ANSWERKeyReleased
+    private void tfAnswerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfAnswerKeyReleased
+        int position = tfAnswer.getCaretPosition();
+        tfAnswer.setText(tfAnswer.getText().toUpperCase());
+        tfAnswer.setCaretPosition(position);
+    }//GEN-LAST:event_tfAnswerKeyReleased
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
          ChangePass cp = new ChangePass();
@@ -590,6 +365,28 @@ public void change() throws IOException {
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void save() {
+           lblInvalidConPass.setText("");
+        if (tfAnswer.getText().equals(answer)) {
+            if (tfNewPass.getText().equals(tfConfirmPass.getText())) {
+                try {
+                    FileWriter ansTxt = new FileWriter("answer.txt");
+                    ansTxt.write(tfNewPass.getText());
+                    ansTxt.close();
+                } catch (IOException e) {
+                    System.out.println("An error occured.");
+                    e.printStackTrace();
+                }
+                
+                JOptionPane.showMessageDialog(null, "New password set successfully", "New Password", JOptionPane.ERROR_MESSAGE);
+            } else {
+                lblInvalidConPass.setText("Confirm password didn't match. Try again.");
+                tfConfirmPass.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "WRONG!");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -626,17 +423,13 @@ public void change() throws IOException {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ANSWER;
-    private javax.swing.JPasswordField CONPASS;
     private javax.swing.JButton CancelBtn;
     private javax.swing.JLabel ForgotTitle;
     private javax.swing.JLabel ForogotTitle2;
     private javax.swing.JLabel Logo1;
-    private javax.swing.JPasswordField NEWPASS;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel eyeIcon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBoxShowPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -645,5 +438,9 @@ public void change() throws IOException {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblInvalidConPass;
+    private javax.swing.JTextField tfAnswer;
+    private javax.swing.JPasswordField tfConfirmPass;
+    private javax.swing.JPasswordField tfNewPass;
     // End of variables declaration//GEN-END:variables
 }

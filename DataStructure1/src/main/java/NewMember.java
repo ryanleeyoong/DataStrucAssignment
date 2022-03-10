@@ -220,6 +220,7 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidAddress = new javax.swing.JLabel();
         lblInvalidMemLvl = new javax.swing.JLabel();
         lblInvalidName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -393,115 +394,124 @@ public class NewMember extends javax.swing.JFrame {
         lblInvalidName.setForeground(java.awt.Color.red);
         lblInvalidName.setText("   ");
 
-        javax.swing.GroupLayout pnlNewMemLayout = new javax.swing.GroupLayout(pnlNewMem);
-        pnlNewMem.setLayout(pnlNewMemLayout);
-        pnlNewMemLayout.setHorizontalGroup(
-            pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNewMemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblHeader)
-                .addGap(143, 143, 143))
-            .addGroup(pnlNewMemLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlNewMemLayout.createSequentialGroup()
-                        .addComponent(btnCancel)
-                        .addGap(132, 132, 132)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jLabel1.setIcon(new javax.swing.ImageIcon("Icon\\BACK.png");
+
+            javax.swing.GroupLayout pnlNewMemLayout = new javax.swing.GroupLayout(pnlNewMem);
+            pnlNewMem.setLayout(pnlNewMemLayout);
+            pnlNewMemLayout.setHorizontalGroup(
+                pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNewMemLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHeader)
+                    .addGap(143, 143, 143))
+                .addGroup(pnlNewMemLayout.createSequentialGroup()
                     .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblInvalidContactNum)
-                        .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlNewMemLayout.createSequentialGroup()
-                                .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfContactNum)
-                            .addComponent(tfAddress)
-                            .addComponent(comboxMemLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlNewMemLayout.createSequentialGroup()
-                                .addComponent(lblInvalidName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblInvalidDate)
-                            .addGroup(pnlNewMemLayout.createSequentialGroup()
+                        .addGroup(pnlNewMemLayout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                    .addComponent(btnCancel)
+                                    .addGap(132, 132, 132)
+                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRegisFee)
-                                    .addComponent(lblRenewFee)
-                                    .addComponent(lblInvalidMemLvl))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRegisFeeAMT)
-                                    .addComponent(lblRenewFeeAMT)))
-                            .addComponent(tfName))
-                        .addComponent(lblInvalidGender)
-                        .addComponent(lblInvalidAddress)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        pnlNewMemLayout.setVerticalGroup(
-            pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNewMemLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lblHeader)
-                .addGap(36, 36, 36)
-                .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblInvalidName))
-                .addGap(1, 1, 1)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(lblInvalidDate)
-                .addGap(1, 1, 1)
-                .addComponent(comboxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(lblInvalidGender)
-                .addGap(1, 1, 1)
-                .addComponent(tfContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(lblInvalidContactNum)
-                .addGap(1, 1, 1)
-                .addComponent(tfAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(lblInvalidAddress)
-                .addGap(1, 1, 1)
-                .addComponent(comboxMemLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(lblInvalidMemLvl)
-                .addGap(1, 1, 1)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRegisFee, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblRegisFeeAMT))
-                .addGap(18, 18, 18)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRenewFee)
-                    .addComponent(lblRenewFeeAMT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel)
-                    .addComponent(btnSave))
-                .addGap(39, 39, 39))
-        );
+                                    .addComponent(lblInvalidContactNum)
+                                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(comboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                            .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfContactNum)
+                                        .addComponent(tfAddress)
+                                        .addComponent(comboxMemLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                            .addComponent(lblInvalidName)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblInvalidDate)
+                                        .addGroup(pnlNewMemLayout.createSequentialGroup()
+                                            .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblRegisFee)
+                                                .addComponent(lblRenewFee)
+                                                .addComponent(lblInvalidMemLvl))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblRegisFeeAMT)
+                                                .addComponent(lblRenewFeeAMT)))
+                                        .addComponent(tfName))
+                                    .addComponent(lblInvalidGender)
+                                    .addComponent(lblInvalidAddress))))
+                        .addGroup(pnlNewMemLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel1)))
+                    .addContainerGap(58, Short.MAX_VALUE))
+            );
+            pnlNewMemLayout.setVerticalGroup(
+                pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlNewMemLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel1)
+                    .addGap(12, 12, 12)
+                    .addComponent(lblHeader)
+                    .addGap(36, 36, 36)
+                    .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblInvalidID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblInvalidName))
+                    .addGap(1, 1, 1)
+                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(1, 1, 1)
+                    .addComponent(lblInvalidDate)
+                    .addGap(1, 1, 1)
+                    .addComponent(comboxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addComponent(lblInvalidGender)
+                    .addGap(1, 1, 1)
+                    .addComponent(tfContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addComponent(lblInvalidContactNum)
+                    .addGap(1, 1, 1)
+                    .addComponent(tfAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addComponent(lblInvalidAddress)
+                    .addGap(1, 1, 1)
+                    .addComponent(comboxMemLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addComponent(lblInvalidMemLvl)
+                    .addGap(1, 1, 1)
+                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblRegisFee, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblRegisFeeAMT))
+                    .addGap(18, 18, 18)
+                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblRenewFee)
+                        .addComponent(lblRenewFeeAMT))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                    .addGroup(pnlNewMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCancel)
+                        .addComponent(btnSave))
+                    .addGap(39, 39, 39))
+            );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnlNewMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
@@ -926,6 +936,7 @@ public class NewMember extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboxGender;
     private javax.swing.JComboBox<String> comboxMemLvl;
     private javax.swing.JComboBox<String> comboxMonth;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblInvalidAddress;
     private javax.swing.JLabel lblInvalidContactNum;

@@ -45,11 +45,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="Logo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\login trident.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="130" y="50" width="-1" height="-1"/>
@@ -57,11 +52,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="PoseidonIcon">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\loading poseidon.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="40" y="190" width="-1" height="-1"/>
@@ -82,11 +72,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\gradient half.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="-1" height="500"/>
@@ -107,11 +92,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="eyeIcon">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\login eye.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="90" y="270" width="30" height="-1"/>
@@ -120,9 +100,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="loginBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\Login right-arrow (1).png"/>
-            </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
@@ -136,11 +113,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="Logo1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ryan&apos;s PC\Desktop\DataStrucAss\DataStrucAssignment\DataStructure1\poseidon system picture\login trident.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="160" y="50" width="-1" height="-1"/>

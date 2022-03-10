@@ -41,75 +41,24 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);//set the page location 
         setResizable(false);//disable the resizable function
         addPlaceholderStyle(txtPassword);
-        create();
+        loadPass();
 
     }
 
-    public void create() {
+    private String password;
+    private MemRecord mr;
+    
+    public void loadPass() {
 
-        //create a text file if the file is not exists
+        // read password from text file and store into a variable
         try {
-            File Librarian = new File("Admin.txt");
-            if (Librarian.createNewFile()) {
-                System.out.println("File created: " + Librarian.getName());
-                RandomAccessFile raf = new RandomAccessFile("Admin.txt", "rw");//read the file
-
-                for (int i = 0; i < 100; i++) {
-                    raf.readLine();
-
-                }
-
-              
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
+            File passTxt = new File("password.txt");
+            Scanner scanner = new Scanner(passTxt);
+            password = scanner.nextLine();
+        } catch (FileNotFoundException e) {
             System.out.println("An error occured.");
             e.printStackTrace();
         }
-    }
-
-    public void readFile() {
-
-        try {
-            FileReader fr = new FileReader("Admin.txt");//read the file
-            System.err.println("File exists");//if the file is exists print the statement 
-        } catch (FileNotFoundException ex) {//try statement need to end with a catch statement
-            //if the file is not exists
-            try {
-                FileWriter fw = new FileWriter("Admin.txt");//create a new text file 
-                System.err.println("File created");//after the text file is created, print the statement
-
-            } catch (IOException ex1) {//try statement need to end with a catch statement
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        }
-
-    }
-
-    boolean login() {
-
-        boolean authentic = false;//declare the isAuthenticated as false
-        String path = "Admin.txt";//initialize the String path and declare the String to the text file
-        File file = new File(path);//read the text file
-        String password = txtPassword.getText();//declare the password as txtPassword.getText(),getText statement will get the text from user input
-
-        try {
-            Scanner inputBuffer = new Scanner(file);//scanner will scan the text file that already declare before 
-            while (inputBuffer.hasNext()) {
-                String line = inputBuffer.nextLine();//declare the String line to allow the inputBuffer to read next line
-
-                if (line.equals(password)) {//if the line in text file consists of user input 
-                    authentic = true;//allow the code to run
-                }
-
-            }
-        } catch (FileNotFoundException ex) {//try statement need to end with a catch statement
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return authentic;//return to false
-
     }
 
     public void addPlaceholderStyle(JTextField textField) {
@@ -279,32 +228,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        //create file function 
-        create();
-        //read the file function 
-        readFile();
-
-        do {
-            boolean login1 = login();//declare the isLogin as the login function
-            if (login1) {//if the user input is correct, it will allow the user to go to the library page
-                MemRecord mr = new MemRecord();
-                mr.show();
-                dispose();
-                break;
-
-            } else {//if the user input is not correct an error message will pop up 
-                Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(null,
-                        "Your password is not correct",
-                        null,
-                        JOptionPane.ERROR_MESSAGE);
-                showPassword.setSelected(false);//deslected the show password function              
-                txtPassword.setText("PASSWORD");//it will set the txtPassword as Password afterwards
-                txtPassword.setForeground(Color.gray);//set the foreground color as gray
-                break;//use break statement to stop the code from the do while loop
-
-            }
-        } while (true);// the while loop will be allow the user run when the condition is true
+        if (txtPassword.getText().equals(password)) {
+            dispose();
+            mr = new MemRecord();
+            mr.show();
+        } else {
+            JOptionPane.showMessageDialog(null, "Incorrect password");
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordActionPerformed
@@ -370,34 +300,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
-         jLabel3.setText("Hint :'MST..ISDABEST'");
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           //create file function 
-        create();
-        //read the file function 
-        readFile();
-
-        do {
-            boolean login1 = login();//declare the isLogin as the login function
-            if (login1) {//if the user input is correct, it will allow the user to go to the library page
-                MemRecord mr = new MemRecord();
-                mr.show();
-                dispose();
-                break;
-
-            } else {//if the user input is not correct an error message will pop up 
-                Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(null,
-                        "Your password is not correct",
-                        null,
-                        JOptionPane.ERROR_MESSAGE);
-                showPassword.setSelected(false);//deslected the show password function              
-                txtPassword.setText("PASSWORD");//it will set the txtPassword as Password afterwards
-                txtPassword.setForeground(Color.gray);//set the foreground color as gray
-                break;//use break statement to stop the code from the do while loop
-
-            }
-        } while (true);// the while loop will be allow the user run when the condition is true
+            if (txtPassword.getText().equals(password)) {
+            dispose();
+            mr = new MemRecord();
+            mr.show();
+        } else {
+            JOptionPane.showMessageDialog(null, "Incorrect password");
+        }
         }
 
     }//GEN-LAST:event_txtPasswordKeyPressed
